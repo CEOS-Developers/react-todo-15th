@@ -1,8 +1,9 @@
+import "./style.css";
 
 function App() {
   return (
     <div>
-      <h1>15기 화이팅~</h1>
+      <section className="container"></section>
     </div>
   );
 }
