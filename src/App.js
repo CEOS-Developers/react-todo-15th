@@ -35,6 +35,15 @@ function App() {
     todoList.splice(idx, 1);
   };
 
+  // done -> todo
+  const _toggleToTodo = (e) => {
+    const parentNode = e.target.parentNode;
+    const idx = parentNode.id;
+
+    setTodoList([...todoList, doneList[idx]]);
+    doneList.splice(idx, 1);
+  };
+
   return (
     <div>
       <main className="container">
@@ -82,7 +91,9 @@ function App() {
           <ul className="todo-list">
             {doneList.map((done, idx) => (
               <li key={done.id} id={idx} className="todo-list-item">
-                <span className="done-item-text">{done.text}</span>
+                <span className="done-item-text" onDoubleClick={_toggleToTodo}>
+                  {done.text}
+                </span>
                 <img
                   className="todo-delete-btn"
                   src="bin.png"
