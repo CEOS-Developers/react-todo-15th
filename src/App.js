@@ -129,7 +129,7 @@ const App = () => {
             ))}
           </ul>
         </section>
-        <section className="todo-contents">
+        <section className="done-contents">
           <h3>
             DONE (<span>{doneList.length}</span>)
           </h3>
