@@ -1,7 +1,7 @@
 import TodoList from './components/TodoList';
 import FinishedList from './components/FinishedList';
 import InputForm from './components/InputForm';
-import Container from './components/Container';
+import { Container } from './components/Container';
 
 function App() {
   return (

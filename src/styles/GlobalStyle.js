@@ -10,6 +10,11 @@ body {
   padding: 0;
 }
 
+/* should be deleted before finished */
+*{
+  border: 1px solid black;
+}
+
 body{
   width: 100vw;
   height: 100vh;
