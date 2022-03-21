@@ -1,3 +1,4 @@
+import React, { useCallback } from "react";
 import styled from "styled-components";
 
 const TodoContents = styled.section`
@@ -41,24 +42,30 @@ const TodoList = ({
   setToggleList,
 }) => {
   // todo <-> done
-  const _toggleTodo = ({ target }) => {
-    const parentNode = target.parentNode;
-    const idx = parentNode.id;
+  const _toggleTodo = useCallback(
+    ({ target }) => {
+      const parentNode = target.parentNode;
+      const idx = parentNode.id;
 
-    // toggle된 리스트에 item 추가
-    setToggleList([...toggleList, currentList[idx]]);
+      // toggle된 리스트에 item 추가
+      setToggleList([...toggleList, currentList[idx]]);
 
-    // 현재 리스트에서 item 삭제
-    setCurrentList(currentList.filter((_, todoId) => todoId !== Number(idx)));
-  };
+      // 현재 리스트에서 item 삭제
+      setCurrentList(currentList.filter((_, todoId) => todoId !== Number(idx)));
+    },
+    [currentList, toggleList],
+  );
 
   // delete item
-  const _deleteTodo = ({ target }) => {
-    const parentNode = target.parentNode;
-    const idx = parentNode.id;
+  const _deleteTodo = useCallback(
+    ({ target }) => {
+      const parentNode = target.parentNode;
+      const idx = parentNode.id;
 
-    setCurrentList(currentList.filter((_, todoId) => todoId !== Number(idx)));
-  };
+      setCurrentList(currentList.filter((_, todoId) => todoId !== Number(idx)));
+    },
+    [currentList],
+  );
 
   return (
     <TodoContents type={type}>
@@ -83,4 +90,4 @@ const TodoList = ({
   );
 };
 
-export default TodoList;
+export default React.memo(TodoList);

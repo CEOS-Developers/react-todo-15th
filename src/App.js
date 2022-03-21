@@ -1,5 +1,5 @@
 import "./style.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import TodoList from "./TodoList";
 import TodoInputForm from "./TodoInputForm";
 import styled from "styled-components";
@@ -26,9 +26,9 @@ const App = () => {
   const [doneList, setDoneList] = useState([]);
 
   // save to localStorage
-  const _saveLocalStorage = (type, list) => {
+  const _saveLocalStorage = useCallback((type, list) => {
     localStorage.setItem(type, JSON.stringify(list));
-  };
+  }, []);
 
   // 렌더링 시 localStorage에서 todo list 불러오기
   useEffect(() => {

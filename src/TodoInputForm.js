@@ -1,3 +1,4 @@
+import React, { useCallback } from "react";
 import styled from "styled-components";
 
 const TitleContents = styled.section`
@@ -37,27 +38,30 @@ const TodoInputBtn = styled.button`
 `;
 
 const TodoInputForm = ({ text, setText, todoList, setTodoList }) => {
-  const _changeText = ({ target }) => {
+  const _changeText = useCallback(({ target }) => {
     setText(target.value);
-  };
+  }, []);
 
   // todo item 추가
-  const _addTodoItem = (e) => {
-    e.preventDefault();
+  const _addTodoItem = useCallback(
+    (e) => {
+      e.preventDefault();
 
-    if (text !== "") {
-      // todo item 생성
-      let todoId = new Date().getTime();
-      let todoObj = {
-        id: todoId,
-        text,
-      };
+      if (text !== "") {
+        // todo item 생성
+        let todoId = new Date().getTime();
+        let todoObj = {
+          id: todoId,
+          text,
+        };
 
-      // list에 todo item 추가
-      setTodoList([...todoList, todoObj]);
-      setText("");
-    }
-  };
+        // list에 todo item 추가
+        setTodoList([...todoList, todoObj]);
+        setText("");
+      }
+    },
+    [text, todoList],
+  );
 
   return (
     <TitleContents>
@@ -76,4 +80,4 @@ const TodoInputForm = ({ text, setText, todoList, setTodoList }) => {
   );
 };
 
-export default TodoInputForm;
+export default React.memo(TodoInputForm);
