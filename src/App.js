@@ -4,7 +4,15 @@ import TodoList from "./TodoList";
 import TodoInputForm from "./TodoInputForm";
 import styled from "styled-components";
 
-const Container = styled.main`
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Noto Sans KR", sans-serif;
+  background: linear-gradient(to bottom right, #7f7fd5, #86a8e7, #91eae4);
+`;
+const Box = styled.main`
   width: 350px;
   height: 600px;
   background-color: white;
@@ -47,8 +55,8 @@ const App = () => {
   }, [doneList]);
 
   return (
-    <div>
-      <Container>
+    <Container>
+      <Box>
         <TodoInputForm
           text={newTodoText}
           setText={setNewTodoText}
@@ -69,8 +77,8 @@ const App = () => {
           setCurrentList={setDoneList}
           setToggleList={setTodoList}
         />
-      </Container>
-    </div>
+      </Box>
+    </Container>
   );
 };
 

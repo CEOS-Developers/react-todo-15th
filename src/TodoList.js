@@ -1,3 +1,38 @@
+import styled from "styled-components";
+
+const TodoContents = styled.section`
+  padding: 0 20px;
+  border-bottom: ${({ type }) => type === "todo" && "1px solid lightgrey"};
+`;
+const List = styled.ul`
+  height: 150px;
+  overflow: scroll auto;
+  overflow-x: hidden;
+  list-style: "✔";
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+  }
+`;
+const ListItem = styled.li`
+  margin-bottom: 13px;
+`;
+const ListItemText = styled.span`
+  cursor: pointer;
+  font-size: 15px;
+  padding-left: 5px;
+  text-decoration-line: ${({ type }) => type === "done" && "line-through"};
+  color: ${({ type }) => type === "done" && "lightGrey"};
+`;
+const TodoDeleteBtn = styled.img`
+  width: 14px;
+  padding-left: 5px;
+  cursor: pointer;
+`;
+
 const TodoList = ({
   type,
   currentList,
@@ -23,26 +58,25 @@ const TodoList = ({
   };
 
   return (
-    <section className="todo-contents">
+    <TodoContents type={type}>
       <h3>
         {type === "todo" ? "TO DO" : "DONE"} (<span>{currentList.length}</span>)
       </h3>
-      <ul className="todo-list">
+      <List>
         {currentList.map((todo, idx) => (
-          <li key={todo.id} id={idx} className="todo-list-item">
-            <span className="todo-item-text" onDoubleClick={_toggleTodo}>
+          <ListItem key={todo.id} id={idx}>
+            <ListItemText type={type} onDoubleClick={_toggleTodo}>
               {todo.text}
-            </span>
-            <img
-              className="todo-delete-btn"
+            </ListItemText>
+            <TodoDeleteBtn
               src="bin.png"
               alt="delete-btn"
               onClick={_deleteTodo}
             />
-          </li>
+          </ListItem>
         ))}
-      </ul>
-    </section>
+      </List>
+    </TodoContents>
   );
 };
 
