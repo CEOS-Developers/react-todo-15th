@@ -1,5 +1,7 @@
 import "./style.css";
 import { useState, useEffect } from "react";
+import TodoList from "./TodoList";
+import DoneList from "./DoneList";
 
 const App = () => {
   const [newTodoText, setNewTodoText] = useState("");
@@ -14,52 +16,18 @@ const App = () => {
   const _addTodoItem = (e) => {
     e.preventDefault();
 
-    // todo item 생성
-    let todoId = new Date().getTime();
-    let todoObj = {
-      id: todoId,
-      text: newTodoText,
-    };
+    if (newTodoText !== "") {
+      // todo item 생성
+      let todoId = new Date().getTime();
+      let todoObj = {
+        id: todoId,
+        text: newTodoText,
+      };
 
-    // list에 todo item 추가
-    setTodoList([...todoList, todoObj]);
-    setNewTodoText("");
-  };
-
-  // todo -> done
-  const _toggleToDone = ({ target }) => {
-    const parentNode = target.parentNode;
-    const idx = parentNode.id;
-
-    setDoneList([...doneList, todoList[idx]]);
-    setTodoList(todoList.filter((_, todoId) => todoId !== Number(idx)));
-  };
-
-  // done -> todo
-  const _toggleToTodo = ({ target }) => {
-    const parentNode = target.parentNode;
-    const idx = parentNode.id;
-
-    setTodoList([...todoList, doneList[idx]]);
-    setDoneList(doneList.filter((_, doneId) => doneId !== Number(idx)));
-  };
-
-  // delete todo item
-  const _deleteTodo = ({ target }) => {
-    const parentNode = target.parentNode;
-    const idx = parentNode.id;
-
-    setTodoList(todoList.filter((_, todoId) => todoId !== Number(idx)));
-  };
-
-  // delete done item
-  const _deleteDone = ({ target }) => {
-    const parentNode = target.parentNode;
-    const idx = parentNode.id;
-
-    setDoneList(doneList.filter((_, doneId) => doneId !== Number(idx)));
-
-    _saveLocalStorage("doneList", doneList);
+      // list에 todo item 추가
+      setTodoList([...todoList, todoObj]);
+      setNewTodoText("");
+    }
   };
 
   // save to localStorage
@@ -109,46 +77,18 @@ const App = () => {
             </button>
           </form>
         </section>
-        <section className="todo-contents">
-          <h3>
-            TO DO (<span>{todoList.length}</span>)
-          </h3>
-          <ul className="todo-list">
-            {todoList.map((todo, idx) => (
-              <li key={todo.id} id={idx} className="todo-list-item">
-                <span className="todo-item-text" onDoubleClick={_toggleToDone}>
-                  {todo.text}
-                </span>
-                <img
-                  className="todo-delete-btn"
-                  src="bin.png"
-                  alt="delete-btn"
-                  onClick={_deleteTodo}
-                />
-              </li>
-            ))}
-          </ul>
-        </section>
-        <section className="done-contents">
-          <h3>
-            DONE (<span>{doneList.length}</span>)
-          </h3>
-          <ul className="todo-list">
-            {doneList.map((done, idx) => (
-              <li key={done.id} id={idx} className="todo-list-item">
-                <span className="done-item-text" onDoubleClick={_toggleToTodo}>
-                  {done.text}
-                </span>
-                <img
-                  className="todo-delete-btn"
-                  src="bin.png"
-                  alt="delete-btn"
-                  onClick={_deleteDone}
-                />
-              </li>
-            ))}
-          </ul>
-        </section>
+        <TodoList
+          todoList={todoList}
+          doneList={doneList}
+          setTodoList={setTodoList}
+          setDoneList={setDoneList}
+        />
+        <DoneList
+          todoList={todoList}
+          doneList={doneList}
+          setTodoList={setTodoList}
+          setDoneList={setDoneList}
+        />
       </main>
     </div>
   );
