@@ -1,7 +1,6 @@
 import "./style.css";
 import { useState, useEffect } from "react";
 import TodoList from "./TodoList";
-import DoneList from "./DoneList";
 import TodoInputForm from "./TodoInputForm";
 import styled from "styled-components";
 
@@ -57,16 +56,18 @@ const App = () => {
           setTodoList={setTodoList}
         />
         <TodoList
-          todoList={todoList}
-          doneList={doneList}
-          setTodoList={setTodoList}
-          setDoneList={setDoneList}
+          type="todo"
+          currentList={todoList}
+          toggleList={doneList}
+          setCurrentList={setTodoList}
+          setToggleList={setDoneList}
         />
-        <DoneList
-          todoList={todoList}
-          doneList={doneList}
-          setTodoList={setTodoList}
-          setDoneList={setDoneList}
+        <TodoList
+          type="done"
+          currentList={doneList}
+          toggleList={todoList}
+          setCurrentList={setDoneList}
+          setToggleList={setTodoList}
         />
       </Container>
     </div>
