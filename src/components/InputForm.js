@@ -11,5 +11,7 @@ const InputForm = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
+  height: 50px;
+  align-self: end;
 `;
 export default InputForm;
