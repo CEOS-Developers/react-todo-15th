@@ -1,9 +1,14 @@
+import TodoList from './components/TodoList';
+import FinishedList from './components/FinishedList';
+import InputForm from './components/InputForm';
 
 function App() {
   return (
-    <div>
-      <h1>15기 화이팅~</h1>
-    </div>
+    <>
+      <TodoList />
+      <FinishedList />
+      <InputForm />
+    </>
   );
 }
 
