@@ -27,13 +27,18 @@ body{
   /* Coloring */
   background: #FBFBFD;
 }
-h3 {
-  margin-top: 12px;
+h2 {
+  margin-top: 20px;
   margin-bottom:0;
 }
 ul{
   list-style:none;
   padding-left:0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 0px;
 }
 ::placeholder {
   color: #ADB5BD;
@@ -41,6 +46,7 @@ ul{
 }
 input:focus , select:focus, option:focus, textarea:focus, button:focus{
   outline: none;
+  border: none;
 }
 button:hover {
   cursor: pointer

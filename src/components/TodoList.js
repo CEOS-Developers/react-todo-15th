@@ -1,19 +1,23 @@
 import styled from 'styled-components';
 import { ListContainer, ScrollBox } from './Container';
+import TodoItem from './TodoItem';
+import { useState } from 'react';
 
 const TodoList = () => {
+  const [data, setData] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
   return (
     <ListContainer>
-      <h3>할 일</h3>
+      <Title>할 일</Title>
       <ScrollBox>
-        <li>1</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>1</li>
-        <li>2</li>
+        {data.map((element, index) => (
+          <TodoItem key={index} data={element} />
+        ))}
       </ScrollBox>
     </ListContainer>
   );
 };
+
+const Title = styled.h2``;
+
 export default TodoList;

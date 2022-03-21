@@ -1,28 +1,22 @@
 import styled from 'styled-components';
 import { ListContainer, ScrollBox } from './Container';
+import TodoItem from './TodoItem';
+import { useState } from 'react';
+
 const FinishedList = () => {
+  const [data, setData] = useState([1, 2, 3]);
+
   return (
     <ListContainer>
-      <h3>종료된 일</h3>
+      <Title>완료된 일</Title>
       <ScrollBox>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
+        {data.map((element, index) => (
+          <TodoItem key={index} data={element} />
+        ))}
       </ScrollBox>
     </ListContainer>
   );
 };
 
+const Title = styled.h2``;
 export default FinishedList;

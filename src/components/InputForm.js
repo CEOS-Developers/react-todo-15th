@@ -19,6 +19,10 @@ const Container = styled.div`
 
   justify-content: center;
   align-items: center;
+
+  background: #f4f6f5;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 `;
 
 const Form = styled.form`
