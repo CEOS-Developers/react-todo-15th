@@ -1,13 +1,13 @@
 import "./style.css";
 import { useState, useEffect } from "react";
 
-function App() {
+const App = () => {
   const [newTodoText, setNewTodoText] = useState("");
   const [todoList, setTodoList] = useState([]);
   const [doneList, setDoneList] = useState([]);
 
-  const _changeText = (event) => {
-    setNewTodoText(event.target.value);
+  const _changeText = ({ target }) => {
+    setNewTodoText(target.value);
   };
 
   // todo item 추가
@@ -27,8 +27,8 @@ function App() {
   };
 
   // todo -> done
-  const _toggleToDone = (e) => {
-    const parentNode = e.target.parentNode;
+  const _toggleToDone = ({ target }) => {
+    const parentNode = target.parentNode;
     const idx = parentNode.id;
 
     setDoneList([...doneList, todoList[idx]]);
@@ -36,8 +36,8 @@ function App() {
   };
 
   // done -> todo
-  const _toggleToTodo = (e) => {
-    const parentNode = e.target.parentNode;
+  const _toggleToTodo = ({ target }) => {
+    const parentNode = target.parentNode;
     const idx = parentNode.id;
 
     setTodoList([...todoList, doneList[idx]]);
@@ -45,16 +45,16 @@ function App() {
   };
 
   // delete todo item
-  const _deleteTodo = (e) => {
-    const parentNode = e.target.parentNode;
+  const _deleteTodo = ({ target }) => {
+    const parentNode = target.parentNode;
     const idx = parentNode.id;
 
     setTodoList(todoList.filter((_, todoId) => todoId !== Number(idx)));
   };
 
   // delete done item
-  const _deleteDone = (e) => {
-    const parentNode = e.target.parentNode;
+  const _deleteDone = ({ target }) => {
+    const parentNode = target.parentNode;
     const idx = parentNode.id;
 
     setDoneList(doneList.filter((_, doneId) => doneId !== Number(idx)));
@@ -152,6 +152,6 @@ function App() {
       </main>
     </div>
   );
-}
+};
 
 export default App;
