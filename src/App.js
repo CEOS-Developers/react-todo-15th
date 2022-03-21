@@ -1,5 +1,5 @@
 import "./style.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [newTodoText, setNewTodoText] = useState("");
@@ -58,7 +58,35 @@ function App() {
     const idx = parentNode.id;
 
     setDoneList(doneList.filter((_, doneId) => doneId !== Number(idx)));
+
+    _saveLocalStorage("doneList", doneList);
   };
+
+  // save to localStorage
+  const _saveLocalStorage = (type, list) => {
+    localStorage.setItem(type, JSON.stringify(list));
+  };
+
+  useEffect(() => {
+    const todoStorage = localStorage.getItem("todoList");
+    const doneStorage = localStorage.getItem("doneList");
+
+    // localStorage에 저장된 list가 있는지 확인
+    if (todoStorage) {
+      const loadTodo = JSON.parse(todoStorage);
+      setTodoList(loadTodo);
+    }
+    if (doneStorage) {
+      const loadDone = JSON.parse(doneStorage);
+      setDoneList(loadDone);
+    }
+  }, []);
+  useEffect(() => {
+    _saveLocalStorage("todoList", todoList);
+  }, [todoList]);
+  useEffect(() => {
+    _saveLocalStorage("doneList", doneList);
+  }, [doneList]);
 
   return (
     <div>
