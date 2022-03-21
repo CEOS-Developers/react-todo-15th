@@ -3,6 +3,15 @@ import { useState, useEffect } from "react";
 import TodoList from "./TodoList";
 import DoneList from "./DoneList";
 import TodoInputForm from "./TodoInputForm";
+import styled from "styled-components";
+
+const Container = styled.main`
+  width: 350px;
+  height: 600px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 1px 1px 30px grey;
+`;
 
 const App = () => {
   const [newTodoText, setNewTodoText] = useState("");
@@ -40,7 +49,7 @@ const App = () => {
 
   return (
     <div>
-      <main className="container">
+      <Container>
         <TodoInputForm
           text={newTodoText}
           setText={setNewTodoText}
@@ -59,7 +68,7 @@ const App = () => {
           setTodoList={setTodoList}
           setDoneList={setDoneList}
         />
-      </main>
+      </Container>
     </div>
   );
 };

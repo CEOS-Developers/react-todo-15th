@@ -1,3 +1,41 @@
+import styled from "styled-components";
+
+const TitleContents = styled.section`
+  padding-bottom: 15px;
+  border-bottom: 1px solid lightgrey;
+`;
+const TodoTitle = styled.h2`
+  padding: 20px 0 0 20px;
+`;
+const TodoInputItems = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const TodoInput = styled.input`
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  padding: 15px;
+  width: 230px;
+  :focus {
+    outline: none;
+    transition: 0.2s;
+    box-shadow: 0px 0px 5px lightgrey;
+  }
+`;
+const TodoInputBtn = styled.button`
+  background: none;
+  border: none;
+  font-size: 30px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 30px;
+  :hover {
+    color: grey;
+    transition: 0.2s;
+  }
+`;
+
 const TodoInputForm = ({ text, setText, todoList, setTodoList }) => {
   const _changeText = ({ target }) => {
     setText(target.value);
@@ -22,20 +60,19 @@ const TodoInputForm = ({ text, setText, todoList, setTodoList }) => {
   };
 
   return (
-    <section className="title-contents">
-      <h2 className="todo-title">📝 투두리스트</h2>
-      <form className="todo-input-items">
-        <input
-          className="todo-input"
+    <TitleContents>
+      <TodoTitle>📝 투두리스트</TodoTitle>
+      <TodoInputItems>
+        <TodoInput
           placeholder="할 일을 입력하세요"
           value={text}
           onChange={_changeText}
         />
-        <button className="todo-input-btn" type="submit" onClick={_addTodoItem}>
+        <TodoInputBtn type="submit" onClick={_addTodoItem}>
           +
-        </button>
-      </form>
-    </section>
+        </TodoInputBtn>
+      </TodoInputItems>
+    </TitleContents>
   );
 };
 
