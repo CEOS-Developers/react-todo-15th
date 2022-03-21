@@ -92,7 +92,7 @@ function App() {
     <div>
       <main className="container">
         <section className="title-contents">
-          <h2 className="todo-title">투두리스트</h2>
+          <h2 className="todo-title">📝 투두리스트</h2>
           <form className="todo-input-items">
             <input
               className="todo-input"

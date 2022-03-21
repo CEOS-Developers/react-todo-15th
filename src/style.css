@@ -18,7 +18,8 @@ body {
 }
 
 /* title contents */
-.title-contents {
+.title-contents,
+.todo-contents {
   padding-bottom: 15px;
   border-bottom: 1px solid lightgrey;
 }
@@ -38,6 +39,7 @@ body {
 }
 .todo-input:focus {
   outline: none;
+  transition: 0.2s;
   box-shadow: 0px 0px 5px lightgrey;
 }
 .todo-input-btn {
@@ -48,6 +50,10 @@ body {
   cursor: pointer;
   border-radius: 30px;
 }
+.todo-input-btn:hover {
+  color: grey;
+  transition: 0.2s;
+}
 
 /* todo contents */
 .todo-contents {
@@ -57,6 +63,7 @@ body {
   height: 150px;
   overflow: scroll auto;
   overflow-x: hidden;
+  list-style: "✔";
 }
 .todo-list::-webkit-scrollbar {
   width: 5px;
