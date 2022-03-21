@@ -5,7 +5,7 @@ const TitleContents = styled.section`
   border-bottom: 1px solid lightgrey;
 `;
 const TodoTitle = styled.h2`
-  padding: 20px 0 0 20px;
+  padding-left: 20px;
 `;
 const TodoInputItems = styled.form`
   display: flex;

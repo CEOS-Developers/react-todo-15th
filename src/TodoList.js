@@ -45,7 +45,10 @@ const TodoList = ({
     const parentNode = target.parentNode;
     const idx = parentNode.id;
 
+    // toggle된 리스트에 item 추가
     setToggleList([...toggleList, currentList[idx]]);
+
+    // 현재 리스트에서 item 삭제
     setCurrentList(currentList.filter((_, todoId) => todoId !== Number(idx)));
   };
 
