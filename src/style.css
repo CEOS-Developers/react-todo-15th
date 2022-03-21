@@ -68,10 +68,15 @@ body {
 .todo-list-item {
   margin-bottom: 13px;
 }
-.todo-item-text {
+.todo-item-text,
+.done-item-text {
   cursor: pointer;
   font-size: 15px;
   padding-left: 5px;
+}
+.done-item-text {
+  text-decoration-line: line-through;
+  color: lightGrey;
 }
 .todo-delete-btn {
   width: 14px;
