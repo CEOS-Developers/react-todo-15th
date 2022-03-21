@@ -32,7 +32,7 @@ function App() {
     const idx = parentNode.id;
 
     setDoneList([...doneList, todoList[idx]]);
-    todoList.splice(idx, 1);
+    setTodoList(todoList.filter((_, todoId) => todoId !== Number(idx)));
   };
 
   // done -> todo
@@ -41,7 +41,23 @@ function App() {
     const idx = parentNode.id;
 
     setTodoList([...todoList, doneList[idx]]);
-    doneList.splice(idx, 1);
+    setDoneList(doneList.filter((_, doneId) => doneId !== Number(idx)));
+  };
+
+  // delete todo item
+  const _deleteTodo = (e) => {
+    const parentNode = e.target.parentNode;
+    const idx = parentNode.id;
+
+    setTodoList(todoList.filter((_, todoId) => todoId !== Number(idx)));
+  };
+
+  // delete done item
+  const _deleteDone = (e) => {
+    const parentNode = e.target.parentNode;
+    const idx = parentNode.id;
+
+    setDoneList(doneList.filter((_, doneId) => doneId !== Number(idx)));
   };
 
   return (
@@ -79,6 +95,7 @@ function App() {
                   className="todo-delete-btn"
                   src="bin.png"
                   alt="delete-btn"
+                  onClick={_deleteTodo}
                 />
               </li>
             ))}
@@ -98,6 +115,7 @@ function App() {
                   className="todo-delete-btn"
                   src="bin.png"
                   alt="delete-btn"
+                  onClick={_deleteDone}
                 />
               </li>
             ))}
