@@ -24,26 +24,27 @@ const Container = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: 'row';
+  border: 1px solid #dbdbdb;
+  border-radius: 20px;
 `;
 const InputField = styled.input`
   height: 30px;
   width: 240px;
+  background: none;
   text-align: center;
 
-  border-radius: 20px;
-  outline: none;
-
-  margin-right: 15px;
+  border: none;
 `;
 const Button = styled.button`
   border: none;
-  background: red;
-  border-radius: 4px;
+  background: none;
 
-  color: #ffffff;
+  color: #0066cc;
   text-align: center;
   text-decoration: none;
   font-size: 14px;
+
+  margin-right: 15px;
 `;
 
 export default InputForm;

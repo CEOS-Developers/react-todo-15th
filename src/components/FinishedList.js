@@ -3,25 +3,23 @@ import { ListContainer, ScrollBox } from './Container';
 const FinishedList = () => {
   return (
     <ListContainer>
-      <h1>종료된 일</h1>
+      <h3>종료된 일</h3>
       <ScrollBox>
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
       </ScrollBox>
     </ListContainer>
   );

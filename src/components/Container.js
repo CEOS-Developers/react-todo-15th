@@ -16,8 +16,9 @@ export const ListContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export const ScrollBox = styled.div`
+export const ScrollBox = styled.ul`
   overflow-y: scroll;
+
   /* Hide scrollbar for Chrome, Safari and Opera */
   &::-webkit-scrollbar {
     display: none;

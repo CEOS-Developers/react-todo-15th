@@ -11,9 +11,9 @@ body {
 }
 
 /* should be deleted before finished */
-*{
+/* *{
   border: 1px solid black;
-}
+} */
 
 body{
   width: 100vw;
@@ -27,12 +27,13 @@ body{
   /* Coloring */
   background: #FBFBFD;
 }
-
-p{  
-  font-size: 16px;
-  line-height: 24px;
-  margin-block-start: 0px;
-  margin-block-end: 6px;
+h3 {
+  margin-top: 12px;
+  margin-bottom:0;
+}
+ul{
+  list-style:none;
+  padding-left:0px;
 }
 ::placeholder {
   color: #ADB5BD;

@@ -4,26 +4,14 @@ import { ListContainer, ScrollBox } from './Container';
 const TodoList = () => {
   return (
     <ListContainer>
-      <h1>할 일</h1>
+      <h3>할 일</h3>
       <ScrollBox>
-        <ul>
-          <li>1</li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ul>
+        <li>1</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>1</li>
+        <li>2</li>
       </ScrollBox>
     </ListContainer>
   );
