@@ -2,39 +2,19 @@ import "./style.css";
 import { useState, useEffect } from "react";
 import TodoList from "./TodoList";
 import DoneList from "./DoneList";
+import TodoInputForm from "./TodoInputForm";
 
 const App = () => {
   const [newTodoText, setNewTodoText] = useState("");
   const [todoList, setTodoList] = useState([]);
   const [doneList, setDoneList] = useState([]);
 
-  const _changeText = ({ target }) => {
-    setNewTodoText(target.value);
-  };
-
-  // todo item 추가
-  const _addTodoItem = (e) => {
-    e.preventDefault();
-
-    if (newTodoText !== "") {
-      // todo item 생성
-      let todoId = new Date().getTime();
-      let todoObj = {
-        id: todoId,
-        text: newTodoText,
-      };
-
-      // list에 todo item 추가
-      setTodoList([...todoList, todoObj]);
-      setNewTodoText("");
-    }
-  };
-
   // save to localStorage
   const _saveLocalStorage = (type, list) => {
     localStorage.setItem(type, JSON.stringify(list));
   };
 
+  // 렌더링 시 localStorage에서 todo list 불러오기
   useEffect(() => {
     const todoStorage = localStorage.getItem("todoList");
     const doneStorage = localStorage.getItem("doneList");
@@ -49,6 +29,8 @@ const App = () => {
       setDoneList(loadDone);
     }
   }, []);
+
+  // list가 변할 때마다 localStorage에 list 저장
   useEffect(() => {
     _saveLocalStorage("todoList", todoList);
   }, [todoList]);
@@ -59,24 +41,12 @@ const App = () => {
   return (
     <div>
       <main className="container">
-        <section className="title-contents">
-          <h2 className="todo-title">📝 투두리스트</h2>
-          <form className="todo-input-items">
-            <input
-              className="todo-input"
-              placeholder="할 일을 입력하세요"
-              value={newTodoText}
-              onChange={_changeText}
-            />
-            <button
-              className="todo-input-btn"
-              type="submit"
-              onClick={_addTodoItem}
-            >
-              +
-            </button>
-          </form>
-        </section>
+        <TodoInputForm
+          text={newTodoText}
+          setText={setNewTodoText}
+          todoList={todoList}
+          setTodoList={setTodoList}
+        />
         <TodoList
           todoList={todoList}
           doneList={doneList}
