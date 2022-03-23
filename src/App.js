@@ -4,8 +4,8 @@ import DoneItemContainer from "./containers/DoneItemContainer";
 
 function App() {
   return (
-    <div class="background">
-      <div class="container">
+    <div className="background">
+      <div className="container">
         <InputContainer />
         <TodoItemContainer />
         <DoneItemContainer />

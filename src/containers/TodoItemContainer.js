@@ -2,11 +2,11 @@ import React from "react";
 
 const ListItemContainer = () => {
   return (
-    <section class="todoSection">
+    <section className="todoSection">
       <h4>
-        해야할 일 (<p class="todoCount"></p>)
+        해야할 일 (<p className="todoCount"></p>)
       </h4>
-      <div class="todoList"></div>
+      <div className="todoList"></div>
     </section>
   );
 };
