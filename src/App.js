@@ -1,8 +1,15 @@
+import InputContainer from "./containers/InputContainer";
+import TodoItemContainer from "./containers/TodoItemContainer";
+import DoneItemContainer from "./containers/DoneItemContainer";
 
 function App() {
   return (
-    <div>
-      <h1>15기 화이팅~</h1>
+    <div class="background">
+      <div class="container">
+        <InputContainer />
+        <TodoItemContainer />
+        <DoneItemContainer />
+      </div>
     </div>
   );
 }
