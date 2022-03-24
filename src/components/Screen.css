@@ -3,12 +3,69 @@
   height: 600px;
   background: #fff;
 
+  display: flex;
+  flex-direction: column;
+
   border-radius: 20px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
 }
 
-.title {
+.Title {
   padding: 5% 0% 5% 5%;
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.TodoListContainer {
+  height: 80%;
+  margin: 0% 4.5% 0% 4.5%;
+}
+
+.FormContainer {
+  height: 10%;
+  margin: 3% 3% 0% 3%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  /* background-color: lightblue; */
+}
+
+.Input {
+  width: 350px;
+  height: 40px;
+  margin: 4.5% 2% 10% 1.5%;
+  border-radius: 10px;
+  border: solid 2px lightgray;
+}
+
+.Input:focus {
+  outline: 0;
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+:focus {
+  outline: none;
+}
+
+.Button,
+.Button:hover {
+  width: 40px;
+  height: 40px;
+  margin: 0% 1.5% 5% 0%;
+
+  border-radius: 20px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  /* background-color: pink; */
+}
+
+.Button svg {
+  font-size: 2rem;
+  color: #3f464d;
+  opacity: 0.8;
 }
