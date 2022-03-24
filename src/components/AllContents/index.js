@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
 const Index = () => {
+  const listText = 'list';
+  // 텍스트 이름과 변수 이름을 같게하면 좋을 것 같다는 피드백을 받았던 거 같은데
+  // list 를 다른 변수에 사용해 버렸음. 변수 이름 정하는 센스를 더 길러야 겠음
+
   const [isDone, setIsDone] = useState(false);
   const [contents, setContents] = useState('');
   const [list, setList] = useState([]);
@@ -17,11 +21,31 @@ const Index = () => {
     setContents('');
   };
   const onToggle = (e) => {
-    console.dir(e.target.textContent);
+    // 클릭된 값
+    const text = e.target.textContent;
+    // 로컬스토리지에 저장된 값
+    const data = JSON.parse(localStorage.getItem(listText));
+    // 두 값을 이용해서 클릭된 값만 isDone 상태 토글
+    let indexClicked = 0;
+    let obj;
+    data.map((item, index) => {
+      if (item.contents === text) {
+        obj = { ...item };
+        obj.isDone = !item.isDone;
+        indexClicked = index;
+      } else {
+        // switch default 처럼 if 를 쓰면 else 도 써주는 게 좋다는 코멘트를 봤던 거 같은데
+        // 그럴 경우 여긴 뭘 좋을까요?
+      }
+    });
+    const updatedDate = [...data];
+    updatedDate[indexClicked] = obj;
+    setList(updatedDate);
+    localStorage.setItem(listText, JSON.stringify(list));
   };
 
   useEffect(() => {
-    localStorage.setItem('test', JSON.stringify(list));
+    localStorage.setItem(listText, JSON.stringify(list));
   }, [list]);
 
   return (
@@ -39,13 +63,23 @@ const Index = () => {
         <ul>
           {list.map((item, index) => (
             <li key={index}>
-              <button onClick={onToggle}>{item.contents}</button>
+              {!item.isDone && (
+                <button onClick={onToggle}>{item.contents}</button>
+              )}
             </li>
           ))}
         </ul>
       </DivYetList>
       <DivDoneList>
-        <ul></ul>
+        <ul>
+          {list.map((item, index) => (
+            <li key={index}>
+              {item.isDone && (
+                <button onClick={onToggle}>{item.contents}</button>
+              )}
+            </li>
+          ))}
+        </ul>
       </DivDoneList>
     </div>
   );
