@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import { Bin } from '../constants/icons';
 
-const TodoItem = ({ data, index, deleteFromList }) => {
-  const handleOnclick = (e) => {
-    // handleItem(index);
-    // console.log(data);
-    // console.log(index);
+const TodoItem = ({ data, index, deleteFromList, toggleToAnother }) => {
+  const handleOnclick = () => {
+    deleteFromList(index);
+    toggleToAnother(data);
   };
 
   const delBtnPressed = () => {

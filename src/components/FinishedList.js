@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ListContainer, ScrollBox } from './Container';
 import TodoItem from './TodoItem';
 
-const FinishedList = ({ finishedList, deleteFinishedList }) => {
+const FinishedList = ({ finishedList, deleteFinishedList, addTodoList }) => {
   return (
     <ListContainer>
       <Title>완료된 일</Title>
@@ -13,6 +13,7 @@ const FinishedList = ({ finishedList, deleteFinishedList }) => {
             data={data}
             index={index}
             deleteFromList={deleteFinishedList}
+            toggleToAnother={addTodoList}
           />
         ))}
       </ScrollBox>
