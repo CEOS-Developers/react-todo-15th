@@ -43,8 +43,23 @@ const Index = () => {
     setList(updatedDate);
     localStorage.setItem(listText, JSON.stringify(list));
   };
+  const onDelete = (e) => {
+    // 눌러진 곳의 텍스트 찾기
+    const text = e.target.parentNode.innerText.slice(0, -2);
+    // 현재 데이터 가져오기
+    const data = JSON.parse(localStorage.getItem(listText));
+
+    // 데이터 삭제
+    const updatedDate = data.filter((item) => item.contents !== text);
+    // 데이터 업데이트
+    setList(updatedDate);
+    localStorage.setItem(listText, JSON.stringify(updatedDate));
+  };
 
   useEffect(() => {
+    // 1. 입력 폼으로 할 일 추가
+    // 2. toggle 발생
+    // 위 경우에 의해 데이터 변화 발생시 로컬스토리지에 데이터 업데이트
     localStorage.setItem(listText, JSON.stringify(list));
   }, [list]);
 
@@ -64,7 +79,10 @@ const Index = () => {
           {list.map((item, index) => (
             <div key={index}>
               {!item.isDone ? (
-                <button onClick={onToggle}>{item.contents}</button>
+                <>
+                  <button onClick={onToggle}>{item.contents}</button>
+                  <button onClick={onDelete}>삭제</button>
+                </>
               ) : null}
             </div>
           ))}
