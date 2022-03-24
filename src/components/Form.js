@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 
-export default function Form({ todoList, setTodoList }) {
+export default function Form({ savedList, setSavedList }) {
   const [input, setInput] = useState([]);
   const onChange = (e) => {
     setInput(e.target.value);
@@ -9,28 +9,24 @@ export default function Form({ todoList, setTodoList }) {
   const nextId = useRef(1);
 
   const onCreate = (e) => {
-    const updatedList = [...todoList, input];
-    setTodoList(updatedList);
+    e.preventDefault();
+    const updatedList = [...savedList, input];
+    setSavedList(updatedList);
     setInput('');
     nextId.current += 1;
   };
 
-  const onEnter = (e) => {
-    if (e.key === 'Enter') {
-      onCreate();
-    }
-  };
-
   return (
-    <div>
+    <form>
       <input
         type={'text'}
         placeholder={'type here'}
-        onChange={onChange}
-        onKeyDown={onEnter}
         value={input}
+        onChange={onChange}
       />
-      <button onClick={onCreate}>+</button>
-    </div>
+      <button type="submit" onClick={onCreate}>
+        +
+      </button>
+    </form>
   );
 }
