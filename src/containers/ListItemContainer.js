@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React from "react";
 import ListItem from "../components/ListItem";
 
 const ListItemContainer = (props) => {
@@ -20,6 +20,7 @@ const ListItemContainer = (props) => {
               />
             );
           }
+          return;
         })}
       </div>
     </section>

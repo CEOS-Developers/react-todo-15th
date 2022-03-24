@@ -56,53 +56,6 @@ h4 {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   min-width: 30rem;
 }
-.appInput {
-  width: 28rem;
-  margin-bottom: 1rem;
-}
-.formControl {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-}
-.formInput {
-  width: 23rem;
-  padding: 0.75rem;
-  font-size: 1rem;
-  border-radius: 2rem;
-  border-color: transparent;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  padding-left: 1.2rem;
-  font-family: var(--ff-main);
-}
-.appTitle {
-  font-size: 1.7rem;
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  margin: 1.5rem 0 1.5rem 0;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-}
-.submitBtn {
-  display: flex;
-  align-items: center;
-  background-color: white;
-  border-color: transparent;
-  color: grey;
-  padding: 0.25rem;
-  cursor: pointer;
-  border-radius: 2rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-.submitBtn p {
-  font-size: 2rem;
-  width: 3rem;
-}
-.submitBtn:hover {
-  background-color: rgba(0, 0, 0, 0.3);
-  color: white;
-}
 .itemSection {
   display: flex;
   flex-direction: column;
@@ -127,6 +80,9 @@ h4 {
   background-color: white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   padding: 0.75rem;
+}
+.item:hover {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
 .itemScrollArea {
   width: 23rem;

@@ -24,6 +24,8 @@ const listReducer = (state, action) => {
       );
       localStorage.setItem("list", JSON.stringify(listBuffer));
       return [...listBuffer];
+    default:
+      return [...state];
   }
 };
 
