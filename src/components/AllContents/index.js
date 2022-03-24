@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
-import InputForm from '../InputForm/index';
-import YetList from '../YetList/index';
+import InputForm from '../InputForm';
+import YetList from '../YetList';
+import DoneList from '../DoneList';
 
 const Index = () => {
   const listText = 'list';
@@ -101,18 +102,7 @@ const Index = () => {
         onToggle={onToggle}
         onDelete={onDelete}
       />
-      <DivDoneList>
-        <div>{doneNum}</div>
-        <Unordered>
-          {list.map((item, index) => (
-            <div key={index}>
-              {item.isDone && (
-                <button onClick={onToggle}>{item.contents}</button>
-              )}
-            </div>
-          ))}
-        </Unordered>
-      </DivDoneList>
+      <DoneList list={list} onToggle={onToggle} doneNum={doneNum} />
     </div>
   );
 };
@@ -122,17 +112,4 @@ const DivTitle = styled.div`
   margin-bottom: 10px;
 `;
 
-const DivYetList = styled.div`
-  border: 2px solid olivedrab;
-  margin-bottom: 10px;
-`;
-const DivDoneList = styled.div`
-  border: 2px solid indianred;
-  margin-bottom: 10px;
-`;
-
-const Unordered = styled.ul`
-  margin: 0px;
-  padding: 0px;
-`;
 export default Index;

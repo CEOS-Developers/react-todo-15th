@@ -1,16 +1,32 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { DivDoneList, Unordered } from './style';
 
-const Index = () => {
+const Index = ({ list, onToggle, doneNum }) => {
   return (
-    <DoneContainer>
-      <h3>Done</h3>
-      <ul></ul>
-    </DoneContainer>
+    <DivDoneList>
+      <div>{doneNum}</div>
+      <Unordered>
+        {list.map((item, index) => (
+          <div key={index}>
+            {item.isDone && <button onClick={onToggle}>{item.contents}</button>}
+          </div>
+        ))}
+      </Unordered>
+    </DivDoneList>
   );
 };
 
-const DoneContainer = styled.div`
-  border: 1px solid darkblue;
-`;
+Index.propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      contents: PropTypes.string,
+      id: PropTypes.number,
+      isDone: PropTypes.bool,
+    })
+  ).isRequired,
+  doneNum: PropTypes.number.isRequired,
+  onToggle: PropTypes.func.isRequired,
+};
 
 export default Index;
