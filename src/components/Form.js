@@ -22,7 +22,7 @@ export default function Form({ todoList, setTodoList }) {
   };
 
   return (
-    <form>
+    <div>
       <input
         type={'text'}
         placeholder={'type here'}
@@ -31,6 +31,6 @@ export default function Form({ todoList, setTodoList }) {
         value={input}
       />
       <button onClick={onCreate}>+</button>
-    </form>
+    </div>
   );
 }
