@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
 import InputForm from '../InputForm/index';
+import YetList from '../YetList/index';
 
 const Index = () => {
   const listText = 'list';
@@ -93,22 +94,13 @@ const Index = () => {
       <DivTitle>
         <h1>투두리스트</h1>
       </DivTitle>
-      <InputForm onSubmit={onSubmit} onChnage={onChange} contents={contents} />
-      <DivYetList>
-        <div>{yetNum}</div>
-        <Unordered>
-          {list.map((item, index) => (
-            <div key={index}>
-              {!item.isDone && (
-                <>
-                  <button onClick={onToggle}>{item.contents}</button>
-                  <button onClick={onDelete}>삭제</button>
-                </>
-              )}
-            </div>
-          ))}
-        </Unordered>
-      </DivYetList>
+      <InputForm onSubmit={onSubmit} onChange={onChange} contents={contents} />
+      <YetList
+        list={list}
+        yetNum={yetNum}
+        onToggle={onToggle}
+        onDelete={onDelete}
+      />
       <DivDoneList>
         <div>{doneNum}</div>
         <Unordered>

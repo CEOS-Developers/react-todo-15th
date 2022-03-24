@@ -1,19 +1,37 @@
-import { Fragment } from 'react';
-import styled from 'styled-components';
+import { DivYetList, Unordered } from './style';
+import PropTypes from 'prop-types';
 
-const Index = (props) => {
-  console.log(props.todoList[0]);
+const Index = ({ list, yetNum, onToggle, onDelete }) => {
   return (
-    <YetContainer>
-      <h3>Yet</h3>
-      <ul></ul>
-      <h4>{props.todoList[0]}</h4>
-    </YetContainer>
+    <DivYetList>
+      <div>{yetNum}</div>
+      <Unordered>
+        {list.map((item, index) => (
+          <div key={index}>
+            {!item.isDone && (
+              <>
+                <button onClick={onToggle}>{item.contents}</button>
+                <button onClick={onDelete}>삭제</button>
+              </>
+            )}
+          </div>
+        ))}
+      </Unordered>
+    </DivYetList>
   );
 };
 
-const YetContainer = styled.div`
-  border: 1px solid darkblue;
-`;
+Index.propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      contents: PropTypes.string,
+      id: PropTypes.number,
+      isDone: PropTypes.bool,
+    })
+  ).isRequired,
+  yetNum: PropTypes.number.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
 
 export default Index;

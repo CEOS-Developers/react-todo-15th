@@ -1,4 +1,5 @@
 import { DivInputForm } from './style';
+import PropTypes from 'prop-types';
 
 const Index = ({ onSubmit, onChange, contents }) => {
   return (
@@ -11,6 +12,12 @@ const Index = ({ onSubmit, onChange, contents }) => {
       </DivInputForm>
     </div>
   );
+};
+
+Index.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  contents: PropTypes.string.isRequired,
 };
 
 export default Index;
