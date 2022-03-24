@@ -8,12 +8,26 @@ import {
 
 import './TodoItem.css';
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, onIsDoneToggle }) => {
   const { id, text, isDone } = todo;
   return (
     <div className="TodoItem">
       <div className={`Content ${isDone ? 'Done' : ''}`}>
-        {isDone ? <BsCheckCircleFill /> : <BsCheckCircle />}
+        {isDone ? (
+          <button
+            className="CheckButtonFill"
+            onClick={() => onIsDoneToggle(id)}
+          >
+            <BsCheckCircleFill />
+          </button>
+        ) : (
+          <button
+            className="CheckButtonUnFill"
+            onClick={() => onIsDoneToggle(id)}
+          >
+            <BsCheckCircle />
+          </button>
+        )}
         <span className="Text">{text}</span>
         <button className="EditButton">
           <BsFillPencilFill />
@@ -30,3 +44,7 @@ export default TodoItem;
 
 // How can I interpolate JSX with an expression in a string?
 // https://stackoverflow.com/questions/30372538/how-can-i-interpolate-jsx-with-an-expression-in-a-string
+
+// 체크 박스를 버튼으로해야할까?
+
+// JSX 내에서는 if문 사용불가 -> 삼항연산자만 사용가능

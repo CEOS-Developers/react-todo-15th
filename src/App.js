@@ -25,6 +25,7 @@ const App = () => {
       isDone: true,
     },
   ]);
+
   const onInsertTodo = (text) => {
     if (text === '') {
       return alert('text === ""');
@@ -39,9 +40,18 @@ const App = () => {
     }
   };
 
+  // search by clicked id
+  const onIsDoneToggle = (id) => {
+    setTodos((todos) =>
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
+      )
+    );
+  };
+
   return (
     <Screen todoLength={todos.length}>
-      <TodoList todos={todos} />
+      <TodoList todos={todos} onIsDoneToggle={onIsDoneToggle} />
       <TodoInsert onInsertTodo={onInsertTodo} />
     </Screen>
   );
