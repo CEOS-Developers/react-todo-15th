@@ -12,7 +12,7 @@ const TodoList = ({ todoList, deleteTodoList }) => {
             key={index}
             data={data}
             index={index}
-            deleteTodoList={deleteTodoList}
+            deleteFromList={deleteTodoList}
           />
         ))}
       </ScrollBox>

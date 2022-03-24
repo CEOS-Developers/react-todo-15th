@@ -2,13 +2,18 @@ import styled from 'styled-components';
 import { ListContainer, ScrollBox } from './Container';
 import TodoItem from './TodoItem';
 
-const FinishedList = ({ finishedList }) => {
+const FinishedList = ({ finishedList, deleteFinishedList }) => {
   return (
     <ListContainer>
       <Title>완료된 일</Title>
       <ScrollBox>
-        {finishedList.map((element, index) => (
-          <TodoItem key={index} data={element} />
+        {finishedList.map(({ data }, index) => (
+          <TodoItem
+            key={index}
+            data={data}
+            index={index}
+            deleteFromList={deleteFinishedList}
+          />
         ))}
       </ScrollBox>
     </ListContainer>
