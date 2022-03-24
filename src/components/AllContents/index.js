@@ -6,6 +6,8 @@ const Index = () => {
   // 텍스트 이름과 변수 이름을 같게하면 좋을 것 같다는 피드백을 받았던 거 같은데
   // list 를 다른 변수에 사용해 버렸음. 변수 이름 정하는 센스를 더 길러야 겠음
 
+  const [yetNum, setYetNum] = useState(0);
+  const [doneNum, setDoneNum] = useState(0);
   const [isDone, setIsDone] = useState(false);
   const [contents, setContents] = useState('');
   const [list, setList] = useState([]);
@@ -44,11 +46,10 @@ const Index = () => {
     localStorage.setItem(listText, JSON.stringify(list));
   };
   const onDelete = (e) => {
-    // 눌러진 곳의 텍스트 찾기
+    // 클릭된 텍스트 찾기
     const text = e.target.parentNode.innerText.slice(0, -2);
     // 현재 데이터 가져오기
     const data = JSON.parse(localStorage.getItem(listText));
-
     // 데이터 삭제
     const updatedDate = data.filter((item) => item.contents !== text);
     // 데이터 업데이트
@@ -61,7 +62,25 @@ const Index = () => {
     // 2. toggle 발생
     // 위 경우에 의해 데이터 변화 발생시 로컬스토리지에 데이터 업데이트
     localStorage.setItem(listText, JSON.stringify(list));
+    findNum();
   }, [list]);
+
+  const findNum = () => {
+    const data = JSON.parse(localStorage.getItem(listText));
+    let yetCtn = 0;
+    let doneCtn = 0;
+
+    // isDone === true, false 인 경우에 따라서 개수를 세어 줘야 함
+    data.map((item) => {
+      if (item.isDone === false) {
+        yetCtn += 1;
+      } else {
+        doneCtn += 1;
+      }
+    });
+    setYetNum(yetCtn);
+    setDoneNum(doneCtn);
+  };
 
   return (
     <div>
@@ -75,7 +94,8 @@ const Index = () => {
         </form>
       </DivInputForm>
       <DivYetList>
-        <ul>
+        <div>{yetNum}</div>
+        <Unordered>
           {list.map((item, index) => (
             <div key={index}>
               {!item.isDone ? (
@@ -86,10 +106,11 @@ const Index = () => {
               ) : null}
             </div>
           ))}
-        </ul>
+        </Unordered>
       </DivYetList>
       <DivDoneList>
-        <ul>
+        <div>{doneNum}</div>
+        <Unordered>
           {list.map((item, index) => (
             <div key={index}>
               {item.isDone ? (
@@ -97,7 +118,7 @@ const Index = () => {
               ) : null}
             </div>
           ))}
-        </ul>
+        </Unordered>
       </DivDoneList>
     </div>
   );
@@ -120,4 +141,8 @@ const DivDoneList = styled.div`
   margin-bottom: 10px;
 `;
 
+const Unordered = styled.ul`
+  margin: 0px;
+  padding: 0px;
+`;
 export default Index;
