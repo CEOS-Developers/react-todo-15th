@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import './App.css';
-import Template from './components/Template';
+import Screen from './components/Screen';
 import TodoList from './components/TodoList';
 
 const App = () => {
@@ -23,9 +23,9 @@ const App = () => {
     },
   ]);
   return (
-    <Template>
+    <Screen>
       <TodoList todos={todos} />
-    </Template>
+    </Screen>
   );
 };
 
