@@ -3,18 +3,20 @@ import './App.css';
 import { useState } from 'react';
 import Screen from './components/Screen';
 import TodoList from './components/TodoList';
-import TodoInsert from './components/TodoInsert'
+import TodoInsert from './components/TodoInsert';
+
+let nextId = 4;
 
 const App = () => {
   const [todos, setTodos] = useState([
     {
       id: 1,
-      text: '할 일 1',
+      text: 'Todo 1',
       isDone: true,
     },
     {
       id: 2,
-      text: 'Todo 2',
+      text: '투두 2',
       isDone: false,
     },
     {
@@ -23,10 +25,24 @@ const App = () => {
       isDone: true,
     },
   ]);
+  const onInsertTodo = (text) => {
+    if (text === '') {
+      return alert('text === ""');
+    } else {
+      const todo = {
+        id: nextId,
+        text,
+        isDone: false,
+      };
+      setTodos((todos) => todos.concat(todo));
+      ++nextId;
+    }
+  };
+
   return (
     <Screen todoLength={todos.length}>
       <TodoList todos={todos} />
-      <TodoInsert />
+      <TodoInsert onInsertTodo={onInsertTodo} />
     </Screen>
   );
 };
