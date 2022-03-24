@@ -19,6 +19,7 @@ const InputForm = ({ handleSubmit }) => {
     <Container>
       <Form onSubmit={saveBtnClick}>
         <InputField
+          maxLength={30}
           value={todo}
           onChange={handleInputChange}
           placeholder="할 일을 입력하세요"

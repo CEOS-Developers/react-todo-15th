@@ -7,7 +7,6 @@ import useTodo from './hooks/useTodo';
 import useFinished from './hooks/useFinished';
 
 function App() {
-  // const [todoList, setTodoList] = useState(todoData);
   const [todoList, addTodoList, deleteTodoList] = useTodo(todoData);
   const [finishedList, addFinishedList, deleteFinishedList] = useFinished([]);
 
