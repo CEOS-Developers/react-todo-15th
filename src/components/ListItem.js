@@ -19,13 +19,14 @@ const ListItem = (props) => {
             });
           }}
         >
-          {props.listType === "done" ? (
-            <p className="itemTitle">
+          <p className="itemTitle">
+            {/* listType의 done/todo에 따라 del 태그 삽입 */}
+            {props.listType === "done" ? (
               <del>{props.item.content}</del>
-            </p>
-          ) : (
-            <p className="itemTitle">{props.item.content}</p>
-          )}
+            ) : (
+              props.item.content
+            )}
+          </p>
         </button>
       </div>
       <button

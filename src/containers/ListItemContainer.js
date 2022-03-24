@@ -8,6 +8,7 @@ const ListItemContainer = (props) => {
         {props.title}(<p className="itemCount">{props.listCnt}</p>)
       </h4>
       <div className="itemList invisibleScrollbar">
+        {/* props.listType은 done/todo로 구분된다 */}
         {props.listState.map((item) => {
           if (item.type === props.listType) {
             return (

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+// styled component를 사용한다
+
 const AppInput = styled.div`
   width: 28rem;
   margin-bottom: 1rem;
@@ -61,7 +63,7 @@ const InputContainer = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-
+    // form 내 입력이 존재하는 경우만 업데이트 한다
     if (text !== "") {
       const uid = new Date().getTime().toString();
       props.dispatchListState({
