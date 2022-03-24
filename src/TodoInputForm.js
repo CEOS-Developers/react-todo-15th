@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 
 const TitleContents = styled.section`
@@ -37,9 +37,11 @@ const TodoInputBtn = styled.button`
   }
 `;
 
-const TodoInputForm = ({ text, setText, todoList, setTodoList }) => {
+const TodoInputForm = ({ todoList, setTodoList }) => {
+  const [newText, setNewText] = useState("");
+
   const _changeText = useCallback(({ target }) => {
-    setText(target.value);
+    setNewText(target.value);
   }, []);
 
   // todo item 추가
@@ -47,20 +49,20 @@ const TodoInputForm = ({ text, setText, todoList, setTodoList }) => {
     (e) => {
       e.preventDefault();
 
-      if (text !== "") {
+      if (newText !== "") {
         // todo item 생성
         let todoId = new Date().getTime();
         let todoObj = {
           id: todoId,
-          text,
+          text: newText,
         };
 
         // list에 todo item 추가
         setTodoList([...todoList, todoObj]);
-        setText("");
+        setNewText("");
       }
     },
-    [text, todoList],
+    [newText, todoList],
   );
 
   return (
@@ -69,7 +71,7 @@ const TodoInputForm = ({ text, setText, todoList, setTodoList }) => {
       <TodoInputItems>
         <TodoInput
           placeholder="할 일을 입력하세요"
-          value={text}
+          value={newText}
           onChange={_changeText}
         />
         <TodoInputBtn type="submit" onClick={_addTodoItem}>

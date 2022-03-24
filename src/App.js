@@ -20,7 +20,6 @@ const Box = styled.main`
 `;
 
 const App = () => {
-  const [newTodoText, setNewTodoText] = useState("");
   const [todoList, setTodoList] = useState([]);
   const [doneList, setDoneList] = useState([]);
 
@@ -56,12 +55,7 @@ const App = () => {
   return (
     <Container>
       <Box>
-        <TodoInputForm
-          text={newTodoText}
-          setText={setNewTodoText}
-          todoList={todoList}
-          setTodoList={setTodoList}
-        />
+        <TodoInputForm todoList={todoList} setTodoList={setTodoList} />
         <TodoList
           type="todo"
           currentList={todoList}
