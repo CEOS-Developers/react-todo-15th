@@ -3,6 +3,7 @@ import './App.css';
 import { useState } from 'react';
 import Screen from './components/Screen';
 import TodoList from './components/TodoList';
+import TodoInsert from './components/TodoInsert'
 
 const App = () => {
   const [todos, setTodos] = useState([
@@ -25,6 +26,7 @@ const App = () => {
   return (
     <Screen todoLength={todos.length}>
       <TodoList todos={todos} />
+      <TodoInsert />
     </Screen>
   );
 };

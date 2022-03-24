@@ -7,16 +7,7 @@ const Screen = ({ children, todoLength }) => {
     <div className="Screen">
       <header className="Title">Todo List ( {todoLength} / 0 )</header>
       <section className="TodoListContainer">{children}</section>
-      <form className="Form">
-        <input
-          autoFocus
-          className="Input"
-          placeholder=" Please enter here..."
-        />
-        <button className="Button">
-          <BsPlusCircle />
-        </button>
-      </form>
+      <section>{children}</section>
     </div>
   );
 };
