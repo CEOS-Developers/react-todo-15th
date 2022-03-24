@@ -1,14 +1,14 @@
 import React from 'react';
-import { BsCheckCircleFill } from 'react-icons/bs';
-import { MdRadioButtonUnchecked } from 'react-icons/md';
+import { BsCheckCircleFill, BsCheckCircle } from 'react-icons/bs';
+import './TodoItem.css';
 
 const TodoItem = ({ todo }) => {
   const { id, text, isDone } = todo;
   return (
     <div className="TodoItem">
       <div className={`content ${isDone ? 'Done' : ''}`}>
-        {isDone ? <BsCheckCircleFill /> : <MdRadioButtonUnchecked />}
-        <span>{text}</span>
+        {isDone ? <BsCheckCircleFill /> : <BsCheckCircle />}
+        <span className="text">{text}</span>
       </div>
     </div>
   );

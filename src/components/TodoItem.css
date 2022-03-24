@@ -1,0 +1,40 @@
+.TodoItem {
+  /* margin-left: auto;
+  margin-right: auto; */
+
+  border-radius: 5px;
+  box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  padding: 0.7rem;
+  display: flex;
+  /* align-items: center; */
+}
+
+.TodoItem + .TodoItem {
+  margin-top: 10px;
+}
+
+.content {
+  cursor: pointer;
+  /* flex: 1; */
+  display: flex;
+  align-items: center;
+}
+
+.content svg {
+  font-size: 1.35rem;
+  color: #3f464d;
+}
+
+.text {
+  margin-left: 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  /* flex: 1; */
+  /* background-color: pink; */
+}
+
+.content.Done .text {
+  opacity: 0.8;
+  text-decoration: line-through;
+  cursor: pointer;
+}

@@ -8,7 +8,7 @@ const App = () => {
   const [todos, setTodos] = useState([
     {
       id: 1,
-      text: 'Todo 1',
+      text: '할 일 1',
       isDone: true,
     },
     {
@@ -23,7 +23,7 @@ const App = () => {
     },
   ]);
   return (
-    <Screen>
+    <Screen todoLength={todos.length}>
       <TodoList todos={todos} />
     </Screen>
   );
