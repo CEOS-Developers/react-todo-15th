@@ -21,7 +21,7 @@ export const Section = styled.section`
 
 export const List = styled.ul`
     padding-inline-start: 0px;
-    height: 163px;
+    height: 175px;
     overflow-y: auto;
     margin-top: 0px;
 

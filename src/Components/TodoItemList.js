@@ -1,10 +1,11 @@
 import TodoItem from './TodoItem';
 import { List } from '../styles/Container';
-const TodoItemList = ({ list }) => {
+const TodoItemList = ({ done, list, toggle }) => {
+    const todoList = list.filter((item) => item.done === done);
     return (
         <List>
-            {list.map((item) => (
-                <TodoItem item={item} key={item.id} />
+            {todoList.map((item) => (
+                <TodoItem done={done} item={item} key={item.id} toggle={() => toggle(item.id)} />
             ))}
         </List>
     );

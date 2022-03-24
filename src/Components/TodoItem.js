@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { ReactComponent as ThreeDot } from '../assets/ThreeDot.svg';
-const TodoItem = ({ item }) => {
+
+const TodoItem = ({ done, item, toggle }) => {
     return (
         <Item>
-            <ItemContentBox>
-                <RadioButton></RadioButton>
+            <ItemContentBox onClick={toggle}>
+                <RadioButton done={done}></RadioButton>
                 <ItemContent>{item.content}</ItemContent>
             </ItemContentBox>
             <StyledThreeDot />
@@ -18,7 +19,7 @@ const Item = styled.li`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 36px;
+    height: 35px;
 `;
 
 const ItemContentBox = styled.div`
@@ -33,6 +34,7 @@ const RadioButton = styled.div`
     border: 2px solid #8989bb;
     cursor: pointer;
     transform: translateY(-1px);
+    background-color: ${(props) => (props.done ? '#8989bb' : 'none')};
 `;
 
 const ItemContent = styled.div`

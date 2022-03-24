@@ -8,6 +8,5 @@ export const getLocalStorage = () => {
 };
 
 export const syncLocalStorage = (list) => {
-    console.log(list);
     localStorage.setItem('item', JSON.stringify(list));
 };
