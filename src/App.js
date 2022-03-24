@@ -3,6 +3,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import GlobalStyle from './styles/GlobalStyle';
 import { Main, Section } from './styles/Container';
 import { getLocalStorage, syncLocalStorage } from './components/TodoState';
+import { runToast, ToastComponent } from './components/toast/Toast';
 import InputTodo from './components/InputTodo';
 import TodoItemList from './components/TodoItemList';
 
@@ -12,9 +13,20 @@ function App() {
     // list 상태 변화할 때마다 로컬스토리지 동기화
     useEffect(() => syncLocalStorage(list), [list]);
 
-    const toggleTodo = (id) => {
-        setList(list.map((item) => (item.id === id ? { ...item, done: !item.done } : item)));
-    };
+    const toggleTodo = useCallback(
+        (id) => {
+            setList(list.map((item) => (item.id === id ? { ...item, done: !item.done } : item)));
+        },
+        [list]
+    );
+
+    const removeTodo = useCallback(
+        (id) => {
+            setList(list.filter((item) => item.id !== id));
+            runToast('삭제되었어요!');
+        },
+        [list]
+    );
 
     return (
         <>
@@ -25,17 +37,12 @@ function App() {
                     <InputTodo list={list} setList={setList} />
                 </Section>
                 <Section>
-                    <h4>
-                        TO DO <span id="todo-count"></span>
-                    </h4>
-                    <TodoItemList done={false} list={list} setList={setList} toggle={toggleTodo}></TodoItemList>
+                    <TodoItemList done={false} list={list} setList={setList} toggle={toggleTodo} remove={removeTodo}></TodoItemList>
                 </Section>
                 <Section>
-                    <h4>
-                        DONE <span id="done-count"></span>
-                    </h4>
-                    <TodoItemList done={true} list={list} setList={setList} toggle={toggleTodo}></TodoItemList>
+                    <TodoItemList done={true} list={list} setList={setList} toggle={toggleTodo} remove={removeTodo}></TodoItemList>
                 </Section>
+                <ToastComponent />
             </Main>
         </>
     );

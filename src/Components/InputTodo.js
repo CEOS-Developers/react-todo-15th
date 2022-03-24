@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { runToast, ToastComponent } from './toast/Toast';
+import { runToast } from './toast/Toast';
 
 const InputTodo = ({ list, setList }) => {
     const [form, setForm] = useState('');
@@ -9,7 +9,7 @@ const InputTodo = ({ list, setList }) => {
         setForm(e.target.value);
     };
     const handleInput = () => {
-        const createItem = () =>
+        const createItem = () => {
             setList([
                 ...list,
                 {
@@ -18,6 +18,7 @@ const InputTodo = ({ list, setList }) => {
                     done: false,
                 },
             ]);
+        };
 
         form // 입력한 값이 있고,
             ? !list.find((item) => item.content === form) //중복되는 값이 없을 때
@@ -28,6 +29,7 @@ const InputTodo = ({ list, setList }) => {
         //입력창 초기화
         setForm('');
     };
+
     const handleEnter = () => {
         if (window.event.keyCode == 13) {
             handleInput();
@@ -42,7 +44,6 @@ const InputTodo = ({ list, setList }) => {
                     +
                 </InputButton>
             </InputBox>
-            <ToastComponent />
         </>
     );
 };

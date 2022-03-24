@@ -24,6 +24,7 @@ export const List = styled.ul`
     height: 175px;
     overflow-y: auto;
     margin-top: 0px;
+    margin-bottom: 10px;
 
     &::-webkit-scrollbar {
         width: 5px;
