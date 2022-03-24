@@ -9,7 +9,7 @@ const App = () => {
     {
       id: 1,
       text: 'Todo 1',
-      idDone: true,
+      isDone: true,
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ const App = () => {
     {
       id: 3,
       text: 'Todo 3',
-      idDone: true,
+      isDone: true,
     },
   ]);
   return (
@@ -35,3 +35,6 @@ export default App;
 // https://hwani.dev/import-react/
 
 // children prop을 사용하여 자식 엘리먼트를 출력에 그대로 전달
+
+// react icons
+// https://react-icons.github.io/react-icons/
