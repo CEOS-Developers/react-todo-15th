@@ -58,6 +58,8 @@ const Index = () => {
     const text = e.target.parentNode.innerText.slice(0, -2);
     // 현재 데이터 가져오기
     const data = JSON.parse(localStorage.getItem(listText));
+    console.log('text :', text);
+    console.log('data :', data);
     // 데이터 삭제
     const updatedDate = data.filter((item) => item.contents !== text);
     // 데이터 업데이트
