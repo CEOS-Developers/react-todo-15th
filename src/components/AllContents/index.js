@@ -16,7 +16,14 @@ const Index = () => {
     setList((prev) => [obj, ...list]);
     setContents('');
   };
-  useEffect(() => console.log(list), [list]);
+  const onToggle = (e) => {
+    console.dir(e.target.textContent);
+  };
+
+  useEffect(() => {
+    localStorage.setItem('test', JSON.stringify(list));
+  }, [list]);
+
   return (
     <div>
       <DivTitle>
@@ -31,7 +38,9 @@ const Index = () => {
       <DivYetList>
         <ul>
           {list.map((item, index) => (
-            <li key={index}>{item.contents}</li>
+            <li key={index}>
+              <button onClick={onToggle}>{item.contents}</button>
+            </li>
           ))}
         </ul>
       </DivYetList>
