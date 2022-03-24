@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
+import Title from '../Title';
 import InputForm from '../InputForm';
 import YetList from '../YetList';
 import DoneList from '../DoneList';
@@ -92,9 +93,7 @@ const Index = () => {
 
   return (
     <div>
-      <DivTitle>
-        <h1>투두리스트</h1>
-      </DivTitle>
+      <Title />
       <InputForm onSubmit={onSubmit} onChange={onChange} contents={contents} />
       <YetList
         list={list}
@@ -106,10 +105,5 @@ const Index = () => {
     </div>
   );
 };
-
-const DivTitle = styled.div`
-  border: 2px solid lightskyblue;
-  margin-bottom: 10px;
-`;
 
 export default Index;
