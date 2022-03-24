@@ -1,15 +1,22 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { DivDoneList, Unordered } from './style';
+import { DivDoneList, DoneNumStyle, ListBtn, Unordered } from './style';
 
 const Index = ({ list, onToggle, doneNum }) => {
   return (
     <DivDoneList>
-      <div>{doneNum}</div>
+      <DoneNumStyle>
+        <span style={{ color: '#BF9053', fontWeight: 'bold' }}>
+          DONE ({doneNum})
+        </span>
+        <span> src/components/doneList.js</span>
+      </DoneNumStyle>
       <Unordered>
         {list.map((item, index) => (
           <div key={index}>
-            {item.isDone && <button onClick={onToggle}>{item.contents}</button>}
+            {item.isDone && (
+              <ListBtn onClick={onToggle}>{item.contents}</ListBtn>
+            )}
           </div>
         ))}
       </Unordered>

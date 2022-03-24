@@ -1,20 +1,32 @@
-import { DivYetList, Unordered } from './style';
+import {
+  DeleteBtn,
+  DivYetList,
+  ListBtn,
+  RowDivInYetList,
+  Unordered,
+  YetNumStyle,
+} from './style';
 import PropTypes from 'prop-types';
 
 const Index = ({ list, yetNum, onToggle, onDelete }) => {
   return (
     <DivYetList>
-      <div>{yetNum}</div>
+      <YetNumStyle>
+        <span style={{ color: '#BF9053', fontWeight: 'bold' }}>
+          TO DO ({yetNum})
+        </span>
+        <span> src/components/yetList.js</span>
+      </YetNumStyle>
       <Unordered>
         {list.map((item, index) => (
-          <div key={index}>
+          <RowDivInYetList key={index}>
             {!item.isDone && (
               <>
-                <button onClick={onToggle}>{item.contents}</button>
-                <button onClick={onDelete}>삭제</button>
+                <ListBtn onClick={onToggle}>{item.contents}</ListBtn>
+                <DeleteBtn onClick={onDelete}>[삭제]</DeleteBtn>
               </>
             )}
-          </div>
+          </RowDivInYetList>
         ))}
       </Unordered>
     </DivYetList>

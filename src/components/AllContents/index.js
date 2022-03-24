@@ -55,7 +55,8 @@ const Index = () => {
   };
   const onDelete = (e) => {
     // 클릭된 텍스트 찾기
-    const text = e.target.parentNode.innerText.slice(0, -2);
+    const text = e.target.parentNode.innerText.slice(0, -4);
+
     // 현재 데이터 가져오기
     const data = JSON.parse(localStorage.getItem(listText));
 
@@ -63,7 +64,7 @@ const Index = () => {
     const updatedDate = data.filter((item) => {
       return item.contents.trim() !== text.trim();
     });
-    console.log('updatedDate', updatedDate);
+
     // 데이터 업데이트
     setList(updatedDate);
 
@@ -98,7 +99,6 @@ const Index = () => {
 
   return (
     <div>
-      <Title />
       <InputForm onSubmit={onSubmit} onChange={onChange} contents={contents} />
       <YetList
         list={list}
