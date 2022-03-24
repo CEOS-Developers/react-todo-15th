@@ -4,7 +4,7 @@ import ListItem from "../components/ListItem";
 const ListItemContainer = (props) => {
   return (
     <section className="itemSection">
-      <h4>
+      <h4 className="sectionTitle">
         {props.title}(<p className="itemCount">{props.listCnt}</p>)
       </h4>
       <div className="itemList invisibleScrollbar">
