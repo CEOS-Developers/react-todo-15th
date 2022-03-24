@@ -1,48 +1,50 @@
 .TodoItem {
-  /* margin-left: auto;
-  margin-right: auto; */
-
+  margin: 1px 1px 2px 1px;
   border-radius: 5px;
-  box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0.5px 1px 2px 1px rgba(0, 0, 0, 0.2);
   padding: 0.7rem;
   display: flex;
-  /* justify-content: space-between; */
 }
 
 .TodoItem + .TodoItem {
   margin-top: 10px;
 }
 
-.content {
-  cursor: pointer;
+.Content {
   width: 100%;
-  /* flex: 1; */
+
   display: flex;
   align-items: center;
 
-  display: flex;
-  /* justify-content: space-between; */
-  align-items: center;
-  /* flex-grow: 1; */
+  cursor: pointer;
 }
 
-.content svg {
+.Content svg {
   font-size: 1.35rem;
   color: #3f464d;
+  opacity: 0.85;
+
+  flex: none;
 }
 
-.text {
+.Text {
   margin-left: 0.6rem;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 500;
   flex-grow: 1;
-  /* flex: 1; */
-  /* background-color: pink; */
+
+  /* Truncate long sentences (...) */
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
-.content.Done .text {
-  opacity: 0.8;
+.Content.Done .Text {
+  opacity: 0.5;
+  font-weight: 400;
   text-decoration: line-through;
+
   cursor: pointer;
 }
 
@@ -54,6 +56,8 @@
   background: none;
   border: none;
   opacity: 0.5;
+
+  flex: none;
 }
 
 .EditButton:hover {
@@ -73,7 +77,8 @@
   background: none;
   border: none;
   opacity: 0.5;
-  /* background: pink; */
+
+  flex: none;
 }
 
 .DeleteButton:hover {

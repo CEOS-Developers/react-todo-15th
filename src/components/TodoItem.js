@@ -12,9 +12,9 @@ const TodoItem = ({ todo }) => {
   const { id, text, isDone } = todo;
   return (
     <div className="TodoItem">
-      <div className={`content ${isDone ? 'Done' : ''}`}>
+      <div className={`Content ${isDone ? 'Done' : ''}`}>
         {isDone ? <BsCheckCircleFill /> : <BsCheckCircle />}
-        <span className="text">{text}</span>
+        <span className="Text">{text}</span>
         <button className="EditButton">
           <BsFillPencilFill />
         </button>
