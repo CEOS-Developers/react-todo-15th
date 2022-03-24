@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 import { Bin } from '../constants/icons';
 
-const TodoItem = ({ data }) => {
+const TodoItem = ({ data, index, deleteTodoList }) => {
   const handleOnclick = (e) => {
-    console.log(e);
+    // handleItem(index);
+    // console.log(data);
+    // console.log(index);
   };
 
   const delBtnPressed = () => {
     if (window.confirm('정말 삭제하시겠습니까?')) {
-      console.log(data);
+      deleteTodoList(index);
     }
   };
 

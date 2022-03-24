@@ -4,18 +4,20 @@ import InputForm from './components/InputForm';
 import { Container } from './components/Container';
 import { useState } from 'react';
 import todoData from './data.json';
+import useTodo from './hooks/useTodo';
 
 function App() {
-  const [todoList, setTodoList] = useState(todoData);
+  // const [todoList, setTodoList] = useState(todoData);
+  const [todoList, addTodoList, deleteTodoList] = useTodo(todoData);
   const [finishedList, setFinishedList] = useState([]);
 
-  const handleSubmit = (textElement) => {
-    setTodoList([...todoList, { data: textElement }]);
+  const handleSubmit = (textData) => {
+    addTodoList(textData);
   };
 
   return (
     <Container>
-      <TodoList todoList={todoList} />
+      <TodoList todoList={todoList} deleteTodoList={deleteTodoList} />
       <FinishedList finishedList={finishedList} />
       <InputForm handleSubmit={handleSubmit} />
     </Container>
