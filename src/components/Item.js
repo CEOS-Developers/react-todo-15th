@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 // Hint: props로 id, text, onClick 등 (자유)
 export default function Item({ task, todoList, setTodoList }) {
-  const [state, setState] = useState('undone');
+  const [isDone, setIsDone] = useState(false);
   const changeState = () => {
-    setState(state === 'undone' ? 'done' : 'undone');
+    setIsDone(!isDone);
   };
 
   const removeItem = (e) => {
@@ -15,14 +15,12 @@ export default function Item({ task, todoList, setTodoList }) {
     <section>
       <ul>
         <li
-          style={{ textDecoration: state === 'done' ? 'line-through' : 'none' }}
+          style={{ textDecoration: isDone ? 'line-through' : 'none' }}
           onClick={changeState}
         >
           {task}
         </li>
-        <button value={state} onClick={removeItem}>
-          X
-        </button>
+        <button onClick={removeItem}>X</button>
       </ul>
     </section>
   );
