@@ -1,4 +1,6 @@
 import React from 'react';
+import './TodoInsert.css';
+import { BsPlusCircle } from 'react-icons/bs';
 
 const TodoInsert = () => {
   return (

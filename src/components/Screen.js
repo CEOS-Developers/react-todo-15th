@@ -1,16 +1,20 @@
 import React from 'react';
 import './Screen.css';
-import { BsPlusCircle } from 'react-icons/bs';
 
 const Screen = ({ children, todoLength }) => {
   return (
     <div className="Screen">
       <header className="Title">Todo List ( {todoLength} / 0 )</header>
-      <section className="TodoListContainer">{children}</section>
-      <section>{children}</section>
+      <section className="Container">{children}</section>
     </div>
   );
 };
+
+// Screen
+//  ㄴ Title
+//  ㄴ Container
+//     ㄴ TodoList
+//     ㄴ TodoInsert
 
 export default Screen;
 
