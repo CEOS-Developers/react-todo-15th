@@ -6,11 +6,12 @@ const Index = () => {
   // 텍스트 이름과 변수 이름을 같게하면 좋을 것 같다는 피드백을 받았던 거 같은데
   // list 를 다른 변수에 사용해 버렸음. 변수 이름 정하는 센스를 더 길러야 겠음
 
+  const localData = JSON.parse(localStorage.getItem(listText)) || [];
+  // localDate 를 처음에 가져와서 새로고침해도 데이터가 유지되게 설정
   const [yetNum, setYetNum] = useState(0);
   const [doneNum, setDoneNum] = useState(0);
-  const [isDone, setIsDone] = useState(false);
   const [contents, setContents] = useState('');
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(localData);
   const onChange = (e) => setContents(e.target.value);
   const onSubmit = (e) => {
     e.preventDefault();
@@ -19,7 +20,7 @@ const Index = () => {
       id: Date.now(),
       isDone: false,
     };
-    setList((prev) => [obj, ...list]);
+    setList((prev) => [obj, ...prev]);
     setContents('');
   };
   const onToggle = (e) => {
@@ -37,7 +38,7 @@ const Index = () => {
         indexClicked = index;
       } else {
         // switch default 처럼 if 를 쓰면 else 도 써주는 게 좋다는 코멘트를 봤던 거 같은데
-        // 그럴 경우 여긴 뭘 좋을까요?
+        // 그럴 경우 여긴 뭘 넣어야 좋을까요?
       }
     });
     const updatedDate = [...data];
@@ -60,7 +61,8 @@ const Index = () => {
   useEffect(() => {
     // 1. 입력 폼으로 할 일 추가
     // 2. toggle 발생
-    // 위 경우에 의해 데이터 변화 발생시 로컬스토리지에 데이터 업데이트
+    // 3. 삭제
+    // 위 경우에 의해 데이터 변화시 로컬스토리지에 데이터 업데이트
     localStorage.setItem(listText, JSON.stringify(list));
     findNum();
   }, [list]);
@@ -98,12 +100,12 @@ const Index = () => {
         <Unordered>
           {list.map((item, index) => (
             <div key={index}>
-              {!item.isDone ? (
+              {!item.isDone && (
                 <>
                   <button onClick={onToggle}>{item.contents}</button>
                   <button onClick={onDelete}>삭제</button>
                 </>
-              ) : null}
+              )}
             </div>
           ))}
         </Unordered>
@@ -113,9 +115,9 @@ const Index = () => {
         <Unordered>
           {list.map((item, index) => (
             <div key={index}>
-              {item.isDone ? (
+              {item.isDone && (
                 <button onClick={onToggle}>{item.contents}</button>
-              ) : null}
+              )}
             </div>
           ))}
         </Unordered>
