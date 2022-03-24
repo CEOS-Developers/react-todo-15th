@@ -1,35 +1,15 @@
-import { useState } from 'react';
+import { DivInputForm } from './style';
 
-const Index = (props) => {
-  const [text, setText] = useState('');
-
-  const onChange = (e) => {
-    setText(e.target.value);
-  };
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const obj = {
-      contents: text,
-      isDone: false,
-      id: Date.now(),
-    };
-    setText('');
-    props.todoList.push(obj);
-  };
-
+const Index = ({ onSubmit, onChange, contents }) => {
   return (
-    <>
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="새로운 할 일 추가"
-          value={text}
-          onChange={onChange}
-          required
-        />
-        <button>+</button>
-      </form>
-    </>
+    <div>
+      <DivInputForm>
+        <form onSubmit={onSubmit} action="">
+          <input required onChange={onChange} value={contents} type="text" />
+          <button>+</button>
+        </form>
+      </DivInputForm>
+    </div>
   );
 };
 

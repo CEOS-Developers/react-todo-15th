@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
+import InputForm from '../InputForm/index';
+
 const Index = () => {
   const listText = 'list';
   // 텍스트 이름과 변수 이름을 같게하면 좋을 것 같다는 피드백을 받았던 거 같은데
@@ -8,6 +10,7 @@ const Index = () => {
 
   const localData = JSON.parse(localStorage.getItem(listText)) || [];
   // localDate 를 처음에 가져와서 새로고침해도 데이터가 유지되게 설정
+
   const [yetNum, setYetNum] = useState(0);
   const [doneNum, setDoneNum] = useState(0);
   const [contents, setContents] = useState('');
@@ -20,7 +23,7 @@ const Index = () => {
       id: Date.now(),
       isDone: false,
     };
-    setList((prev) => [obj, ...prev]);
+    setList((prev) => [...prev, obj]);
     setContents('');
   };
   const onToggle = (e) => {
@@ -37,8 +40,9 @@ const Index = () => {
         obj.isDone = !item.isDone;
         indexClicked = index;
       } else {
-        // switch default 처럼 if 를 쓰면 else 도 써주는 게 좋다는 코멘트를 봤던 거 같은데
+        // switch 에서 default 값 처럼 if 를 쓰면 else 도 써주는 게 좋다는 코멘트를 봤던 거 같은데
         // 그럴 경우 여긴 뭘 넣어야 좋을까요?
+        // null ???!
       }
     });
     const updatedDate = [...data];
@@ -89,12 +93,7 @@ const Index = () => {
       <DivTitle>
         <h1>투두리스트</h1>
       </DivTitle>
-      <DivInputForm>
-        <form onSubmit={onSubmit} action="">
-          <input required onChange={onChange} value={contents} type="text" />
-          <button>+</button>
-        </form>
-      </DivInputForm>
+      <InputForm onSubmit={onSubmit} onChnage={onChange} contents={contents} />
       <DivYetList>
         <div>{yetNum}</div>
         <Unordered>
@@ -130,10 +129,7 @@ const DivTitle = styled.div`
   border: 2px solid lightskyblue;
   margin-bottom: 10px;
 `;
-const DivInputForm = styled.div`
-  border: 2px solid blue;
-  margin-bottom: 10px;
-`;
+
 const DivYetList = styled.div`
   border: 2px solid olivedrab;
   margin-bottom: 10px;
