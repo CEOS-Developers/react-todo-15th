@@ -1,4 +1,3 @@
-import "./style.css";
 import { useState, useEffect, useCallback } from "react";
 import TodoList from "./TodoList";
 import TodoInputForm from "./TodoInputForm";

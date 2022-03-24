@@ -9,7 +9,8 @@ const List = styled.ul`
   height: 150px;
   overflow: scroll auto;
   overflow-x: hidden;
-  list-style: "✔";
+  list-style: none;
+  padding-left: 10px;
   ::-webkit-scrollbar {
     width: 5px;
   }
@@ -21,8 +22,11 @@ const List = styled.ul`
 const ListItem = styled.li`
   margin-bottom: 13px;
 `;
-const ListItemText = styled.span`
+const ListToggleItem = styled.section`
+  display: inline;
   cursor: pointer;
+`;
+const ListItemText = styled.span`
   font-size: 15px;
   padding-left: 5px;
   text-decoration-line: ${({ type }) => type === "done" && "line-through"};
@@ -44,7 +48,7 @@ const TodoList = ({
   // todo <-> done
   const _toggleTodo = useCallback(
     ({ target }) => {
-      const parentNode = target.parentNode;
+      const parentNode = target.parentNode.parentNode;
       const idx = parentNode.id;
 
       // toggle된 리스트에 item 추가
@@ -75,9 +79,10 @@ const TodoList = ({
       <List>
         {currentList.map((todo, idx) => (
           <ListItem key={todo.id} id={idx}>
-            <ListItemText type={type} onDoubleClick={_toggleTodo}>
-              {todo.text}
-            </ListItemText>
+            <ListToggleItem onDoubleClick={_toggleTodo}>
+              <span>{type === "todo" ? "□" : "✔"}</span>
+              <ListItemText type={type}>{todo.text}</ListItemText>
+            </ListToggleItem>
             <TodoDeleteBtn
               src="bin.png"
               alt="delete-btn"
