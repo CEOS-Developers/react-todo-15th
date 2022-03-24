@@ -5,7 +5,7 @@ import Title from '../src/components/Title';
 import { Container } from './style';
 function App() {
   const D = new Date().toString().slice(0, -21);
-
+  console.log('test');
   return (
     <>
       <Container>
