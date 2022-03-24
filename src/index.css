@@ -102,8 +102,7 @@ h4 {
   width: 30rem;
   padding: 1rem;
   height: 15rem;
-  overflow: scroll;
-  scrollbar-width: thin;
+  overflow-y: scroll;
 }
 .item {
   display: flex;
