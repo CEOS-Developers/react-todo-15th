@@ -2,14 +2,24 @@ import styled from 'styled-components';
 import { Bin } from '../constants/icons';
 
 const TodoItem = ({ data }) => {
+  const handleOnclick = (e) => {
+    console.log(e);
+  };
+
+  const delBtnPressed = () => {
+    if (window.confirm('정말 삭제하시겠습니까?')) {
+      console.log(data);
+    }
+  };
+
   return (
-    <Item>
-      {data}
-      <Bin />
-    </Item>
+    <Container>
+      <Item onClick={handleOnclick}>{data}</Item>
+      <Bin onClick={delBtnPressed} />
+    </Container>
   );
 };
-const Item = styled.li`
+const Container = styled.li`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -25,6 +35,11 @@ const Item = styled.li`
   margin-top: 12px;
 
   background: #f1f3f5;
+`;
+
+const Item = styled.span`
+  display: flex;
+  width: 100%;
 `;
 
 export default TodoItem;

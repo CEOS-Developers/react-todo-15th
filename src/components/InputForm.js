@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import useInputs from '../hooks/useInput';
 
-const InputForm = () => {
+const InputForm = ({ handleForm }) => {
   const [todo, handleInputChange, resetInput] = useInputs('');
 
   const saveBtnClick = (e) => {
     e.preventDefault();
-    console.log(todo);
+    handleForm(todo);
     resetInput();
   };
 
