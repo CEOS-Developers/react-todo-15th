@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const TodoContents = styled.section`
   padding: 0 20px;
@@ -41,8 +41,12 @@ const ListToggleItem = styled.section`
 const ListItemText = styled.span`
   font-size: 15px;
   padding-left: 5px;
-  text-decoration-line: ${({ type }) => type === "done" && "line-through"};
-  color: ${({ type }) => type === "done" && "lightGrey"};
+  ${({ type }) =>
+    type === "done" &&
+    css`
+      text-decoration: line-through;
+      color: lightgrey;
+    `}
 `;
 
 const TodoList = ({
