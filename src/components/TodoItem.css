@@ -16,58 +16,48 @@
   display: flex;
   align-items: center;
 
-  cursor: pointer;
+  /* cursor: pointer; */
+}
+
+.CheckButton {
+  height: 1.5rem;
+  width: 2.2rem;
+  margin-left: -0.35rem;
+
+  font-size: 1.5rem;
+
+  background: none;
+  border: none;
+  opacity: 0.65;
+
+  flex: none;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  /* Q. 여기서 왜 align-items로 CheckButtonFill과 CheckButtonUnFill을 중앙 정렬하지 못할까요? */
 }
 
 .CheckButtonFill {
-  margin-left: -1%;
-
-  background: none;
-  border: none;
-  opacity: 0.65;
-
-  background-color: red;
-
-  flex: none;
+  align-self: center;
 }
 
 .CheckButtonFill:hover {
-  opacity: 1;
+  color: darkgray;
   cursor: pointer;
-}
-
-.CheckButtonFill svg:hover {
-  opacity: 1;
-  cursor: pointer;
-}
-
-.CheckButtonFill svg {
-  font-size: 1.35rem;
-  color: #3f464d;
 }
 
 .CheckButtonUnFill {
-  margin-left: -1%;
-
-  background: none;
-  border: none;
-  opacity: 0.65;
-
-  flex: none;
+  border-radius: 100%;
+  align-self: center;
 }
 
-.CheckButtonUnFill svg {
-  font-size: 1.35rem;
-  color: #3f464d;
-}
-
-.CheckButtonUnFill svg:hover {
-  opacity: 1;
+.CheckButtonUnFill:hover {
+  background-color: darkgray;
   cursor: pointer;
 }
 
 .Text {
-  margin-left: 0.6rem;
+  margin-left: 0.4rem;
   font-size: 1.1rem;
   font-weight: 500;
   flex-grow: 1;
@@ -82,8 +72,6 @@
   opacity: 0.5;
   font-weight: 400;
   text-decoration: line-through;
-
-  cursor: pointer;
 }
 
 .EditButton {
@@ -103,7 +91,7 @@
   cursor: pointer;
 }
 
-.EditButton svg {
+.EditButton {
   font-size: 1rem;
   color: #3f464d;
 }
@@ -125,7 +113,7 @@
   cursor: pointer;
 }
 
-.DeleteButton svg {
+.DeleteButton {
   font-size: 1.1rem;
   color: #3f464d;
 }

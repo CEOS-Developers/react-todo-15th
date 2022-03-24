@@ -21,7 +21,7 @@ const App = () => {
     },
     {
       id: 3,
-      text: 'Todo 3',
+      text: 'Todo 3asdfsdfsadfdsfsdafsdafsafsadfdsdfsdfsdfsdfdsf',
       isDone: true,
     },
   ]);

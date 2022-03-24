@@ -14,18 +14,12 @@ const TodoItem = ({ todo, onIsDoneToggle }) => {
     <div className="TodoItem">
       <div className={`Content ${isDone ? 'Done' : ''}`}>
         {isDone ? (
-          <button
-            className="CheckButtonFill"
-            onClick={() => onIsDoneToggle(id)}
-          >
-            <BsCheckCircleFill />
+          <button className="CheckButton" onClick={() => onIsDoneToggle(id)}>
+            <BsCheckCircleFill className="CheckButtonFill" />
           </button>
         ) : (
-          <button
-            className="CheckButtonUnFill"
-            onClick={() => onIsDoneToggle(id)}
-          >
-            <BsCheckCircle />
+          <button className="CheckButton" onClick={() => onIsDoneToggle(id)}>
+            <BsCheckCircle className="CheckButtonUnFill" />
           </button>
         )}
         <span className="Text">{text}</span>
