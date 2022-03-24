@@ -3,7 +3,7 @@ import './TodoInsert.css';
 import { BsPlusCircle } from 'react-icons/bs';
 import { useState } from 'react';
 
-const TodoInsert = ({ onInsertTodo }) => {
+const TodoInsert = ({ onInsertTodo}) => {
   const [value, setValue] = useState('');
 
   const onChange = (e) => {
@@ -20,7 +20,7 @@ const TodoInsert = ({ onInsertTodo }) => {
     <form className="Form" onSubmit={onSubmit}>
       <input
         className="Input"
-        placeholder=" Please enter here..."
+        placeholder=" Please type here..."
         autoFocus
         value={value}
         onChange={onChange}

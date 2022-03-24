@@ -15,8 +15,6 @@
 
   display: flex;
   align-items: center;
-
-  /* cursor: pointer; */
 }
 
 .CheckButton {
@@ -34,7 +32,8 @@
   display: flex;
   justify-content: center;
   /* align-items: center; */
-  /* Q. 여기서 왜 align-items로 CheckButtonFill과 CheckButtonUnFill을 중앙 정렬하지 못할까요? */
+  /* Q. 여기서 왜 align-items로 CheckButtonFill과 CheckButtonUnFill을
+  중앙 정렬하지 못할까요? (align-self 사용) */
 }
 
 .CheckButtonFill {
@@ -57,7 +56,7 @@
 }
 
 .Text {
-  margin-left: 0.4rem;
+  margin-left: 0.25rem;
   font-size: 1.1rem;
   font-weight: 500;
   flex-grow: 1;
@@ -81,7 +80,7 @@
 
   background: none;
   border: none;
-  opacity: 0.5;
+  opacity: 0.3;
 
   flex: none;
 }
@@ -103,7 +102,7 @@
 
   background: none;
   border: none;
-  opacity: 0.5;
+  opacity: 0.3;
 
   flex: none;
 }

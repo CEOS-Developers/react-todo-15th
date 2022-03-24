@@ -8,7 +8,7 @@ import {
 
 import './TodoItem.css';
 
-const TodoItem = ({ todo, onIsDoneToggle }) => {
+const TodoItem = ({ todo, onIsDoneToggle, onRemove }) => {
   const { id, text, isDone } = todo;
   return (
     <div className="TodoItem">

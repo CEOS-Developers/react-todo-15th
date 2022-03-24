@@ -49,9 +49,13 @@ const App = () => {
     );
   };
 
+  const onRemove = (id) => {
+    setTodos((todos) => todos.filter((todo) => todo.id !== id));
+  };
+
   return (
     <Screen todoLength={todos.length}>
-      <TodoList todos={todos} onIsDoneToggle={onIsDoneToggle} />
+      <TodoList todos={todos} onIsDoneToggle={onIsDoneToggle} onRemove={onRemove}/>
       <TodoInsert onInsertTodo={onInsertTodo} />
     </Screen>
   );
