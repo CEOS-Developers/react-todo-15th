@@ -13,7 +13,7 @@ const Screen = ({ children, todoLength }) => {
           className="Input"
           placeholder=" Please enter here..."
         />
-        <button className="Button">
+        <button className="ButtonContainer">
           <BsPlusCircle />
         </button>
       </form>

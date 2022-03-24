@@ -1,5 +1,11 @@
 import React from 'react';
-import { BsCheckCircleFill, BsCheckCircle } from 'react-icons/bs';
+import {
+  BsCheckCircleFill,
+  BsCheckCircle,
+  BsFillPencilFill,
+  BsFillTrashFill,
+} from 'react-icons/bs';
+
 import './TodoItem.css';
 
 const TodoItem = ({ todo }) => {
@@ -9,6 +15,12 @@ const TodoItem = ({ todo }) => {
       <div className={`content ${isDone ? 'Done' : ''}`}>
         {isDone ? <BsCheckCircleFill /> : <BsCheckCircle />}
         <span className="text">{text}</span>
+        <button className="EditButton">
+          <BsFillPencilFill />
+        </button>
+        <button className="DeleteButton">
+          <BsFillTrashFill />
+        </button>
       </div>
     </div>
   );
