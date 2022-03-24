@@ -9,7 +9,7 @@ function App() {
   const [todoList, setTodoList] = useState(todoData);
   const [finishedList, setFinishedList] = useState([]);
 
-  const handleForm = (textElement) => {
+  const handleSubmit = (textElement) => {
     setTodoList([...todoList, { data: textElement }]);
   };
 
@@ -17,7 +17,7 @@ function App() {
     <Container>
       <TodoList todoList={todoList} />
       <FinishedList finishedList={finishedList} />
-      <InputForm handleForm={handleForm} />
+      <InputForm handleSubmit={handleSubmit} />
     </Container>
   );
 }

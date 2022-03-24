@@ -1,13 +1,17 @@
 import styled from 'styled-components';
-import { useState } from 'react';
 import useInputs from '../hooks/useInput';
+import { validateForm } from '../utils/validate';
 
-const InputForm = ({ handleForm }) => {
+const InputForm = ({ handleSubmit }) => {
   const [todo, handleInputChange, resetInput] = useInputs('');
 
   const saveBtnClick = (e) => {
     e.preventDefault();
-    handleForm(todo);
+    if (validateForm(todo)) {
+      handleSubmit(todo);
+    } else {
+      window.alert('공백만 있는 경우 등록이 불가능합니다.');
+    }
     resetInput();
   };
 
