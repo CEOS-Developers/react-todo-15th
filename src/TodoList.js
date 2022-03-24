@@ -19,8 +19,20 @@ const List = styled.ul`
     border-radius: 15px;
   }
 `;
+const TodoDeleteBtn = styled.img`
+  width: 14px;
+  padding-left: 5px;
+  cursor: pointer;
+  opacity: 0;
+`;
 const ListItem = styled.li`
   margin-bottom: 13px;
+  :hover {
+    ${TodoDeleteBtn} {
+      opacity: 1;
+      transition: 0.1s;
+    }
+  }
 `;
 const ListToggleItem = styled.section`
   display: inline;
@@ -31,11 +43,6 @@ const ListItemText = styled.span`
   padding-left: 5px;
   text-decoration-line: ${({ type }) => type === "done" && "line-through"};
   color: ${({ type }) => type === "done" && "lightGrey"};
-`;
-const TodoDeleteBtn = styled.img`
-  width: 14px;
-  padding-left: 5px;
-  cursor: pointer;
 `;
 
 const TodoList = ({
@@ -79,7 +86,7 @@ const TodoList = ({
       <List>
         {currentList.map((todo, idx) => (
           <ListItem key={todo.id} id={idx}>
-            <ListToggleItem onDoubleClick={_toggleTodo}>
+            <ListToggleItem onClick={_toggleTodo}>
               <span>{type === "todo" ? "□" : "✔"}</span>
               <ListItemText type={type}>{todo.text}</ListItemText>
             </ListToggleItem>
