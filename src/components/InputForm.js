@@ -1,11 +1,25 @@
 import styled from 'styled-components';
+import { useState } from 'react';
+import useInputs from '../hooks/useInput';
 
 const InputForm = () => {
+  const [todo, handleInputChange, resetInput] = useInputs('');
+
+  const saveBtnClick = (e) => {
+    e.preventDefault();
+    console.log(todo);
+    resetInput();
+  };
+
   return (
     <Container>
-      <Form>
-        <InputField placeholder="할 일을 입력하세요" />
-        <Button>확인</Button>
+      <Form onSubmit={saveBtnClick}>
+        <InputField
+          value={todo}
+          onChange={handleInputChange}
+          placeholder="할 일을 입력하세요"
+        />
+        <Button onClick={saveBtnClick}>확인</Button>
       </Form>
     </Container>
   );

@@ -4,10 +4,14 @@ const useInputs = (initialForm) => {
   const [form, setForm] = useState(initialForm);
 
   const handleInputChange = (e) => {
-    setForm((form) => ({ ...form, [e.target.name]: e.target.value }));
+    setForm(e.target.value);
   };
 
-  return [form, handleInputChange];
+  const resetInput = () => {
+    setForm('');
+  };
+
+  return [form, handleInputChange, resetInput];
 };
 
 export default useInputs;
