@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import TodoItemList from '../components/TodoItemList';
 
 export const Main = styled.main`
     width: 350px;
@@ -15,5 +16,23 @@ export const Section = styled.section`
     padding: 0 16px;
     &:not(:last-of-type) {
         border-bottom: 1px solid #d3d3d3;
+    }
+`;
+
+export const List = styled.ul`
+    padding-inline-start: 0px;
+    height: 163px;
+    overflow-y: auto;
+    margin-top: 0px;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #d3d3d3;
+        border-radius: 2.5px;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: none;
     }
 `;

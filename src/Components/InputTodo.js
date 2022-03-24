@@ -1,10 +1,33 @@
 import styled from 'styled-components';
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-const InputTodo = () => {
+const InputTodo = ({ list, setList }) => {
+    const [form, setForm] = useState('');
+    const handleChange = (e) => {
+        setForm(e.target.value);
+    };
+    const handleInput = () => {
+        form && // 입력된 값이 있을때만
+            setList([
+                ...list,
+                {
+                    id: uuidv4(),
+                    content: form,
+                    done: false,
+                },
+            ]);
+    };
+    const handleEnter = () => {
+        if (window.event.keyCode == 13) {
+            handleInput();
+        }
+    };
+
     return (
         <InputBox>
-            <InputText id="input-form" onkeyup="enterPush()" placeholder="할 일을 입력해 주세요." />
-            <InputButton id="input-button" onclick="pushTodo()">
+            <InputText id="input-form" onKeyUp={handleEnter} value={form} onChange={handleChange} placeholder="할 일을 입력해 주세요." />
+            <InputButton id="input-button" onClick={handleInput}>
                 +
             </InputButton>
         </InputBox>
