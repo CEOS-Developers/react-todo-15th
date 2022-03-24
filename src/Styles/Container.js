@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import TodoItemList from '../components/TodoItemList';
 
 export const Main = styled.main`
     width: 350px;
