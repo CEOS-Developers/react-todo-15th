@@ -14,8 +14,8 @@ const InputContainer = (props) => {
   };
 
   return (
-    <div className="todoInput">
-      <div className="todoTitle">
+    <div className="appInput">
+      <div className="appTitle">
         <h3>투두 투두</h3>
       </div>
       <form className="formControl" onSubmit={(e) => submitHandler(e)}>
@@ -25,6 +25,7 @@ const InputContainer = (props) => {
           id="todoItem"
           placeholder="오늘은 행복하길 바래"
           onChange={(e) => setText(e.target.value)}
+          value={text}
         />
         <button type="submit" className="submitBtn">
           <p>+</p>

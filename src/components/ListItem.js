@@ -1,8 +1,7 @@
 import React from "react";
+import { FaTrash } from "react-icons/fa";
 
 const ListItem = (props) => {
-  console.log(props.modType);
-
   return (
     <div className="item">
       <div className="itemScrollArea">
@@ -39,9 +38,8 @@ const ListItem = (props) => {
           );
         }}
       >
-        <p>
-          {/* <i className="fa fa-solid fa-trash"></i> */}
-          delete
+        <p className="deleteIcon">
+          <FaTrash />
         </p>
       </button>
     </div>

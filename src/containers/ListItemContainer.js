@@ -3,11 +3,11 @@ import ListItem from "../components/ListItem";
 
 const ListItemContainer = (props) => {
   return (
-    <section className="todoSection">
+    <section className="itemSection">
       <h4>
-        {props.title}(<p className="todoCount">{props.cnt}</p>)
+        {props.title}(<p className="itemCount">{props.cnt}</p>)
       </h4>
-      <div className="todoList">
+      <div className="itemList">
         {props.listState.map((item) => {
           if (item.type === props.listType) {
             return (
