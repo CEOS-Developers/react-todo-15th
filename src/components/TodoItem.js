@@ -39,6 +39,9 @@ const Container = styled.li`
 `;
 
 const Item = styled.span`
+  &:hover {
+    cursor: pointer;
+  }
   display: flex;
   width: 100%;
 `;
