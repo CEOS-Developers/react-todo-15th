@@ -9,12 +9,14 @@ const ListItem = (props) => {
           className="itemFinish"
           type="button"
           onClick={() => {
-            props.clickHandler(
-              "MODIFY",
-              props.item.id,
-              props.modType,
-              props.item.content
-            );
+            props.dispatchListState({
+              type: "MODIFY",
+              payload: {
+                id: props.item.id,
+                type: props.modType,
+                content: props.item.content,
+              },
+            });
           }}
         >
           {props.listType === "done" ? (
@@ -30,12 +32,14 @@ const ListItem = (props) => {
         className="itemDelete"
         type="button"
         onClick={() => {
-          props.clickHandler(
-            "DELETE",
-            props.item.id,
-            props.item.type,
-            props.item.content
-          );
+          props.dispatchListState({
+            type: "DELETE",
+            payload: {
+              id: props.item.id,
+              type: props.item.type,
+              content: props.item.content,
+            },
+          });
         }}
       >
         <p className="deleteIcon">

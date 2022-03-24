@@ -8,7 +8,10 @@ const InputContainer = (props) => {
 
     if (text !== "") {
       const uid = new Date().getTime().toString();
-      props.clickHandler("ADD", uid, "todo", text);
+      props.dispatchListState({
+        type: "ADD",
+        payload: { id: uid, type: "todo", content: text },
+      });
       setText("");
     }
   };

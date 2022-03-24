@@ -3,20 +3,27 @@ import { React, useState, useReducer, useEffect } from "react";
 import InputContainer from "./containers/InputContainer";
 import ListItemContainer from "./containers/ListItemContainer";
 
-const initList = [];
+const initList = localStorage.getItem("list")
+  ? JSON.parse(localStorage.getItem("list"))
+  : [];
 
 const listReducer = (state, action) => {
+  let listBuffer = [];
   switch (action.type) {
     case "DELETE":
-      return [...state.filter((item) => item.id !== action.payload.id)];
+      listBuffer = state.filter((item) => item.id !== action.payload.id);
+      localStorage.setItem("list", JSON.stringify(listBuffer));
+      return [...listBuffer];
     case "ADD":
-      return [...state, action.payload];
+      listBuffer = state.concat([action.payload]);
+      localStorage.setItem("list", JSON.stringify(listBuffer));
+      return [...listBuffer];
     case "MODIFY":
-      return [
-        ...state.map((item) => {
-          if (item.id === action.payload.id) return action.payload;
-        }),
-      ];
+      listBuffer = state.map((item) =>
+        item.id === action.payload.id ? action.payload : item
+      );
+      localStorage.setItem("list", JSON.stringify(listBuffer));
+      return [...listBuffer];
   }
 };
 
@@ -24,32 +31,26 @@ function App() {
   const [listState, dispatchListState] = useReducer(listReducer, initList);
   const [listCnt, setListCnt] = useState({ todo: 0, done: 0 });
 
-  const clickHandler = (actionType, uid, itemType, contentData) => {
-    dispatchListState({
-      type: actionType,
-      payload: {
-        id: uid,
-        type: itemType,
-        content: contentData,
-      },
-    });
-  };
+  // listState의 item obj는 다음의 형태를 지닌다 {id: "uniqueID", type: "done | todo", content: "item content"}
 
   useEffect(() => {
-    console.log(listState);
-  }, [listState]);
+    setListCnt({
+      todo: listState.filter((item) => item.type === "todo").length,
+      done: listState.filter((item) => item.type === "done").length,
+    });
+  }, [listState, setListCnt]);
 
   return (
     <div className="background">
       <div className="container">
-        <InputContainer clickHandler={clickHandler} />
+        <InputContainer dispatchListState={dispatchListState} />
         <ListItemContainer
           title={"해야할 일"}
           listState={listState}
           listType={"todo"}
           listCnt={listCnt.todo}
           modType={"done"}
-          clickHandler={clickHandler}
+          dispatchListState={dispatchListState}
         />
         <ListItemContainer
           title={"완료한 일"}
@@ -57,7 +58,7 @@ function App() {
           listType={"done"}
           listCnt={listCnt.done}
           modType={"todo"}
-          clickHandler={clickHandler}
+          dispatchListState={dispatchListState}
         />
       </div>
     </div>

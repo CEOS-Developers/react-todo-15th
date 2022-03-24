@@ -5,9 +5,9 @@ const ListItemContainer = (props) => {
   return (
     <section className="itemSection">
       <h4>
-        {props.title}(<p className="itemCount">{props.cnt}</p>)
+        {props.title}(<p className="itemCount">{props.listCnt}</p>)
       </h4>
-      <div className="itemList">
+      <div className="itemList invisibleScrollbar">
         {props.listState.map((item) => {
           if (item.type === props.listType) {
             return (
@@ -16,7 +16,7 @@ const ListItemContainer = (props) => {
                 item={item}
                 listType={props.listType}
                 modType={props.modType}
-                clickHandler={props.clickHandler}
+                dispatchListState={props.dispatchListState}
               />
             );
           }
