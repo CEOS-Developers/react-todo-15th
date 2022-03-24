@@ -1,7 +1,15 @@
 import React from 'react';
+import TodoItem from './TodoItem';
 
-const TodoList = () => {
-
+const TodoList = ({ todos }) => {
+  return (
+    <div>
+      test
+      {todos.map((todo) => (
+        <TodoItem todo={todo} key={todo.id} />
+      ))}
+    </div>
+  );
 };
 
 export default TodoList;
