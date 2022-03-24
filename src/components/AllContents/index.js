@@ -62,22 +62,22 @@ const Index = () => {
       <DivYetList>
         <ul>
           {list.map((item, index) => (
-            <li key={index}>
-              {!item.isDone && (
+            <div key={index}>
+              {!item.isDone ? (
                 <button onClick={onToggle}>{item.contents}</button>
-              )}
-            </li>
+              ) : null}
+            </div>
           ))}
         </ul>
       </DivYetList>
       <DivDoneList>
         <ul>
           {list.map((item, index) => (
-            <li key={index}>
-              {item.isDone && (
+            <div key={index}>
+              {item.isDone ? (
                 <button onClick={onToggle}>{item.contents}</button>
-              )}
-            </li>
+              ) : null}
+            </div>
           ))}
         </ul>
       </DivDoneList>
