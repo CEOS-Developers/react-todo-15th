@@ -1,14 +1,7 @@
 import TodoItem from './TodoItem';
 import './TodoList.css';
 
-const TodoList = ({
-  todos,
-  doneCnt,
-  todoCnt,
-  onIsDoneToggle,
-  onChangeTargetTodo,
-  onRemove,
-}) => {
+const TodoList = ({ todos, doneCnt, todoCnt, onIsDoneToggle, onRemove }) => {
   const todoItems = todos.filter((todo) => todo.isDone === false);
   const doneItems = todos.filter((todo) => todo.isDone === true);
   return (
@@ -18,8 +11,8 @@ const TodoList = ({
         {todoItems.map((todo) => (
           <TodoItem
             todo={todo}
+            key={todo.id}
             onIsDoneToggle={onIsDoneToggle}
-            onChangeTargetTodo={onChangeTargetTodo}
             onRemove={onRemove}
           />
         ))}
@@ -29,8 +22,8 @@ const TodoList = ({
         {doneItems.map((todo) => (
           <TodoItem
             todo={todo}
+            key={todo.id}
             onIsDoneToggle={onIsDoneToggle}
-            onChangeTargetTodo={onChangeTargetTodo}
             onRemove={onRemove}
           />
         ))}

@@ -6,7 +6,7 @@ import {
 } from 'react-icons/bs';
 import './TodoItem.css';
 
-const TodoItem = ({ todo, onIsDoneToggle, onChangeTargetTodo, onRemove }) => {
+const TodoItem = ({ todo, onIsDoneToggle, onRemove }) => {
   const { id, text, isDone } = todo;
   return (
     <div className="TodoItem">
@@ -27,7 +27,6 @@ const TodoItem = ({ todo, onIsDoneToggle, onChangeTargetTodo, onRemove }) => {
         <button
           className="DeleteButton"
           onClick={() => {
-            onChangeTargetTodo(todo);
             onRemove(id);
           }}
         >

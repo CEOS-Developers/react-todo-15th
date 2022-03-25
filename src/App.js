@@ -26,7 +26,6 @@ const App = () => {
   ]);
   const doneCnt = todos.filter((todo) => todo.isDone).length;
   const todoCnt = todos.length - doneCnt;
-  const [targetTodo, setTargetTodo] = useState(null);
 
   const onInsertTodo = (text) => {
     if (text === '') return;
@@ -47,13 +46,8 @@ const App = () => {
     );
   };
 
-  const onChangeTargetTodo = (todo) => {
-    setTargetTodo(todo);
-  };
-
   const onRemove = (id) => {
     setTodos((todos) => todos.filter((todo) => todo.id !== id));
-    setTargetTodo(null);
   };
 
   return (
@@ -64,10 +58,9 @@ const App = () => {
           doneCnt={doneCnt}
           todoCnt={todoCnt}
           onIsDoneToggle={onIsDoneToggle}
-          onChangeTargetTodo={onChangeTargetTodo}
           onRemove={onRemove}
         />
-        <TodoInsert onInsertTodo={onInsertTodo} targetTodo={targetTodo} />
+        <TodoInsert onInsertTodo={onInsertTodo} />
       </div>
     </div>
     /*
@@ -80,9 +73,9 @@ const App = () => {
      **        ㄴ TodoItem (section)
      **           ㄴ Content (flex-container)
      **              ㄴ CheckButton (flex-container), Text, EditButton, DeleteButton
-     **    ㄴ TodoInsert
-     **       ㄴ Form
-     **          ㄴ input, SubmitButton
+     **     ㄴ TodoInsert
+     **        ㄴ Form (flex-container)
+     **           ㄴ input, SubmitButton
      */
   );
 };

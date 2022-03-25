@@ -1,8 +1,8 @@
 import './TodoInsert.css';
 import { BsPlusCircle } from 'react-icons/bs';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-const TodoInsert = ({ onInsertTodo, targetTodo }) => {
+const TodoInsert = ({ onInsertTodo }) => {
   const [value, setValue] = useState('');
 
   const onChange = (e) => {
@@ -14,13 +14,6 @@ const TodoInsert = ({ onInsertTodo, targetTodo }) => {
     onInsertTodo(value);
     setValue('');
   };
-
-  // 컴포넌트가 처음 렌더링 되면 어떤 것을 실행하느냐를 여기서 처리
-  // useEffect(() => {
-  //   if (targetTodo) {
-  //     setValue(targetTodo.text);
-  //   }
-  // }, [targetTodo]);
 
   return (
     <form className="Form" onSubmit={onSubmit}>
