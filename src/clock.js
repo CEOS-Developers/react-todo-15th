@@ -1,4 +1,11 @@
-function Clock() {
+import styled from "styled-components";
+
+
+const StyledButton = styled.h1
+   `text-align: center`
+   ;
+   
+   function Clock() {
     const date = new Date();
    
     const hours = String(date.getHours()).padStart(2, "0");
