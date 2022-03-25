@@ -8,21 +8,21 @@ import InputTodo from './components/InputTodo';
 import TodoItemList from './components/TodoItemList';
 
 function App() {
-    const [list, setList] = useState(() => getLocalStorage());
+    const [list, setList] = useState(getLocalStorage);
 
     // list 상태 변화할 때마다 로컬스토리지 동기화
     useEffect(() => syncLocalStorage(list), [list]);
 
     const toggleTodo = useCallback(
         (id) => {
-            setList(list.map((item) => (item.id === id ? { ...item, done: !item.done } : item)));
+            setList((list) => list.map((item) => (item.id === id ? { ...item, done: !item.done } : item)));
         },
         [list]
     );
 
     const removeTodo = useCallback(
         (id) => {
-            setList(list.filter((item) => item.id !== id));
+            setList((list) => list.filter((item) => item.id !== id));
             runToast('삭제되었어요!');
         },
         [list]

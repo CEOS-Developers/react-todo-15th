@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import React from 'react';
 import { ReactComponent as Remove } from '../assets/remove.svg';
 
 const TodoItem = ({ done, item, toggle, remove }) => {
@@ -13,7 +14,7 @@ const TodoItem = ({ done, item, toggle, remove }) => {
     );
 };
 
-export default TodoItem;
+export default React.memo(TodoItem);
 
 const Item = styled.li`
     display: flex;
