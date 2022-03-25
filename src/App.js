@@ -1,33 +1,97 @@
-import React from 'react';
-import logo192 from './logo192.png';
-import logo512 from './logo512.png';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Title from "./Title.js";
+import TodoInput from "./TodoInput.js";
+import TodoList from "./TodoList.js";
+import { useState } from "react";
+import { useRef } from "react";
+/*import { createGlobalStyle } from 'styled-components';
 
+const GlobalStyle = createGlobalStyle`*/
+
+/*
+
+  const deleteTodo = useCallback((id) => {
+    todo = todo.filter((toDo) => toDo.id !== Number(id));
+  })
+
+  const toggleTodo = useCallback((id) => {
+    todo.forEach((element) => {
+      if (element.id === Number(id)) {
+        element.done = !element.done;
+      }
+  })
+*/
 function App() {
+  const [input, setInput] = useState({
+    text: ""
+  });
+  const { text } = input;
+  const onChange = (e) => {
+    const { text } = e.target;
+    setInput({
+      ...input,
+      [text]: text
+    });
+  };
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      text: "make code runnable",
+      done: false
+    },
+    {
+      id: 2,
+      text: "refactorying code",
+      done: false
+    },
+    {
+      id: 3,
+      text: "study useeffect",
+      done: false
+    }
+  ]);
+
+  const nextId = useRef(4);
+  const onClick = (e) => {
+    const todo = {
+      id: nextId.current,
+      text: e.target.value,
+      done: false
+    };
+
+    setTodos(todos.concat(todo));
+
+    setInput({
+      text: ""
+    });
+    nextId.current++;
+  };
+
+  const onRemove = (key) => {
+    setTodos(todos.filter((todo) => todo.id !== key));
+  };
+
+  const onToggle = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, done: !todo.done } : todo
+      )
+    );
+  };
+
   return (
-    <div className = "App">
-      <div className = "Title">
-        <h1>투두</h1>
-        <img src = {logo}/>
-      </div>
-      
+    <div className="App">
+      <Title />
+      <TodoInput text={text} onChange={onChange} onClick={onClick} />
+      <TodoList
+        onChange={onChange}
+        onRemove={onRemove}
+        onToggle={onToggle}
+        todos={todos}
+      />
     </div>
-    /*
-    const element = <form className = "input-box">;
-    const element = <div><input
-      type="text"
-      id="todo-input"
-      placeholder="오늘 할 일을 입력하세요."/>
-    <input type="button" value="+" onclick="addNewTodo()" /div>
-    </form>
-    const element = <div>
-    <section className="todo-list-box">
-      <h3 id="todo-list-title">오늘 할 일은 다음과 같아요.</h3>
-      <ul id="todo-list"></ul>
-    </section>
-    </div>;
-    */
-  )
-};
+  );
+}
 
 export default App;
