@@ -1,9 +1,30 @@
 
 function App() {
   return (
-    <div>
-      <h1>15기 화이팅~</h1>
-    </div>
+    <div className="center">
+    <Clock></Clock>
+    <div className="whiteBox">
+     
+     <h1>❗투두리스트❗</h1>
+    
+     <header className = "input-box">
+      
+     <form onSubmit={submitInput} >
+      <input
+        className = "toDo"
+        onChange={onChange}
+        value={toDo}
+        type="text"
+        placeholder="할 일을 입력하세요"
+      />
+      <span className = "toDoButton" onClick={submitInput}> +</span>
+    </form>
+      
+      </header>
+
+      </div>
+
+</div>
   );
 }
 
