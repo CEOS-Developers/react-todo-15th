@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #333333;
+}
+
+* {
+  font-family: "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕",
+    "Malgun Gothic", sans-serif;
+}
