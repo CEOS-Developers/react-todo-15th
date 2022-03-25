@@ -1,5 +1,22 @@
 
 function App() {
+  const [toDo, inputToDo] = useState("");
+  const [toDos, setToDos] = useState([]);
+  
+  const onChange = (event) => inputToDo(event.target.value);
+
+
+  const submitInput = (event) => {
+      event.preventDefault();
+      if (toDo === "") {
+        return;
+      }
+      setToDos((currentArray) => [toDo, ...currentArray]);
+      inputToDo("");
+
+    };
+
+    
   return (
     <div className="center">
     <Clock></Clock>
