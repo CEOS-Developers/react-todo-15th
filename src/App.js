@@ -60,13 +60,13 @@ const App = () => {
   };
 
   return (
-    // <Screen todoLength={todos.length}>
-    <Screen doneCnt={doneCnt} todoCnt={todoCnt}>
+    <Screen>
       <TodoList
         todos={todos}
         onIsDoneToggle={onIsDoneToggle}
         onChangeTargetTodo={onChangeTargetTodo}
         onRemove={onRemove}
+        doneCnt={doneCnt} todoCnt={todoCnt}
       />
       <TodoInsert onInsertTodo={onInsertTodo} targetTodo={targetTodo} />
     </Screen>

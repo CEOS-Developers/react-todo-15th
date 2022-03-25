@@ -1,4 +1,23 @@
+.TodoTitle {
+  margin: 6% 0% 3% 3%;
+
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
 .TodoList {
-  height: 86.8%;
+  height: 260px;
+  overflow: auto;
+}
+
+.DoneTitle {
+  margin: 4% 0% 3% 3%;
+
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.DoneList {
+  height: 170px;
   overflow: auto;
 }
