@@ -1,27 +1,33 @@
 import { useState } from 'react';
-
 import Form from './Form';
 import Item from './Item';
 
 export default function Todo() {
   const [savedList, setSavedList] = useState([]);
+  let [toDoList, setToDoList] = useState([]);
+  let [doneList, setDoneList] = useState([]);
+  toDoList = savedList.filter((todo) => todo.isDone === false);
+  doneList = savedList.filter((todo) => todo.isDone === true);
 
-  const TodoList = () => {
-    return savedList.map((task, index) => (
-      <Item
-        task={task}
-        savedList={savedList}
-        setSavedList={setSavedList}
-        key={index}
-      />
+  const ToDoList = () => {
+    return toDoList.map((task) => (
+      <Item task={task} savedList={toDoList} setSavedList={setToDoList} />
+    ));
+  };
+
+  const DoneList = () => {
+    return doneList.map((task) => (
+      <Item task={task} savedList={doneList} setSavedList={setDoneList} />
     ));
   };
 
   return (
     <div>
       <Form savedList={savedList} setSavedList={setSavedList} />
-      <h2>Things to Do</h2>
-      <TodoList />
+      <h2>{`To Do List (${toDoList.length})`}</h2>
+      <ToDoList />
+      <h2>{`Done List (${doneList.length})`}</h2>
+      <DoneList />
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react';
+import styled from 'styled-components';
 
 export default function Form({ savedList, setSavedList }) {
   const [input, setInput] = useState([]);
@@ -10,7 +11,8 @@ export default function Form({ savedList, setSavedList }) {
 
   const onCreate = (e) => {
     e.preventDefault();
-    const updatedList = [...savedList, input];
+    const toDo = { key: nextId.current, value: input, isDone: false };
+    const updatedList = [...savedList, toDo];
     setSavedList(updatedList);
     setInput('');
     nextId.current += 1;
@@ -18,15 +20,31 @@ export default function Form({ savedList, setSavedList }) {
 
   return (
     <form>
-      <input
+      <InputContainer
         type={'text'}
         placeholder={'type here'}
         value={input}
         onChange={onChange}
       />
-      <button type="submit" onClick={onCreate}>
+      <SubmitButton type="submit" onClick={onCreate}>
         +
-      </button>
+      </SubmitButton>
     </form>
   );
 }
+const InputContainer = styled.input`
+  width: 75%;
+  height: 60%;
+  margin: 1%;
+  padding: 5%;
+  border-radius: 2rem;
+  border: solid 0.1rem lightgrey;
+`;
+
+const SubmitButton = styled.button`
+  height: 60%;
+  margin: 1%;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+`;
