@@ -64,19 +64,28 @@ const App = () => {
       </div>
     </div>
     /*
-     ** <Tag hierarchy>
-     **
-     ** Screen
-     **  ㄴ Container
-     **     ㄴ TodoList
-     **        ㄴ TodoTitle (header)
-     **        ㄴ TodoItem (section)
-     **           ㄴ Content (flex-container)
-     **              ㄴ CheckButton (flex-container), Text, EditButton, DeleteButton
-     **     ㄴ TodoInsert
-     **        ㄴ Form (flex-container)
-     **           ㄴ input, SubmitButton
-     */
+    ** <Component hierarchy>
+    **
+    **        App
+    **       /   \
+    ** TodoList  TodoInsert
+    **    |
+    ** TodoItem
+    **
+    *
+    ** <Tag hierarchy>
+    **
+    ** Screen
+    **  ㄴ Container
+    **     ㄴ TodoList
+    **        ㄴ TodoTitle (header)
+    **        ㄴ TodoItem (section)
+    **           ㄴ Content (flex-container)
+    **              ㄴ CheckButton (flex-container), Text, EditButton, DeleteButton
+    **     ㄴ TodoInsert
+    **        ㄴ Form (flex-container)
+    **           ㄴ input, SubmitButton
+    */
   );
 };
 
