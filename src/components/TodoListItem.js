@@ -25,6 +25,8 @@ const ScrollViewListItemContent = styled.div`
   border-radius: 10px;
   background: #fee30d;
 
+  box-shadow: 0 0.7rem 1rem hsl(0 0% 0% / 3%);
+
   ${({ completed }) =>
     completed &&
     `

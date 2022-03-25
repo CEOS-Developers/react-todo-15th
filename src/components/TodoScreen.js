@@ -105,17 +105,18 @@ const TodoInputSendImg = styled.img`
 const initialTodos = [];
 
 const TodoScreen = (props) => {
-  const [todos, setTodos] = useState(initialTodos);
+  const [todos, setTodos] = useState(
+    () =>
+      JSON.parse(window.localStorage.getItem("localStorageTodos")) ||
+      initialTodos
+  );
   const [todosId, setTodosId] = useState(todos.length + 1);
   const [content, setContent] = useState("");
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
-    let timer = setInterval(() => setDate(new Date()), 1000);
-    return function cleanup() {
-      clearInterval(timer);
-    };
-  });
+    window.localStorage.setItem("localStorageTodos", JSON.stringify(todos));
+  }, ["localStorageTodos", todos]);
 
   const handleChange = (event) => {
     setContent(event.target.value);
