@@ -8,8 +8,6 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Noto Sans KR", sans-serif;
-  background: linear-gradient(to bottom right, #7f7fd5, #86a8e7, #91eae4);
 `;
 const Box = styled.main`
   width: 350px;
