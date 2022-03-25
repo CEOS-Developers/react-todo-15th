@@ -1,3 +1,4 @@
 .TodoList {
   height: 86.8%;
+  overflow: auto;
 }

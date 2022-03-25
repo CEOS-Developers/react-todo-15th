@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { useState } from 'react';
 import Screen from './components/Screen';
 import TodoList from './components/TodoList';
@@ -13,7 +12,7 @@ const App = () => {
     {
       id: 1,
       text: 'Todo 1',
-      isDone: true,
+      isDone: false,
     },
     {
       id: 2,
@@ -22,15 +21,16 @@ const App = () => {
     },
     {
       id: 3,
-      text: 'long long long long long long long long long',
+      text: 'long input test long input test long input test',
       isDone: true,
     },
-    // g 글씨 잘림
   ]);
+  const doneCnt = todos.filter((todo) => todo.isDone).length;
+  const todoCnt = todos.length - doneCnt;
 
   const onInsertTodo = (text) => {
     if (text === '') {
-      return alert('text === ""');
+      return;
     } else {
       const todo = {
         id: nextId,
@@ -42,7 +42,6 @@ const App = () => {
     }
   };
 
-  // search by clicked id
   const onIsDoneToggle = (id) => {
     setTodos((todos) =>
       todos.map((todo) =>
@@ -61,7 +60,8 @@ const App = () => {
   };
 
   return (
-    <Screen todoLength={todos.length}>
+    // <Screen todoLength={todos.length}>
+    <Screen doneCnt={doneCnt} todoCnt={todoCnt}>
       <TodoList
         todos={todos}
         onIsDoneToggle={onIsDoneToggle}
@@ -70,15 +70,38 @@ const App = () => {
       />
       <TodoInsert onInsertTodo={onInsertTodo} targetTodo={targetTodo} />
     </Screen>
+    /*
+     ** <Tag hierarchy>
+     **
+     ** Screen
+     **  ㄴ Title (header)
+     **  ㄴ Container (section)
+     **     ㄴ TodoList
+     **        ㄴ TodoItem
+     **           ㄴ Content
+     **              ㄴ CheckButton, Text, EditButton, DeleteButton
+     **        ㄴ
+     **     ㄴ TodoInsert
+     **        ㄴ Form
+     **           ㄴ input, SubmitButton
+     */
   );
 };
 
 export default App;
 
-// importing React 와 JSX 사용의 상관관계
-// https://hwani.dev/import-react/
-
-// children prop을 사용하여 자식 엘리먼트를 출력에 그대로 전달
-
-// react icons
-// https://react-icons.github.io/react-icons/
+/*
+ ** <Reference>
+ **
+ ** importing React 와 JSX 사용의 상관관계
+ ** https://hwani.dev/import-react/
+ **
+ ** React icons
+ ** https://react-icons.github.io/react-icons/
+ **
+ ** How can I interpolate JSX with an expression in a string?
+ ** https://stackoverflow.com/questions/30372538/how-can-i-interpolate-jsx-with-an-expression-in-a-string
+ **
+ ** React className naming convention
+ ** https://stackoverflow.com/questions/57221878/react-classname-naming-convention
+ */
