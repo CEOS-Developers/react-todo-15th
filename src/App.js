@@ -1,13 +1,12 @@
 import React from 'react';
+import './App.css';
 import { useState } from 'react';
-import Screen from './components/Screen';
 import TodoList from './components/TodoList';
 import TodoInsert from './components/TodoInsert';
 
 let nextId = 4;
 
 const App = () => {
-  const [targetTodo, setTargetTodo] = useState(null);
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -16,30 +15,28 @@ const App = () => {
     },
     {
       id: 2,
-      text: '투두 2',
-      isDone: false,
+      text: '할 일 2',
+      isDone: true,
     },
     {
       id: 3,
       text: 'long input test long input test long input test',
-      isDone: true,
+      isDone: false,
     },
   ]);
   const doneCnt = todos.filter((todo) => todo.isDone).length;
   const todoCnt = todos.length - doneCnt;
+  const [targetTodo, setTargetTodo] = useState(null);
 
   const onInsertTodo = (text) => {
-    if (text === '') {
-      return;
-    } else {
-      const todo = {
-        id: nextId,
-        text,
-        isDone: false,
-      };
-      setTodos((todos) => todos.concat(todo));
-      ++nextId;
-    }
+    if (text === '') return;
+    const todo = {
+      id: nextId,
+      text,
+      isDone: false,
+    };
+    setTodos((todos) => todos.concat(todo));
+    ++nextId;
   };
 
   const onIsDoneToggle = (id) => {
@@ -60,30 +57,32 @@ const App = () => {
   };
 
   return (
-    <Screen>
-      <TodoList
-        todos={todos}
-        onIsDoneToggle={onIsDoneToggle}
-        onChangeTargetTodo={onChangeTargetTodo}
-        onRemove={onRemove}
-        doneCnt={doneCnt} todoCnt={todoCnt}
-      />
-      <TodoInsert onInsertTodo={onInsertTodo} targetTodo={targetTodo} />
-    </Screen>
+    <div className="Screen">
+      <div className="Container">
+        <TodoList
+          todos={todos}
+          doneCnt={doneCnt}
+          todoCnt={todoCnt}
+          onIsDoneToggle={onIsDoneToggle}
+          onChangeTargetTodo={onChangeTargetTodo}
+          onRemove={onRemove}
+        />
+        <TodoInsert onInsertTodo={onInsertTodo} targetTodo={targetTodo} />
+      </div>
+    </div>
     /*
      ** <Tag hierarchy>
      **
      ** Screen
-     **  ㄴ Title (header)
-     **  ㄴ Container (section)
+     **  ㄴ Container
      **     ㄴ TodoList
-     **        ㄴ TodoItem
-     **           ㄴ Content
-     **              ㄴ CheckButton, Text, EditButton, DeleteButton
-     **        ㄴ
-     **     ㄴ TodoInsert
-     **        ㄴ Form
-     **           ㄴ input, SubmitButton
+     **        ㄴ TodoTitle (header)
+     **        ㄴ TodoItem (section)
+     **           ㄴ Content (flex-container)
+     **              ㄴ CheckButton (flex-container), Text, EditButton, DeleteButton
+     **    ㄴ TodoInsert
+     **       ㄴ Form
+     **          ㄴ input, SubmitButton
      */
   );
 };

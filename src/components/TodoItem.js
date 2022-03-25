@@ -4,7 +4,6 @@ import {
   BsFillPencilFill,
   BsFillTrashFill,
 } from 'react-icons/bs';
-
 import './TodoItem.css';
 
 const TodoItem = ({ todo, onIsDoneToggle, onChangeTargetTodo, onRemove }) => {

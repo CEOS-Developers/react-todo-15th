@@ -3,40 +3,38 @@ import './TodoList.css';
 
 const TodoList = ({
   todos,
+  doneCnt,
+  todoCnt,
   onIsDoneToggle,
   onChangeTargetTodo,
   onRemove,
-  doneCnt,
-  todoCnt,
 }) => {
   const todoItems = todos.filter((todo) => todo.isDone === false);
   const doneItems = todos.filter((todo) => todo.isDone === true);
   return (
     <div>
-      <h1 className="TodoTitle">Todo ({todoCnt})</h1>
-      <div className="TodoList">
+      <header className="TodoTitle">Todo ({todoCnt})</header>
+      <section className="TodoList">
         {todoItems.map((todo) => (
           <TodoItem
             todo={todo}
-            key={todo.id}
             onIsDoneToggle={onIsDoneToggle}
             onChangeTargetTodo={onChangeTargetTodo}
             onRemove={onRemove}
           />
         ))}
-      </div>
-      <h1 className="DoneTitle">Done ({doneCnt})</h1>
-      <div className="DoneList">
+      </section>
+      <header className="DoneTitle">Done ({doneCnt})</header>
+      <section className="DoneList">
         {doneItems.map((todo) => (
           <TodoItem
             todo={todo}
-            key={todo.id}
             onIsDoneToggle={onIsDoneToggle}
             onChangeTargetTodo={onChangeTargetTodo}
             onRemove={onRemove}
           />
         ))}
-      </div>
+      </section>
     </div>
   );
 };

@@ -3,7 +3,6 @@
   border-radius: 5px;
   box-shadow: 0.8px 1.5px 3px 0.8px rgba(0, 0, 0, 0.25);
   padding: 0.7rem;
-  display: flex;
 }
 
 .TodoItem + .TodoItem {
@@ -31,13 +30,7 @@
   flex: none;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-  /* Q. 여기서 왜 {align-items: center;}로 CheckButtonFill과 CheckButtonUnFill을
-  중앙 정렬하지 못할까요? (align-self 사용) */
-}
-
-.CheckButtonFill {
-  align-self: center;
+  align-items: center;
 }
 
 .CheckButtonFill:hover {
@@ -47,7 +40,6 @@
 
 .CheckButtonUnFill {
   border-radius: 100%;
-  align-self: center;
 }
 
 .CheckButtonUnFill:hover {
@@ -62,7 +54,6 @@
   margin-left: 0.25rem;
   font-size: 1.1rem;
   font-weight: 500;
-  flex-grow: 1;
 
   display: block;
   text-overflow: ellipsis;
