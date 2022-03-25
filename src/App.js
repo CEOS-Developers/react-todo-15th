@@ -1,9 +1,10 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled, { createGlobalStyle } from "styled-components";
 
+import DarkmodeBtn from "./DarkmodeBtn";
 import TodoScreen from "./components/TodoScreen";
 import TodoMockup from "./components/TodoMockup";
+import { useEffect } from "react/cjs/react.production.min";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -13,6 +14,12 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
     color: #333333;
+
+    ${({ darkMode }) =>
+      darkMode &&
+      `
+      color: white;
+    `}
   }
 
   * {
@@ -39,6 +46,12 @@ const WrapperDiv = styled.div`
   height: 100vh;
 
   background-image: linear-gradient(19deg, #faaca8 0%, #ddd6f3 100%);
+
+  ${({ darkMode }) =>
+    darkMode &&
+    `
+    background-image: linear-gradient(86deg, #32154a 0%, #5f6494 50%);
+  `}
 `;
 
 const HeaderDiv = styled.footer`
@@ -50,6 +63,12 @@ const HeaderDiv = styled.footer`
   font-size: 24px;
   font-weight: 300;
   color: #333333;
+
+  ${({ darkMode }) =>
+    darkMode &&
+    `
+    color: white;
+  `}
 `;
 
 const ContentDiv = styled.div`
@@ -65,24 +84,33 @@ const FooterDiv = styled.footer`
   font-size: 13px;
   font-weight: 200;
   color: #333333;
+
+  ${({ darkMode }) =>
+    darkMode &&
+    `
+    color: white;
+  `}
 `;
 
 const App = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
-    <WrapperDiv className="app-wrapper">
-      <GlobalStyle />
-      <HeaderDiv className="app-header">
+    <WrapperDiv darkMode={darkMode}>
+      <GlobalStyle darkMode={darkMode} />
+      <HeaderDiv darkMode={darkMode}>
         <strong>카카오톡 - 나와의 대화</strong>
         <br />
         (사실상 메모장 📔)
       </HeaderDiv>
 
       <TodoMockup />
-      <ContentDiv className="app-content">
-        <TodoScreen />
+      <DarkmodeBtn darkMode={darkMode} setDarkMode={setDarkMode} />
+      <ContentDiv>
+        <TodoScreen darkMode={darkMode} />
       </ContentDiv>
 
-      <FooterDiv className="app-footer">
+      <FooterDiv darkMode={darkMode}>
         <section>
           <strong>💖 CEOS 15 FRONTEND</strong>
         </section>

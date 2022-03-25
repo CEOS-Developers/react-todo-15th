@@ -26,13 +26,19 @@ const ScrollViewDate = styled.div`
   padding: 4px 10px;
   border-radius: 15px;
   background: #93a5b3;
+
+  ${({ darkMode }) =>
+    darkMode &&
+    `
+    background: #2d2d2f;
+  `}
 `;
 
-const TodoScrollView = ({ date, todos, toggleTodo, deleteTodo }) => {
+const TodoScrollView = ({ date, darkMode, todos, toggleTodo, deleteTodo }) => {
   return (
     <ScrollViewWrapper>
       <ScrollViewHeader>
-        <ScrollViewDate>
+        <ScrollViewDate darkMode={darkMode}>
           {date.getFullYear() +
             "년 " +
             (date.getMonth() + 1) +
@@ -45,6 +51,7 @@ const TodoScrollView = ({ date, todos, toggleTodo, deleteTodo }) => {
       </ScrollViewHeader>
 
       <TodoListTemplate
+        darkMode={darkMode}
         todos={todos}
         toggleTodo={toggleTodo}
         deleteTodo={deleteTodo}

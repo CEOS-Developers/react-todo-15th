@@ -60,12 +60,18 @@ const ScrollViewListItemDate = styled.div`
   font-size: 9px;
   font-weight: 300;
   color: #333333;
+
+  ${({ darkMode }) =>
+    darkMode &&
+    `
+    color: white;
+  `}
 `;
 
-const TodoListItem = ({ todo, toggleTodo, deleteTodo }) => {
+const TodoListItem = ({ darkMode, todo, toggleTodo, deleteTodo }) => {
   return !todo.completed ? (
     <ScrollViewListItem completed={todo.completed}>
-      <ScrollViewListItemDate>{todo.time}</ScrollViewListItemDate>
+      <ScrollViewListItemDate darkMode={darkMode}>{todo.time}</ScrollViewListItemDate>
       <ScrollViewListItemContent completed={todo.completed}>
         <ScrollViewListItemContentDelete
           src={icon_trash}
@@ -93,7 +99,7 @@ const TodoListItem = ({ todo, toggleTodo, deleteTodo }) => {
           onClick={() => deleteTodo(todo.id)}
         />
       </ScrollViewListItemContent>
-      <ScrollViewListItemDate>{todo.time}</ScrollViewListItemDate>
+      <ScrollViewListItemDate darkMode={darkMode}>{todo.time}</ScrollViewListItemDate>
     </ScrollViewListItem>
   );
 };

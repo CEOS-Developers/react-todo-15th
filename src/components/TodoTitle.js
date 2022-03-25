@@ -1,10 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import icon_back from "../assets/black-icons/back.png";
-import icon_search from "../assets/black-icons/search.png";
-import icon_file from "../assets/black-icons/file.png";
-import icon_menu from "../assets/black-icons/menu.png";
+import * as Icons from './Icons';
 
 const TitleWrapper = styled.main`
   display: flex;
@@ -38,6 +35,12 @@ const TitleRightSection = styled.section`
 const TitleText = styled.div`
   font-size: 14px;
   font-weight: 400;
+
+  ${({ darkMode }) =>
+    darkMode &&
+    `
+    color : white;
+  `}
 `;
 
 const TitleIcon = styled.img`
@@ -50,24 +53,23 @@ const TitleEmptyIcon = styled.div`
   height: 20px;
 `;
 
-const TodoTitle = (props) => {
+const TodoTitle = ({ darkMode, ...props }) => {
   return (
     <TitleWrapper>
       <TitleLeftSection>
-        <div></div>
-        <TitleIcon src={icon_back} />
+        {darkMode ? <TitleIcon src={Icons.WhiteBack} /> : <TitleIcon src={Icons.BlackBack} />}
         <TitleEmptyIcon />
         <TitleEmptyIcon />
       </TitleLeftSection>
 
       <TitleCenterSection>
-        <TitleText>최어진</TitleText>
+        <TitleText darkMode={darkMode}>최어진</TitleText>
       </TitleCenterSection>
 
       <TitleRightSection>
-        <TitleIcon src={icon_search} />
-        <TitleIcon src={icon_file} />
-        <TitleIcon src={icon_menu} />
+        {darkMode ? <TitleIcon src={Icons.WhiteSearch} /> : <TitleIcon src={Icons.BlackSearch} />}
+        {darkMode ? <TitleIcon src={Icons.WhiteFile} /> : <TitleIcon src={Icons.BlackFile} />}
+        {darkMode ? <TitleIcon src={Icons.WhiteMenu} /> : <TitleIcon src={Icons.BlackMenu} />}
       </TitleRightSection>
     </TitleWrapper>
   );

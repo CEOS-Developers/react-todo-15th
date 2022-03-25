@@ -9,12 +9,13 @@ const TodoListTemplateWrapper = styled.main`
   margin-bottom: 5px;
 `;
 
-const TodoListTemplate = ({ todos, toggleTodo, deleteTodo }) => {
+const TodoListTemplate = ({ darkMode, todos, toggleTodo, deleteTodo }) => {
   return (
     <TodoListTemplateWrapper>
       {todos.map((todo) => (
         <TodoListItem
           key={todo.id}
+          darkMode={darkMode}
           todo={todo}
           toggleTodo={toggleTodo}
           deleteTodo={deleteTodo}

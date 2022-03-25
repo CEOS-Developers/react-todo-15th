@@ -5,7 +5,7 @@ import StatusBar from "./TodoStatusBar";
 import Title from "./TodoTitle";
 import ScrollView from "./TodoScrollView";
 
-import icon_arrow from "../assets/black-icons/arrow.png";
+import * as Icons from './Icons';
 
 const ScreenWrapper = styled.div`
   display: flex;
@@ -35,6 +35,12 @@ const ScreenWrapper = styled.div`
   border-radius: 30px;
   background: #abc2d0;
   box-shadow: 0 1rem 4rem hsl(0 0% 0% / 60%);
+
+  ${({ darkMode }) =>
+    darkMode &&
+    `
+    background: #262628;
+  `}
 `;
 
 const ScreenHeader = styled.header`
@@ -55,6 +61,12 @@ const ScreenFooter = styled.footer`
   flex: 0.9;
   width: 100%;
   background: white;
+
+${({ darkMode }) =>
+  darkMode &&
+  `
+  background: #2c2c2e;
+`}
 `;
 
 const InputWrapper = styled.main`
@@ -76,6 +88,13 @@ const TodoInput = styled.input`
   background-color: #ededed;
   font-size: 11px;
   font-weight: 400;
+
+  ${({ darkMode }) =>
+    darkMode &&
+    `
+    color: white;
+    background: #38383a;
+  `}
 `;
 
 const TodoInputForm = styled.form`
@@ -98,7 +117,7 @@ const TodoInputSendImg = styled.img`
 
 const initialTodos = [];
 
-const TodoScreen = (props) => {
+const TodoScreen = ({ darkMode, ...props }) => {
   const [todos, setTodos] = useState(
     () =>
       JSON.parse(window.localStorage.getItem("localStorageTodos")) ||
@@ -122,7 +141,7 @@ const TodoScreen = (props) => {
     if (content !== "") {
       const newTodo = {
         id: todosId,
-        time: date.getHours() + ":" + date.getMinutes(),
+        time: ('0' + date.getHours()).substr(-2) + ":" + ('0' + date.getMinutes()).substr(-2),
         text: content,
         completed: false,
       };
@@ -150,34 +169,36 @@ const TodoScreen = (props) => {
   };
 
   return (
-    <ScreenWrapper>
+    <ScreenWrapper darkMode={darkMode}>
       <ScreenHeader>
-        <StatusBar date={date} />
-        <Title />
+        <StatusBar date={date} darkMode={darkMode} />
+        <Title darkMode={darkMode} />
       </ScreenHeader>
 
       <ScreenContent>
         <ScrollView
           date={date}
+          darkMode={darkMode}
           todos={todos}
           toggleTodo={toggleTodo}
           deleteTodo={deleteTodo}
         />
       </ScreenContent>
 
-      <ScreenFooter>
+      <ScreenFooter darkMode={darkMode}>
         <InputWrapper>
           <TodoInputForm onSubmit={handleSubmit}>
             <TodoInput
               type="text"
               autoFocus
               value={content}
+              darkMode={darkMode}
               placeholder="일정을 입력해 주세요!"
               onChange={handleChange}
             />
           </TodoInputForm>
           <TodoInputSend onClick={handleSubmit}>
-            <TodoInputSendImg src={icon_arrow} />
+            {darkMode ? <TodoInputSendImg src={Icons.WhiteArrow} /> : <TodoInputSendImg src={Icons.BlackArrow} />}
           </TodoInputSend>
         </InputWrapper>
       </ScreenFooter>
