@@ -21,6 +21,19 @@ function App() {
 
     };
 
+    const moveDoneButton = (item,index) =>{
+    
+      movetoDos((current) => [item, ...current]); //Done 리스트의 배열로 추가됨
+      setToDos(toDos.filter((item, todoIndex) => index !== todoIndex)); //Todo에서는 삭제
+      
+  
+    }
+
+    const deleteToDoButton = index => {
+      setToDos(toDos.filter((item, todoIndex) => index !== todoIndex)); //Todo 삭제
+      
+    };
+  
 
   return (
     <div className="center">
@@ -44,6 +57,20 @@ function App() {
       
       </header>
 
+
+      <hr/>
+      
+      <ul className ="todo-box">
+      <span className="title">✍️To Do({toDos.length})</span>
+    {toDos.map((item, index) => (
+    <li key={index}>
+    <span onClick={() => moveDoneButton(item,index)}>✔️ </span>
+   {item}
+   <span onClick={() => deleteToDoButton(index)}> ❌</span>
+   </li>
+))}
+</ul>
+     
       </div>
 
 </div>
