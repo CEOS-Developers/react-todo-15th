@@ -6,7 +6,8 @@ import Clock from './clock.js';
 function App() {
   const [toDo, inputToDo] = useState("");
   const [toDos, setToDos] = useState([]);
-  
+  const [doneToDos, movetoDos] = useState([]); 
+
   //inputToDo를 통해 입력받음
   const onChange = (event) => inputToDo(event.target.value);
 
@@ -33,6 +34,18 @@ function App() {
       setToDos(toDos.filter((item, todoIndex) => index !== todoIndex)); //Todo 삭제
       
     };
+
+    const moveToDoButton = (item,index) =>{
+   
+      setToDos((current) => [item, ...current]); //TODOlist 배열로 추가됨
+      movetoDos(doneToDos.filter((item, todoIndex) => index !== todoIndex));
+      
+  
+    }
+
+    const deleteDoneButton = index => {
+      movetoDos(doneToDos.filter((item, todoIndex) => index !== todoIndex)); //Done리스트 삭제
+      };
   
 
   return (
@@ -71,6 +84,20 @@ function App() {
 ))}
 </ul>
      
+
+<hr/>
+
+<ul className = "done-box">
+  <span className="title">👻Done({doneToDos.length})</span>
+    {doneToDos.map((item, index) => (
+    <li className ="done-list" key={index}>
+   <span onClick={() => moveToDoButton(item,index)}>📂 </span>
+   {item}
+   <span onClick={() => deleteDoneButton(index)}> ❌</span>
+   </li>
+))}
+</ul>
+
       </div>
 
 </div>
