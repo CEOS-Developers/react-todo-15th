@@ -7,8 +7,7 @@ const TodoContents = styled.section`
 `;
 const List = styled.ul`
   height: 150px;
-  overflow: scroll auto;
-  overflow-x: hidden;
+  overflow: auto;
   list-style: none;
   padding-left: 10px;
   ::-webkit-scrollbar {
@@ -68,7 +67,7 @@ const TodoList = ({
       // 현재 리스트에서 item 삭제
       setCurrentList(currentList.filter((_, todoId) => todoId !== Number(idx)));
     },
-    [currentList, toggleList],
+    [currentList, toggleList, setCurrentList, setToggleList],
   );
 
   // delete item
@@ -79,7 +78,7 @@ const TodoList = ({
 
       setCurrentList(currentList.filter((_, todoId) => todoId !== Number(idx)));
     },
-    [currentList],
+    [currentList, setCurrentList],
   );
 
   return (

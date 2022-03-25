@@ -47,10 +47,10 @@ const App = () => {
   // list가 변할 때마다 localStorage에 list 저장
   useEffect(() => {
     _saveLocalStorage("todoList", todoList);
-  }, [todoList]);
+  }, [todoList, _saveLocalStorage]);
   useEffect(() => {
     _saveLocalStorage("doneList", doneList);
-  }, [doneList]);
+  }, [doneList, _saveLocalStorage]);
 
   return (
     <Container>

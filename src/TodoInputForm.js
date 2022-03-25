@@ -40,7 +40,7 @@ const TodoInputBtn = styled.button`
 const TodoInputForm = ({ todoList, setTodoList }) => {
   const [newText, setNewText] = useState("");
 
-  const _changeText = useCallback(({ target }) => {
+  const handleTextChange = useCallback(({ target }) => {
     setNewText(target.value);
   }, []);
 
@@ -49,10 +49,10 @@ const TodoInputForm = ({ todoList, setTodoList }) => {
     (e) => {
       e.preventDefault();
 
-      if (newText !== "") {
+      if (newText) {
         // todo item 생성
-        let todoId = new Date().getTime();
-        let todoObj = {
+        const todoId = new Date().getTime();
+        const todoObj = {
           id: todoId,
           text: newText,
         };
@@ -62,7 +62,7 @@ const TodoInputForm = ({ todoList, setTodoList }) => {
         setNewText("");
       }
     },
-    [newText, todoList],
+    [newText, todoList, setTodoList],
   );
 
   return (
@@ -72,7 +72,7 @@ const TodoInputForm = ({ todoList, setTodoList }) => {
         <TodoInput
           placeholder="할 일을 입력하세요"
           value={newText}
-          onChange={_changeText}
+          onChange={handleTextChange}
         />
         <TodoInputBtn type="submit" onClick={_addTodoItem}>
           +
