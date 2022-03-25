@@ -8,6 +8,7 @@ function App() {
   const [toDos, setToDos] = useState([]);
   const [doneToDos, movetoDos] = useState([]); 
 
+  
   //inputToDo를 통해 입력받음
   const onChange = (event) => inputToDo(event.target.value);
 
