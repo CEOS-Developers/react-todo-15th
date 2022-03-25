@@ -8,6 +8,7 @@ import TodoInsert from './components/TodoInsert';
 let nextId = 4;
 
 const App = () => {
+  const [targetTodo, setTargetTodo] = useState(null);
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -21,9 +22,10 @@ const App = () => {
     },
     {
       id: 3,
-      text: 'Todo 3asdfsdfsadfdsfsdafsdafsafsadfdsdfsdfsdfsdfdsf',
+      text: 'long long long long long long long long long',
       isDone: true,
     },
+    // g 글씨 잘림
   ]);
 
   const onInsertTodo = (text) => {
@@ -49,14 +51,24 @@ const App = () => {
     );
   };
 
+  const onChangeTargetTodo = (todo) => {
+    setTargetTodo(todo);
+  };
+
   const onRemove = (id) => {
     setTodos((todos) => todos.filter((todo) => todo.id !== id));
+    setTargetTodo(null);
   };
 
   return (
     <Screen todoLength={todos.length}>
-      <TodoList todos={todos} onIsDoneToggle={onIsDoneToggle} onRemove={onRemove}/>
-      <TodoInsert onInsertTodo={onInsertTodo} />
+      <TodoList
+        todos={todos}
+        onIsDoneToggle={onIsDoneToggle}
+        onChangeTargetTodo={onChangeTargetTodo}
+        onRemove={onRemove}
+      />
+      <TodoInsert onInsertTodo={onInsertTodo} targetTodo={targetTodo} />
     </Screen>
   );
 };

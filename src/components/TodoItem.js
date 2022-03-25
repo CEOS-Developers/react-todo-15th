@@ -8,7 +8,7 @@ import {
 
 import './TodoItem.css';
 
-const TodoItem = ({ todo, onIsDoneToggle, onRemove }) => {
+const TodoItem = ({ todo, onIsDoneToggle, onChangeTargetTodo, onRemove }) => {
   const { id, text, isDone } = todo;
   return (
     <div className="TodoItem">
@@ -26,7 +26,13 @@ const TodoItem = ({ todo, onIsDoneToggle, onRemove }) => {
         <button className="EditButton">
           <BsFillPencilFill />
         </button>
-        <button className="DeleteButton">
+        <button
+          className="DeleteButton"
+          onClick={() => {
+            onChangeTargetTodo(todo);
+            onRemove(id);
+          }}
+        >
           <BsFillTrashFill />
         </button>
       </div>
