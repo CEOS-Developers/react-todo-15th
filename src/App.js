@@ -84,7 +84,7 @@ const App = () => {
 
       <FooterDiv className="app-footer">
         <section>
-          <strong>CEOS 15 FRONTEND</strong>
+          <strong>💖 CEOS 15 FRONTEND</strong>
         </section>
         <a
           href="https://github.com/poodlepoodle/react-todo-15th"

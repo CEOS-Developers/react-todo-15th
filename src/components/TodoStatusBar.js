@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import icon_location from "../assets/black-icons/location.png";
@@ -31,11 +31,13 @@ const StatusBarIcon = styled.img`
   margin: 0px 1px;
 `;
 
-const TodoStatusBar = (props) => {
+const TodoStatusBar = ({ date, ...props }) => {
   return (
     <StatusBarWrapper>
       <StatusBarIconWrapper>
-        <StatusBarTime>14:59</StatusBarTime>
+        <StatusBarTime>
+          {date.getHours() + ":" + date.getMinutes()}
+        </StatusBarTime>
         <StatusBarIcon src={icon_location} />
       </StatusBarIconWrapper>
 

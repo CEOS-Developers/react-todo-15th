@@ -24,16 +24,25 @@ const ScrollViewDate = styled.div`
   font-weight: 300;
   color: white;
 
-  padding: 4px 8px;
+  padding: 4px 10px;
   border-radius: 15px;
   background: #93a5b3;
 `;
 
-const TodoScrollView = ({ todos, toggleTodo, deleteTodo }) => {
+const TodoScrollView = ({ date, todos, toggleTodo, deleteTodo }) => {
   return (
     <ScrollViewWrapper>
       <ScrollViewHeader>
-        <ScrollViewDate>Friday, March 25, 2022</ScrollViewDate>
+        <ScrollViewDate>
+          {date.getFullYear() +
+            "년 " +
+            (date.getMonth() + 1) +
+            "월 " +
+            date.getDate() +
+            "일 " +
+            "일월화수목금토".charAt(date.getUTCDay()) +
+            "요일"}
+        </ScrollViewDate>
       </ScrollViewHeader>
 
       <TodoListTemplate

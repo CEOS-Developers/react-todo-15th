@@ -102,31 +102,20 @@ const TodoInputSendImg = styled.img`
   object-fit: cover;
 `;
 
-const initialTodos = [
-  {
-    id: 1,
-    time: "11:22",
-    text: "큰길 건너편 편의점 포켓몬빵 수색하기",
-    completed: false,
-  },
-  {
-    id: 2,
-    time: "13:55",
-    text: "내일 오후 중으로 미용실 예약하기",
-    completed: false,
-  },
-  {
-    id: 3,
-    time: "14:55",
-    text: "강아지 산책시키기",
-    completed: true,
-  },
-];
+const initialTodos = [];
 
 const TodoScreen = (props) => {
   const [todos, setTodos] = useState(initialTodos);
   const [todosId, setTodosId] = useState(todos.length + 1);
   const [content, setContent] = useState("");
+  const [date, setDate] = useState(new Date());
+
+  useEffect(() => {
+    let timer = setInterval(() => setDate(new Date()), 1000);
+    return function cleanup() {
+      clearInterval(timer);
+    };
+  });
 
   const handleChange = (event) => {
     setContent(event.target.value);
@@ -138,7 +127,7 @@ const TodoScreen = (props) => {
     if (content !== "") {
       const newTodo = {
         id: todosId,
-        time: "16:00",
+        time: date.getHours() + ":" + date.getMinutes(),
         text: content,
         completed: false,
       };
@@ -168,12 +157,13 @@ const TodoScreen = (props) => {
   return (
     <ScreenWrapper>
       <ScreenHeader>
-        <StatusBar />
+        <StatusBar date={date} />
         <Title />
       </ScreenHeader>
 
       <ScreenContent>
         <ScrollView
+          date={date}
           todos={todos}
           toggleTodo={toggleTodo}
           deleteTodo={deleteTodo}
