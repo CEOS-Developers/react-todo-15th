@@ -17,7 +17,7 @@ export default function Item({ task, savedList, setSavedList }) {
         style={{ textDecoration: isDone ? 'line-through' : 'none' }}
         onClick={changeState}
       >
-        {task}
+        {task.content}
       </li>
       <button onClick={removeItem}>X</button>
     </span>

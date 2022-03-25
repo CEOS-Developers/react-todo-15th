@@ -1,5 +1,6 @@
 import { useState, useRef } from 'react';
 import styled from 'styled-components';
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Form({ savedList, setSavedList }) {
   const [input, setInput] = useState([]);
@@ -11,7 +12,7 @@ export default function Form({ savedList, setSavedList }) {
 
   const onCreate = (e) => {
     e.preventDefault();
-    const toDo = { key: nextId.current, value: input, isDone: false };
+    const toDo = { id: uuidv4(), content: input, isDone: false };
     const updatedList = [...savedList, toDo];
     setSavedList(updatedList);
     setInput('');
@@ -32,6 +33,7 @@ export default function Form({ savedList, setSavedList }) {
     </form>
   );
 }
+
 const InputContainer = styled.input`
   width: 75%;
   height: 60%;
