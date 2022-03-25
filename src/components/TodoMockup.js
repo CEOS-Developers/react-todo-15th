@@ -8,7 +8,6 @@ const MockupImage = styled.img`
   right: auto;
   bottom: auto;
   left: auto;
-
   width: auto;
   height: 700px;
 `;

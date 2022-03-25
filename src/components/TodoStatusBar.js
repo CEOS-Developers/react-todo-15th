@@ -10,7 +10,6 @@ const StatusBarWrapper = styled.main`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   margin: 8px 13px 0px 13px;
 `;
 

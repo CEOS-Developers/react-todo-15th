@@ -6,7 +6,6 @@ import TodoListItem from "./TodoListItem";
 const TodoListTemplateWrapper = styled.main`
   display: flex;
   flex-direction: column;
-
   margin-bottom: 5px;
 `;
 

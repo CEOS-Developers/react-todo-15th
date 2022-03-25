@@ -12,7 +12,6 @@ const ScreenWrapper = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-
   width: 300px;
   height: 650px;
   overflow: hidden;
@@ -28,14 +27,13 @@ const ScreenWrapper = styled.div`
   & {
     overflow: auto;
     -ms-overflow-style: none;
-    scrollbar-color: transparent transparent; /*just hides the scrollbar for firefox */
+    scrollbar-color: transparent transparent;
   }
 
   color: black;
   text-align: center;
   border-radius: 30px;
   background: #abc2d0;
-
   box-shadow: 0 1rem 4rem hsl(0 0% 0% / 60%);
 `;
 
@@ -44,7 +42,6 @@ const ScreenHeader = styled.header`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   width: 100%;
 `;
 
@@ -65,7 +62,6 @@ const InputWrapper = styled.main`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
   margin: 8px 13px 0px 13px;
 `;
 
@@ -74,11 +70,9 @@ const TodoInput = styled.input`
   border-color: transparent;
   border-radius: 10px;
   outline: none;
-
   width: 220px;
   height: 30px;
   padding: 0 0 0 10px;
-
   background-color: #ededed;
   font-size: 11px;
   font-weight: 400;

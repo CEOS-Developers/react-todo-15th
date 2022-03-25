@@ -10,7 +10,6 @@ const TitleWrapper = styled.main`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
   height: 30px;
   margin-bottom: 5px;
 `;

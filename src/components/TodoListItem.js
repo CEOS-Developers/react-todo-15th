@@ -20,11 +20,9 @@ const ScrollViewListItemContent = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-
   max-width: 225px;
   border-radius: 10px;
   background: #fee30d;
-
   box-shadow: 0 0.7rem 1rem hsl(0 0% 0% / 3%);
 
   ${({ completed }) =>
@@ -36,7 +34,6 @@ const ScrollViewListItemContent = styled.div`
 
 const ScrollViewListItemContentText = styled.div`
   margin: 8px 12px;
-
   text-align: right;
   font-size: 11px;
   font-weight: 500;
@@ -58,10 +55,8 @@ const ScrollViewListItemContentDelete = styled.img`
 const ScrollViewListItemDate = styled.div`
   display: flex;
   flex-direction: row;
-
   align-items: flex-end;
   margin: 0px 6px;
-
   font-size: 9px;
   font-weight: 300;
   color: #333333;

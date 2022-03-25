@@ -23,7 +23,6 @@ const ScrollViewDate = styled.div`
   font-size: 9px;
   font-weight: 300;
   color: white;
-
   padding: 4px 10px;
   border-radius: 15px;
   background: #93a5b3;
