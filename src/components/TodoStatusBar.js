@@ -38,7 +38,7 @@ const TodoStatusBar = (props) => {
         <StatusBarTime>14:59</StatusBarTime>
         <StatusBarIcon src={icon_location} />
       </StatusBarIconWrapper>
-      
+
       <StatusBarIconWrapper>
         <StatusBarIcon src={icon_cellular} />
         <StatusBarIcon src={icon_wifi} />

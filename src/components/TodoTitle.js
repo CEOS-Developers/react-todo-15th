@@ -60,7 +60,7 @@ const TodoTitle = (props) => {
         <TitleEmptyIcon />
         <TitleEmptyIcon />
       </TitleLeftSection>
-      
+
       <TitleCenterSection>
         <TitleText>최어진</TitleText>
       </TitleCenterSection>
