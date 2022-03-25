@@ -1,8 +1,15 @@
 import styled from 'styled-components';
 import { ListContainer, ScrollBox } from './Container';
 import TodoItem from './TodoItem';
+import { TodoItemData } from '../interface';
 
-const TodoList = ({ todoList, deleteTodoList, addFinishedList }) => {
+interface Props {
+  todoList: TodoItemData[];
+  deleteTodoList: (index: number) => void;
+  addFinishedList: (data: string) => void;
+}
+
+const TodoList = ({ todoList, deleteTodoList, addFinishedList }: Props) => {
   return (
     <ListContainer>
       <Title>할 일</Title>

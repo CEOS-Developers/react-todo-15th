@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 import { Bin } from '../constants/icons';
+import { TodoItemElement } from '../interface';
 
-const TodoItem = ({ data, index, deleteFromList, toggleToAnother }) => {
+const TodoItem = ({
+  data,
+  index,
+  deleteFromList,
+  toggleToAnother,
+}: TodoItemElement) => {
   const handleOnclick = () => {
     deleteFromList(index);
     toggleToAnother(data);

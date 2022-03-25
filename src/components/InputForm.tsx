@@ -2,13 +2,16 @@ import styled from 'styled-components';
 import useInputs from '../hooks/useInput';
 import { validateForm } from '../utils/validate';
 
-const InputForm = ({ handleSubmit }) => {
-  const [todo, handleInputChange, resetInput] = useInputs('');
+const InputForm = ({ handleSubmit }: any) => {
+  const { form, handleInputChange, resetInput } = useInputs('');
 
-  const saveBtnClick = (e) => {
+  // any로 한 이유 : button click event와 form enter event를 둘 다
+  // 같은 함수에서 처리하고 있기 때문에 e를 or로 정의해야 한다.
+  // 그 점이 크게 의미가 없고 다른 곳에서 쓰이지 않기 때문에 그냥 가기로 했다.
+  const saveBtnClick = (e: any) => {
     e.preventDefault();
-    if (validateForm(todo)) {
-      handleSubmit(todo);
+    if (validateForm(form)) {
+      handleSubmit(form);
     } else {
       window.alert('공백만 있는 경우 등록이 불가능합니다.');
     }
@@ -20,7 +23,7 @@ const InputForm = ({ handleSubmit }) => {
       <Form onSubmit={saveBtnClick}>
         <InputField
           maxLength={30}
-          value={todo}
+          value={form}
           onChange={handleInputChange}
           placeholder="할 일을 입력하세요"
         />
