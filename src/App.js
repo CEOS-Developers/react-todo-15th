@@ -2,7 +2,9 @@ import TodoList from './components/TodoList';
 import FinishedList from './components/FinishedList';
 import InputForm from './components/InputForm';
 import { Container } from './components/Container';
+
 import todoData from './data.json';
+
 import useTodo from './hooks/useTodo';
 import useFinished from './hooks/useFinished';
 
