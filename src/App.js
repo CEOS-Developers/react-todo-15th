@@ -17,29 +17,19 @@ const Box = styled.main`
   box-shadow: 1px 1px 30px grey;
 `;
 
+const todoStorage = localStorage.getItem("todoList");
+const doneStorage = localStorage.getItem("doneList");
+
+let loadTodo = todoStorage ? JSON.parse(todoStorage) : [];
+let loadDone = doneStorage ? JSON.parse(doneStorage) : [];
+
 const App = () => {
-  const [todoList, setTodoList] = useState([]);
-  const [doneList, setDoneList] = useState([]);
+  const [todoList, setTodoList] = useState(loadTodo);
+  const [doneList, setDoneList] = useState(loadDone);
 
   // save to localStorage
   const _saveLocalStorage = useCallback((type, list) => {
     localStorage.setItem(type, JSON.stringify(list));
-  }, []);
-
-  // 렌더링 시 localStorage에서 todo list 불러오기
-  useEffect(() => {
-    const todoStorage = localStorage.getItem("todoList");
-    const doneStorage = localStorage.getItem("doneList");
-
-    // localStorage에 저장된 list가 있는지 확인
-    if (todoStorage) {
-      const loadTodo = JSON.parse(todoStorage);
-      setTodoList(loadTodo);
-    }
-    if (doneStorage) {
-      const loadDone = JSON.parse(doneStorage);
-      setDoneList(loadDone);
-    }
   }, []);
 
   // list가 변할 때마다 localStorage에 list 저장
