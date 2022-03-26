@@ -3,20 +3,6 @@ import TodoList from "./TodoList";
 import TodoInputForm from "./TodoInputForm";
 import styled from "styled-components";
 
-const Container = styled.div`
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-const Box = styled.main`
-  width: 350px;
-  height: 600px;
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 1px 1px 30px grey;
-`;
-
 const todoStorage = localStorage.getItem("todoList");
 const doneStorage = localStorage.getItem("doneList");
 
@@ -62,5 +48,19 @@ const App = () => {
     </Container>
   );
 };
+
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const Box = styled.main`
+  width: 350px;
+  height: 600px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 1px 1px 30px grey;
+`;
 
 export default App;

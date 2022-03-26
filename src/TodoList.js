@@ -1,53 +1,6 @@
 import React, { useCallback } from "react";
 import styled, { css } from "styled-components";
 
-const TodoContents = styled.section`
-  padding: 0 20px;
-  border-bottom: ${({ type }) => type === "todo" && "1px solid lightgrey"};
-`;
-const List = styled.ul`
-  height: 150px;
-  overflow: auto;
-  list-style: none;
-  padding-left: 10px;
-  ::-webkit-scrollbar {
-    width: 5px;
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 15px;
-  }
-`;
-const TodoDeleteBtn = styled.img`
-  width: 14px;
-  padding-left: 5px;
-  cursor: pointer;
-  opacity: 0;
-`;
-const ListItem = styled.li`
-  margin-bottom: 13px;
-  :hover {
-    ${TodoDeleteBtn} {
-      opacity: 1;
-      transition: 0.1s;
-    }
-  }
-`;
-const ListToggleItem = styled.section`
-  display: inline;
-  cursor: pointer;
-`;
-const ListItemText = styled.span`
-  font-size: 15px;
-  padding-left: 5px;
-  ${({ type }) =>
-    type === "done" &&
-    css`
-      text-decoration: line-through;
-      color: lightgrey;
-    `}
-`;
-
 const TodoList = ({
   type,
   currentList,
@@ -104,5 +57,52 @@ const TodoList = ({
     </TodoContents>
   );
 };
+
+const TodoContents = styled.section`
+  padding: 0 20px;
+  border-bottom: ${({ type }) => type === "todo" && "1px solid lightgrey"};
+`;
+const List = styled.ul`
+  height: 150px;
+  overflow: auto;
+  list-style: none;
+  padding-left: 10px;
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+  }
+`;
+const TodoDeleteBtn = styled.img`
+  width: 14px;
+  padding-left: 5px;
+  cursor: pointer;
+  opacity: 0;
+`;
+const ListItem = styled.li`
+  margin-bottom: 13px;
+  :hover {
+    ${TodoDeleteBtn} {
+      opacity: 1;
+      transition: 0.1s;
+    }
+  }
+`;
+const ListToggleItem = styled.section`
+  display: inline;
+  cursor: pointer;
+`;
+const ListItemText = styled.span`
+  font-size: 15px;
+  padding-left: 5px;
+  ${({ type }) =>
+    type === "done" &&
+    css`
+      text-decoration: line-through;
+      color: lightgrey;
+    `}
+`;
 
 export default React.memo(TodoList);
