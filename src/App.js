@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div className="center">
-    <Clock></Clock>
+    <Clock/>
     <div className="whiteBox">
      
      <h1>❗투두리스트❗</h1>
