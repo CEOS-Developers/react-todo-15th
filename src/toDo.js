@@ -1,3 +1,30 @@
+import styled, { createGlobalStyle } from "styled-components";
+
+
+const Styledul = styled.ul
+`margin: 0;
+padding: 0;
+flex: 0.5;
+border-bottom: 1px solid grey;
+overflow: auto;
+list-style:none;
+cursor: pointer;
+`
+   ;
+
+const Styledtitle = styled.span
+`font-size: 20px;`
+;
+
+
+const Styledemoji = styled.span
+
+`
+margin:4px;
+
+`
+;
+
 function toDo({setDoneToDoList ,toDoList ,setToDoList}){
     const deleteToDoButton = index => {
         setToDoList(toDoList.filter((item, todoIndex) => index !== todoIndex));
