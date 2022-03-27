@@ -31,10 +31,6 @@ body{
     cursor: pointer;
 }
 
-ul{
-    list-style:none;
-    cursor: pointer;
-}
 
 
 .whiteBox{
@@ -62,38 +58,7 @@ ul{
   
 }
 
-.todo-box{
-     
-    margin: 0;
-    padding: 0;
-    flex: 0.5;
-    border-bottom: 1px solid grey;
-    
-    overflow: auto;
-}
-
-.done-box{
-
-    margin: 0;
-    padding: 0;
-    flex: 0.5;
-    border-bottom: 1px solid grey;
-    overflow: auto;
-   
-}
-
-.done-list{
-    color: gray;
-    text-decoration:line-through
-}
 
 form{
     margin-bottom: 10px;
-}
-
-
-
-.title{
-    font-size: 20px;
-   
 }
