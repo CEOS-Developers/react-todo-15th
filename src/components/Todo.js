@@ -26,8 +26,8 @@ const Todo = ({ isDoneList, savedList, setSavedList }) => {
     <>
       <ListTitle>
         {isDoneList
-          ? `Done: ${filteredList?.length}`
-          : `To do: ${filteredList?.length}`}
+          ? `Done: ${filteredList?.length}개`
+          : `To do: ${filteredList?.length}개`}
       </ListTitle>
       <List>
         {filteredList?.map(({ id, text }) => (
@@ -46,6 +46,9 @@ const Todo = ({ isDoneList, savedList, setSavedList }) => {
 };
 export default Todo;
 
-const ListTitle = styled.div``;
+const ListTitle = styled.h2`
+  font-size: 14px;
+  margin: 14% 0% 7% 3%;
+`;
 
 const List = styled.section``;
