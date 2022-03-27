@@ -2,13 +2,21 @@ import styled from 'styled-components';
 import useInputs from '../hooks/useInput';
 import { validateForm } from '../utils/validate';
 
-const InputForm = ({ handleSubmit }: any) => {
+// type Prop = {
+//   handleSubmit: (data: string) => void;
+// };
+
+const InputForm = ({
+  handleSubmit,
+}: {
+  handleSubmit: (data: string) => void;
+}) => {
   const { form, handleInputChange, resetInput } = useInputs('');
 
   // any로 한 이유 : button click event와 form enter event를 둘 다
   // 같은 함수에서 처리하고 있기 때문에 e를 or로 정의해야 한다.
   // 그 점이 크게 의미가 없고 다른 곳에서 쓰이지 않기 때문에 그냥 가기로 했다.
-  const saveBtnClick = (e: any) => {
+  const saveBtnClick = (e: React.SyntheticEvent) => {
     e.preventDefault();
     if (validateForm(form)) {
       handleSubmit(form);
