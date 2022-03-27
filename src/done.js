@@ -1,3 +1,34 @@
+import styled, { createGlobalStyle } from "styled-components";
+
+const Styledul = styled.ul
+`margin: 0;
+padding: 0;
+flex: 0.5;
+border-bottom: 1px solid grey;
+overflow: auto;
+list-style:none;
+cursor: pointer;
+`
+   ;
+
+const Styledtitle = styled.span
+`font-size: 20px;`
+;
+
+const Styledlist = styled.li
+` color: gray;
+text-decoration:line-through;
+`
+;
+
+const Styledemoji = styled.span
+
+`
+margin:4px;
+
+`
+;
+
 function done({setDoneToDoList ,doneToDoList ,setToDoList}){
     const moveToDoButton = (item,index) =>{
    
