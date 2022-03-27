@@ -8,7 +8,7 @@ import Donebox from "./done.js";
 
 function App() {
   const [toDo, inputToDo] = useState("");
-  const [toDos, setToDos] = useState([]);
+  const [toDoList, setToDoList] = useState([]);
   const [doneToDoList, setDoneToDoList] = useState([]);
 
   
@@ -53,16 +53,7 @@ function App() {
 
       <hr/>
       
-      <ul className ="todo-box">
-      <span className="title">✍️To Do({toDos.length})</span>
-    {toDos.map((item, index) => (
-    <li key={index}>
-    <span onClick={() => moveDoneButton(item,index)}>✔️ </span>
-   {item}
-   <span onClick={() => deleteToDoButton(index)}> ❌</span>
-   </li>
-))}
-</ul>
+      <Todobox setDoneToDoList ={setDoneToDoList} toDoList = {toDoList} setToDoList ={setToDoList}/>
      
 
 <hr/>
