@@ -2,6 +2,9 @@ import { useState } from "react";
 import './style.css'; //이번 과제는 컴포넌트 분리가 어려워서 css를 사용했습니다 ㅠㅠ
 import './background.js';
 import Clock from './clock.js';
+import Todobox from "./toDo.js";
+import Donebox from "./done.js"; 
+
 
 function App() {
   const [toDo, inputToDo] = useState("");
