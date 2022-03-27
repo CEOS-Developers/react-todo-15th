@@ -58,17 +58,7 @@ function App() {
 
 <hr/>
 
-<ul className = "done-box">
-  <span className="title">👻Done({doneToDos.length})</span>
-    {doneToDos.map((item, index) => (
-    <li className ="done-list" key={index}>
-   <span onClick={() => moveToDoButton(item,index)}>📂 </span>
-   {item}
-   <span onClick={() => deleteDoneButton(index)}> ❌</span>
-   </li>
-))}
-</ul>
-
+<Donebox setDoneToDoList ={setDoneToDoList} doneToDoList = {doneToDoList} setToDoList ={setToDoList}/>
       </div>
 
 </div>
