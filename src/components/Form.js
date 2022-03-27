@@ -13,7 +13,7 @@ const Form = ({ savedList, setSavedList }) => {
 
     if (input) {
       const todo = { id: Date.now(), text: input, isDone: false };
-      setSavedList((todo) => [todo, ...savedList]);
+      setSavedList((savedList) => [todo, ...savedList]);
     } else {
       alert('할일을 입력해 주세요');
     }

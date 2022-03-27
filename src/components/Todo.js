@@ -26,8 +26,8 @@ const Todo = ({ isDoneList, savedList, setSavedList }) => {
     <>
       <ListTitle>
         {isDoneList
-          ? `To do: ${filteredList?.length}`
-          : `Done: ${filteredList?.length}`}
+          ? `Done: ${filteredList?.length}`
+          : `To do: ${filteredList?.length}`}
       </ListTitle>
       <List>
         {filteredList?.map(({ id, text }) => (
