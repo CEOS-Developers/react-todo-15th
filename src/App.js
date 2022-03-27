@@ -9,7 +9,7 @@ import Donebox from "./done.js";
 function App() {
   const [toDo, inputToDo] = useState("");
   const [toDos, setToDos] = useState([]);
-  const [doneToDos, movetoDos] = useState([]); 
+  const [doneToDoList, setDoneToDoList] = useState([]);
 
   
   //inputToDo를 통해 입력받음
@@ -21,35 +21,11 @@ function App() {
       if (toDo === "") {
         return;
       }
-      setToDos((currentArray) => [toDo, ...currentArray]); //입력받은 걸 배열에 넣음
+      setDoneToDoList((currentArray) => [toDo, ...currentArray]); //입력받은 걸 배열에 넣음
       inputToDo("");
 
     };
 
-    const moveDoneButton = (item,index) =>{
-    
-      movetoDos((current) => [item, ...current]); //Done 리스트의 배열로 추가됨
-      setToDos(toDos.filter((item, todoIndex) => index !== todoIndex)); //Todo에서는 삭제
-      
-  
-    }
-
-    const deleteToDoButton = index => {
-      setToDos(toDos.filter((item, todoIndex) => index !== todoIndex)); //Todo 삭제
-      
-    };
-
-    const moveToDoButton = (item,index) =>{
-   
-      setToDos((current) => [item, ...current]); //TODOlist 배열로 추가됨
-      movetoDos(doneToDos.filter((item, todoIndex) => index !== todoIndex));
-      
-  
-    }
-
-    const deleteDoneButton = index => {
-      movetoDos(doneToDos.filter((item, todoIndex) => index !== todoIndex)); //Done리스트 삭제
-      };
   
 
   return (
