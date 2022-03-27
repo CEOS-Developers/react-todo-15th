@@ -1,14 +1,26 @@
 import styled, { createGlobalStyle } from 'styled-components';
-
+import { useState } from 'react';
 import Todo from './components/Todo';
+import Form from './components/Form';
 
 function App() {
+  const [savedList, setSavedList] = useState([]);
   return (
     <Wrapper>
       <GlobalStyle />
       <Main>
+        <Form savedList={savedList} setSavedList={setSavedList} />
         <MainTitle>할 일 목록</MainTitle>
-        <Todo />
+        <Todo
+          isDoneList={false}
+          savedList={savedList}
+          setSavedList={setSavedList}
+        />
+        <Todo
+          isDoneList={true}
+          savedList={savedList}
+          setSavedList={setSavedList}
+        />
       </Main>
     </Wrapper>
   );

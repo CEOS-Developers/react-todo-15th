@@ -1,43 +1,51 @@
-import { useState } from 'react';
-import Form from './Form';
+import styled from 'styled-components';
 import Item from './Item';
 
-export default function Todo() {
-  const [savedList, setSavedList] = useState([]);
-  let [toDoList, setToDoList] = useState([]);
-  let [doneList, setDoneList] = useState([]);
-  toDoList = savedList.filter((todo) => todo.isDone === false);
-  doneList = savedList.filter((todo) => todo.isDone === true);
+const Todo = ({ isDoneList, savedList, setSavedList }) => {
+  const filteredList = savedList?.filter((item) => item.isDone === isDoneList);
 
-  const ToDoList = () => {
-    return toDoList.map((task) => (
-      <Item
-        task={task}
-        key={task.id}
-        savedList={toDoList}
-        setSavedList={setToDoList}
-      />
-    ));
+  const handleTextClick = (e) => {
+    const newList = (filteredList) =>
+      filteredList.map((item) =>
+        item.id === parseInt(e.target.id)
+          ? { ...item, isDone: !item.isDone }
+          : item
+      );
+
+    setSavedList(newList);
   };
 
-  const DoneList = () => {
-    return doneList.map((task) => (
-      <Item
-        task={task}
-        key={task.id}
-        savedList={doneList}
-        setSavedList={setDoneList}
-      />
-    ));
+  const handleDeleteBtnClick = (e) => {
+    const newList = (filteredList) =>
+      filteredList.filter((todo) => todo.id !== parseInt(e.target.id));
+
+    setSavedList(newList);
   };
 
   return (
-    <div>
-      <Form savedList={savedList} setSavedList={setSavedList} />
-      <h2>{`To Do List (${toDoList.length})`}</h2>
-      <ToDoList />
-      <h2>{`Done List (${doneList.length})`}</h2>
-      <DoneList />
-    </div>
+    <>
+      <ListTitle>
+        {isDoneList
+          ? `To do: ${filteredList?.length}`
+          : `Done: ${filteredList?.length}`}
+      </ListTitle>
+      <List>
+        {filteredList?.map(({ id, text }) => (
+          <Item
+            key={id}
+            id={id}
+            text={text}
+            isDoneList={isDoneList}
+            handleTextClick={handleTextClick}
+            handleDeleteBtnClick={handleDeleteBtnClick}
+          />
+        ))}
+      </List>
+    </>
   );
-}
+};
+export default Todo;
+
+const ListTitle = styled.div``;
+
+const List = styled.section``;

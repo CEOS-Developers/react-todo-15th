@@ -1,38 +1,39 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
-import { v4 as uuidv4 } from 'uuid';
 
-export default function Form({ savedList, setSavedList }) {
-  const [input, setInput] = useState([]);
-  const onChange = (e) => {
+const Form = ({ savedList, setSavedList }) => {
+  const [input, setInput] = useState('');
+
+  const handleInputChange = (e) => {
     setInput(e.target.value);
   };
 
-  const nextId = useRef(1);
-
-  const onCreate = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    const toDo = { id: uuidv4(), content: input, isDone: false };
-    const updatedList = [...savedList, toDo];
-    setSavedList(updatedList);
+
+    if (input) {
+      const todo = { id: Date.now(), text: input, isDone: false };
+      setSavedList((todo) => [todo, ...savedList]);
+    } else {
+      alert('할일을 입력해 주세요');
+    }
+
     setInput('');
-    nextId.current += 1;
   };
 
   return (
     <form>
       <InputContainer
-        type={'text'}
-        placeholder={'type here'}
         value={input}
-        onChange={onChange}
+        onChange={handleInputChange}
+        placeholder="할일을 입력하세요"
       />
-      <SubmitButton type="submit" onClick={onCreate}>
+      <SubmitButton type="submit" onClick={handleFormSubmit}>
         +
       </SubmitButton>
     </form>
   );
-}
+};
 
 const InputContainer = styled.input`
   width: 75%;
@@ -50,3 +51,5 @@ const SubmitButton = styled.button`
   border-radius: 1rem;
   cursor: pointer;
 `;
+
+export default Form;

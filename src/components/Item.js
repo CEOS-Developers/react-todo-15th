@@ -1,25 +1,21 @@
-import { useState } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 
-// Hint: props로 id, text, onClick 등 (자유)
-export default function Item({ task, savedList, setSavedList }) {
-  const [isDone, setIsDone] = useState(false);
-  const changeState = () => {
-    setIsDone(!isDone);
-  };
-
-  const removeItem = (e) => {
-    setSavedList(savedList.filter((item) => item !== task));
-  };
-
+const Item = ({
+  id,
+  text,
+  isDoneList,
+  handleTextClick,
+  handleDeleteBtnClick,
+}) => {
   return (
     <span>
-      <li
-        style={{ textDecoration: isDone ? 'line-through' : 'none' }}
-        onClick={changeState}
-      >
-        {task.content}
+      <li id={id} isDoneList={isDoneList} onClick={handleTextClick}>
+        {text}
       </li>
-      <button onClick={removeItem}>X</button>
+      <button onClick={handleDeleteBtnClick}>X</button>
     </span>
   );
-}
+};
+
+export default Item;
