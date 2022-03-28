@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
-import TodoList from "./TodoList";
-import TodoInputForm from "./TodoInputForm";
+import TodoList from "./components/TodoList";
+import TodoInputForm from "./components/TodoInputForm";
 import styled from "styled-components";
 
 const todoStorage = localStorage.getItem("todoList");
