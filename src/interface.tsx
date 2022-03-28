@@ -1,24 +1,22 @@
-import React from "react";
-
-interface TodoItem {
-  id: number;
+export interface ITodoItem {
   text: string;
 }
 
 export interface ITodoInputProps {
-  todoList: Array<TodoItem>;
-  setTodoList: React.Dispatch<React.SetStateAction<Array<TodoItem>>>;
+  addTodoList: (text: string) => void;
 }
 
 export interface ITodoListProps {
   type: "todo" | "done";
-  currentList: Array<TodoItem>;
-  toggleList: Array<TodoItem>;
-  setCurrentList: React.Dispatch<React.SetStateAction<Array<TodoItem>>>;
-  setToggleList: React.Dispatch<React.SetStateAction<Array<TodoItem>>>;
+  currentList: Array<ITodoItem>;
+  deleteCurrentList: (idx: number) => void;
+  addToggleList: (text: string) => void;
 }
 
-export interface ITodoItemProps extends ITodoListProps {
-  todo: TodoItem;
+export interface ITodoItemProps {
+  type: "todo" | "done";
+  todo: string;
   idx: number;
+  deleteCurrentList: (idx: number) => void;
+  addToggleList: (text: string) => void;
 }

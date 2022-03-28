@@ -6,30 +6,28 @@ const TodoItem = ({
   type,
   todo,
   idx,
-  currentList,
-  toggleList,
-  setCurrentList,
-  setToggleList,
+  deleteCurrentList,
+  addToggleList,
 }: ITodoItemProps) => {
   // todo <-> done
-  const _toggleTodo = useCallback(() => {
+  const _toggleTodo = useCallback((): void => {
     // toggle된 리스트에 item 추가
-    setToggleList([...toggleList, currentList[idx]]);
+    addToggleList(todo);
 
     // 현재 리스트에서 item 삭제
-    setCurrentList(currentList.filter((_, todoId) => todoId !== Number(idx)));
-  }, [idx, currentList, toggleList, setCurrentList, setToggleList]);
+    deleteCurrentList(idx);
+  }, [idx, addToggleList, deleteCurrentList]);
 
   // delete item
-  const _deleteTodo = useCallback(() => {
-    setCurrentList(currentList.filter((_, todoId) => todoId !== Number(idx)));
-  }, [idx, currentList, setCurrentList]);
+  const _deleteTodo = useCallback((): void => {
+    deleteCurrentList(idx);
+  }, [idx, deleteCurrentList]);
 
   return (
     <ListItem>
       <ListToggleItem onClick={_toggleTodo}>
         <span>{type === "todo" ? "□" : "✔"}</span>
-        <ListItemText type={type}>{todo.text}</ListItemText>
+        <ListItemText type={type}>{todo}</ListItemText>
       </ListToggleItem>
       <TodoDeleteBtn src="bin.png" alt="delete-btn" onClick={_deleteTodo} />
     </ListItem>

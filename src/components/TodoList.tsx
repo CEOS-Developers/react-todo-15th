@@ -6,9 +6,8 @@ import { ITodoListProps } from "../interface";
 const TodoList = ({
   type,
   currentList,
-  toggleList,
-  setCurrentList,
-  setToggleList,
+  deleteCurrentList,
+  addToggleList,
 }: ITodoListProps) => {
   return (
     <TodoContents type={type}>
@@ -16,16 +15,14 @@ const TodoList = ({
         {type === "todo" ? "TO DO" : "DONE"} (<span>{currentList.length}</span>)
       </h3>
       <List>
-        {currentList.map((todo, idx) => (
+        {currentList.map(({ text }, idx) => (
           <TodoItem
-            key={todo.id}
+            key={idx}
             type={type}
-            todo={todo}
+            todo={text}
             idx={idx}
-            currentList={currentList}
-            toggleList={toggleList}
-            setCurrentList={setCurrentList}
-            setToggleList={setToggleList}
+            deleteCurrentList={deleteCurrentList}
+            addToggleList={addToggleList}
           />
         ))}
       </List>

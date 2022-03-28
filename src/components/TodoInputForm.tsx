@@ -2,11 +2,11 @@ import React, { useState, useCallback } from "react";
 import styled from "styled-components";
 import { ITodoInputProps } from "../interface";
 
-const TodoInputForm = ({ todoList, setTodoList }: ITodoInputProps) => {
+const TodoInputForm = ({ addTodoList }: ITodoInputProps) => {
   const [newText, setNewText] = useState("");
 
-  const handleTextChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+  const _handleTextChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>): void => {
       setNewText(e.target.value);
     },
     [],
@@ -14,23 +14,16 @@ const TodoInputForm = ({ todoList, setTodoList }: ITodoInputProps) => {
 
   // todo item 추가
   const _addTodoItem = useCallback(
-    (e: React.FormEvent) => {
+    (e: React.FormEvent): void => {
       e.preventDefault();
 
-      if (newText) {
-        // todo item 생성
-        const todoId = new Date().getTime();
-        const todoObj = {
-          id: todoId,
-          text: newText,
-        };
-
+      if (newText.trim()) {
         // list에 todo item 추가
-        setTodoList([...todoList, todoObj]);
-        setNewText("");
+        addTodoList(newText);
       }
+      setNewText("");
     },
-    [newText, todoList, setTodoList],
+    [newText],
   );
 
   return (
@@ -40,7 +33,7 @@ const TodoInputForm = ({ todoList, setTodoList }: ITodoInputProps) => {
         <TodoInput
           placeholder="할 일을 입력하세요"
           value={newText}
-          onChange={handleTextChange}
+          onChange={_handleTextChange}
         />
         <TodoInputBtn type="submit">+</TodoInputBtn>
       </TodoInputItems>

@@ -1,7 +1,9 @@
-import { useState, useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import TodoList from "./components/TodoList";
 import TodoInputForm from "./components/TodoInputForm";
 import styled from "styled-components";
+import useTodoList from "./hooks/useTodoList";
+import useDoneList from "./hooks/useDoneList";
 
 const todoStorage = localStorage.getItem("todoList");
 const doneStorage = localStorage.getItem("doneList");
@@ -10,11 +12,11 @@ let loadTodo = todoStorage ? JSON.parse(todoStorage) : [];
 let loadDone = doneStorage ? JSON.parse(doneStorage) : [];
 
 const App = () => {
-  const [todoList, setTodoList] = useState(loadTodo);
-  const [doneList, setDoneList] = useState(loadDone);
+  const { todoList, _addTodoList, _deleteTodoList } = useTodoList(loadTodo);
+  const { doneList, _addDoneList, _deleteDoneList } = useDoneList(loadDone);
 
   // save to localStorage
-  const _saveLocalStorage = useCallback((type: string, list: object) => {
+  const _saveLocalStorage = useCallback((type: string, list: object): void => {
     localStorage.setItem(type, JSON.stringify(list));
   }, []);
 
@@ -29,20 +31,18 @@ const App = () => {
   return (
     <Container>
       <Box>
-        <TodoInputForm todoList={todoList} setTodoList={setTodoList} />
+        <TodoInputForm addTodoList={_addTodoList} />
         <TodoList
           type="todo"
           currentList={todoList}
-          toggleList={doneList}
-          setCurrentList={setTodoList}
-          setToggleList={setDoneList}
+          deleteCurrentList={_deleteTodoList}
+          addToggleList={_addDoneList}
         />
         <TodoList
           type="done"
           currentList={doneList}
-          toggleList={todoList}
-          setCurrentList={setDoneList}
-          setToggleList={setTodoList}
+          deleteCurrentList={_deleteDoneList}
+          addToggleList={_addTodoList}
         />
       </Box>
     </Container>
