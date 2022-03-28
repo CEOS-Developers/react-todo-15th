@@ -14,7 +14,7 @@ const App = () => {
   const [doneList, setDoneList] = useState(loadDone);
 
   // save to localStorage
-  const _saveLocalStorage = useCallback((type, list) => {
+  const _saveLocalStorage = useCallback((type: string, list: object) => {
     localStorage.setItem(type, JSON.stringify(list));
   }, []);
 

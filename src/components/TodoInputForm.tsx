@@ -5,13 +5,16 @@ import { ITodoInputProps } from "../interface";
 const TodoInputForm = ({ todoList, setTodoList }: ITodoInputProps) => {
   const [newText, setNewText] = useState("");
 
-  const handleTextChange = useCallback(({ target }) => {
-    setNewText(target.value);
-  }, []);
+  const handleTextChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setNewText(e.target.value);
+    },
+    [],
+  );
 
   // todo item 추가
   const _addTodoItem = useCallback(
-    (e) => {
+    (e: React.FormEvent) => {
       e.preventDefault();
 
       if (newText) {
@@ -33,15 +36,13 @@ const TodoInputForm = ({ todoList, setTodoList }: ITodoInputProps) => {
   return (
     <TitleContents>
       <TodoTitle>📝 투두리스트</TodoTitle>
-      <TodoInputItems>
+      <TodoInputItems onSubmit={_addTodoItem}>
         <TodoInput
           placeholder="할 일을 입력하세요"
           value={newText}
           onChange={handleTextChange}
         />
-        <TodoInputBtn type="submit" onClick={_addTodoItem}>
-          +
-        </TodoInputBtn>
+        <TodoInputBtn type="submit">+</TodoInputBtn>
       </TodoInputItems>
     </TitleContents>
   );
