@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import styled, { css } from "styled-components";
+import { ITodoItemProps } from "../interface";
 
 const TodoItem = ({
   type,
@@ -9,7 +10,7 @@ const TodoItem = ({
   toggleList,
   setCurrentList,
   setToggleList,
-}) => {
+}: ITodoItemProps) => {
   // todo <-> done
   const _toggleTodo = useCallback(() => {
     // toggle된 리스트에 item 추가
@@ -54,7 +55,7 @@ const ListToggleItem = styled.section`
   display: inline;
   cursor: pointer;
 `;
-const ListItemText = styled.span`
+const ListItemText = styled.span<{ type: "todo" | "done" }>`
   font-size: 15px;
   padding-left: 5px;
   ${({ type }) =>

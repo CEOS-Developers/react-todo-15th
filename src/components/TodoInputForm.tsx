@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from "react";
 import styled from "styled-components";
+import { ITodoInputProps } from "../interface";
 
-const TodoInputForm = ({ todoList, setTodoList }) => {
+const TodoInputForm = ({ todoList, setTodoList }: ITodoInputProps) => {
   const [newText, setNewText] = useState("");
 
   const handleTextChange = useCallback(({ target }) => {

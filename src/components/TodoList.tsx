@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
+import { ITodoListProps } from "../interface";
 
 const TodoList = ({
   type,
@@ -8,7 +9,7 @@ const TodoList = ({
   toggleList,
   setCurrentList,
   setToggleList,
-}) => {
+}: ITodoListProps) => {
   return (
     <TodoContents type={type}>
       <h3>
@@ -32,7 +33,7 @@ const TodoList = ({
   );
 };
 
-const TodoContents = styled.section`
+const TodoContents = styled.section<{ type: "todo" | "done" }>`
   padding: 0 20px;
   border-bottom: ${({ type }) => type === "todo" && "1px solid lightgrey"};
 `;
