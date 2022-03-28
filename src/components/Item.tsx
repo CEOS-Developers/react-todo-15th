@@ -1,5 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+declare module 'react' {
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+    isDoneList?: Array<String>;
+  }
+}
 
 const Item = ({
   id,

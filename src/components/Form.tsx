@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const Form = ({ savedList, setSavedList }) => {
+const Form = ({ setSavedList }) => {
   const [input, setInput] = useState('');
 
   const handleInputChange = (e) => {
