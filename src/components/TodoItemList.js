@@ -4,15 +4,8 @@ import TodoItem from './TodoItem';
 import { List } from '../styles/Container';
 
 const TodoItemList = ({ done }) => {
-    const { list, setList } = useContext(TodoContext);
+    const { list } = useContext(TodoContext);
     const sectionList = list.filter((item) => item.done === done);
-
-    /* const toggleTodo = useCallback(
-        (id) => {
-            setList(list.map((item) => (item.id === id ? { ...item, done: !item.done } : item)));
-        },
-        [list]
-    ); */
 
     return (
         <>

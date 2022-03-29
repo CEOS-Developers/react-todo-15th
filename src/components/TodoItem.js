@@ -4,11 +4,15 @@ import useTodoContext from '../hooks/useTodoContext';
 
 const TodoItem = ({ item }) => {
     const { id, content, done } = item;
-    const { deleteItem } = useTodoContext();
+    const { deleteItem, toggleItem } = useTodoContext();
 
     return (
         <Item>
-            <ItemContentBox onClick={() => {}}>
+            <ItemContentBox
+                onClick={() => {
+                    toggleItem(id);
+                }}
+            >
                 <RadioButton done={done}></RadioButton>
                 <ItemContent>{content}</ItemContent>
             </ItemContentBox>

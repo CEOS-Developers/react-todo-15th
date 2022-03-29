@@ -37,7 +37,11 @@ const useTodoContext = () => {
         runToast('삭제되었어요!');
     };
 
-    return { addItem, deleteItem };
+    const toggleItem = (id) => {
+        setList((list) => list.map((item) => (item.id === id ? { ...item, done: !item.done } : item)));
+    };
+
+    return { addItem, deleteItem, toggleItem };
 };
 
 export default useTodoContext;
