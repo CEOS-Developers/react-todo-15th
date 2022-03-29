@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import styled, { css } from "styled-components";
-import { ITodoItemProps } from "../interface";
+import { ITodoItemProps } from "interface";
 
 const TodoItem = ({
   type,
@@ -16,7 +16,7 @@ const TodoItem = ({
 
     // 현재 리스트에서 item 삭제
     deleteCurrentList(idx);
-  }, [idx, addToggleList, deleteCurrentList]);
+  }, [addToggleList, todo, deleteCurrentList, idx]);
 
   // delete item
   const _deleteTodo = useCallback((): void => {

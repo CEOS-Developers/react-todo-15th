@@ -1,9 +1,10 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext } from "react";
 import styled from "styled-components";
-import { ITodoInputProps } from "../interface";
+import { TodoContext } from "contexts";
 
-const TodoInputForm = ({ addTodoList }: ITodoInputProps) => {
+const TodoInputForm = () => {
   const [newText, setNewText] = useState("");
+  const { _addTodoList } = useContext(TodoContext);
 
   const _handleTextChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -19,11 +20,11 @@ const TodoInputForm = ({ addTodoList }: ITodoInputProps) => {
 
       if (newText.trim()) {
         // list에 todo item 추가
-        addTodoList(newText);
+        _addTodoList(newText);
       }
       setNewText("");
     },
-    [newText],
+    [newText, _addTodoList],
   );
 
   return (

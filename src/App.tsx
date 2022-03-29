@@ -1,22 +1,19 @@
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useContext } from "react";
 import styled from "styled-components";
-import { TodoInputForm, TodoList } from "./components";
-import { useTodoList, useDoneList } from "./hooks";
-
-const todoStorage = localStorage.getItem("todoList");
-const doneStorage = localStorage.getItem("doneList");
-
-let loadTodo = todoStorage ? JSON.parse(todoStorage) : [];
-let loadDone = doneStorage ? JSON.parse(doneStorage) : [];
+import { TodoInputForm, TodoList, DoneList } from "components";
+import { TodoContext } from "contexts";
+import { ITodoItem } from "interface";
 
 const App = () => {
-  const { todoList, _addTodoList, _deleteTodoList } = useTodoList(loadTodo);
-  const { doneList, _addDoneList, _deleteDoneList } = useDoneList(loadDone);
+  const { todoList, doneList } = useContext(TodoContext);
 
   // save to localStorage
-  const _saveLocalStorage = useCallback((type: string, list: object): void => {
-    localStorage.setItem(type, JSON.stringify(list));
-  }, []);
+  const _saveLocalStorage = useCallback(
+    (type: string, list: Array<ITodoItem>): void => {
+      localStorage.setItem(type, JSON.stringify(list));
+    },
+    [],
+  );
 
   // list가 변할 때마다 localStorage에 list 저장
   useEffect(() => {
@@ -29,19 +26,9 @@ const App = () => {
   return (
     <Container>
       <Box>
-        <TodoInputForm addTodoList={_addTodoList} />
-        <TodoList
-          type="todo"
-          currentList={todoList}
-          deleteCurrentList={_deleteTodoList}
-          addToggleList={_addDoneList}
-        />
-        <TodoList
-          type="done"
-          currentList={doneList}
-          deleteCurrentList={_deleteDoneList}
-          addToggleList={_addTodoList}
-        />
+        <TodoInputForm />
+        <TodoList />
+        <DoneList />
       </Box>
     </Container>
   );

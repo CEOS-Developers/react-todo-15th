@@ -3,21 +3,21 @@ import styled from "styled-components";
 import TodoItem from "./TodoItem";
 import { TodoContext } from "contexts";
 
-const TodoList = () => {
-  const { todoList, _addDoneList, _deleteTodoList } = useContext(TodoContext);
+const DoneList = () => {
+  const { doneList, _addTodoList, _deleteDoneList } = useContext(TodoContext);
 
   return (
     <TodoContents>
-      <h3>TO DO ({todoList.length})</h3>
+      <h3>DONE ({doneList.length})</h3>
       <ul>
-        {todoList.map(({ text }, idx) => (
+        {doneList.map(({ text }, idx) => (
           <TodoItem
             key={idx}
-            type="todo"
+            type="done"
             todo={text}
             idx={idx}
-            deleteCurrentList={_deleteTodoList}
-            addToggleList={_addDoneList}
+            deleteCurrentList={_deleteDoneList}
+            addToggleList={_addTodoList}
           />
         ))}
       </ul>
@@ -27,7 +27,6 @@ const TodoList = () => {
 
 const TodoContents = styled.section`
   padding: 0 20px;
-  border-bottom: 1px solid lightgrey;
 `;
 
-export default React.memo(TodoList);
+export default React.memo(DoneList);
