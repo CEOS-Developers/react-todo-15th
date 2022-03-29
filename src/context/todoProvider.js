@@ -1,12 +1,13 @@
 import { createContext } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
+
 export const TodoContext = createContext({
     list: [],
     setList: () => {},
 });
 
 const TodoProvider = ({ children }) => {
-    const [list, setList] = useLocalStorage();
+    const [list, setList] = useLocalStorage('item', []);
 
     return <TodoContext.Provider value={{ list, setList }}>{children}</TodoContext.Provider>;
 };

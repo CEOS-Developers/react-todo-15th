@@ -1,45 +1,16 @@
 import styled from 'styled-components';
-import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import { runToast } from './toast/Toast';
+import useForm from '../hooks/useForm';
+import useTodoContext from '../hooks/useTodoContext';
 
-const InputTodo = ({ list, setList }) => {
-    const [inputValue, setInputValue] = useState('');
-    const handleChange = (e) => {
-        setInputValue(e.target.value);
-    };
-
-    const handleInput = () => {
-        const createItem = () => {
-            setList([
-                ...list,
-                {
-                    id: uuidv4(),
-                    content: inputValue,
-                    done: false,
-                },
-            ]);
-        };
-
-        if (inputValue) {
-            if (list.find((item) => item.content === inputValue)) {
-                runToast('동일한 내용으론 작성할 수 없어요!');
-            } else {
-                createItem();
-            }
-        } else {
-            runToast('할 일을 입력해주세요!');
-        }
-
-        //입력창 초기화
-        setInputValue('');
-    };
+const InputTodo = () => {
+    const { addItem } = useTodoContext();
+    const { value, onChange, onSubmit } = useForm('', addItem);
 
     return (
         <>
-            <InputBox>
-                <InputText id="input-form" onSubmit={handleInput} value={inputValue} onChange={handleChange} placeholder="할 일을 입력해 주세요." />
-                <InputButton id="input-button" type="submit" onClick={handleInput}>
+            <InputBox onSubmit={onSubmit}>
+                <InputText id="input-form" value={value} onChange={onChange} placeholder="할 일을 입력해 주세요." />
+                <InputButton id="input-button" type="submit">
                     +
                 </InputButton>
             </InputBox>

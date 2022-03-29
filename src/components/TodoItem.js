@@ -1,14 +1,18 @@
 import styled from 'styled-components';
 import { ReactComponent as Remove } from '../assets/remove.svg';
+import useTodoContext from '../hooks/useTodoContext';
 
-const TodoItem = ({ done, item, toggleTodo, remove }) => {
+const TodoItem = ({ item }) => {
+    const { id, content, done } = item;
+    const { deleteItem } = useTodoContext();
+
     return (
         <Item>
-            <ItemContentBox onClick={toggleTodo}>
+            <ItemContentBox onClick={() => {}}>
                 <RadioButton done={done}></RadioButton>
-                <ItemContent>{item.content}</ItemContent>
+                <ItemContent>{content}</ItemContent>
             </ItemContentBox>
-            <StyledRemove onClick={remove} />
+            <StyledRemove onClick={() => deleteItem(id)} />
         </Item>
     );
 };
