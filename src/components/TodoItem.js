@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { ReactComponent as Remove } from '../assets/remove.svg';
 
-const TodoItem = ({ done, item, toggle, remove }) => {
+const TodoItem = ({ done, item, toggleTodo, remove }) => {
     return (
         <Item>
-            <ItemContentBox onClick={toggle}>
+            <ItemContentBox onClick={toggleTodo}>
                 <RadioButton done={done}></RadioButton>
                 <ItemContent>{item.content}</ItemContent>
             </ItemContentBox>

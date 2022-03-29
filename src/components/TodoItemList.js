@@ -1,6 +1,6 @@
 import TodoItem from './TodoItem';
 import { List } from '../styles/Container';
-const TodoItemList = ({ done, list, toggle, remove }) => {
+const TodoItemList = ({ done, list, toggleTodo, remove }) => {
     const sectionList = list.filter((item) => item.done === done);
     return (
         <>
@@ -9,7 +9,7 @@ const TodoItemList = ({ done, list, toggle, remove }) => {
             </h4>
             <List>
                 {sectionList.map((item) => (
-                    <TodoItem done={done} item={item} key={item.id} toggle={() => toggle(item.id)} remove={() => remove(item.id)} />
+                    <TodoItem done={done} item={item} key={item.id} toggleTodo={() => toggleTodo(item.id)} remove={() => remove(item.id)} />
                 ))}
             </List>
         </>

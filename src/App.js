@@ -37,10 +37,10 @@ function App() {
                     <InputTodo list={list} setList={setList} />
                 </Section>
                 <Section>
-                    <TodoItemList done={false} list={list} setList={setList} toggle={toggleTodo} remove={removeTodo}></TodoItemList>
+                    <TodoItemList done={false} list={list} setList={setList} toggleTodo={toggleTodo} remove={removeTodo}></TodoItemList>
                 </Section>
                 <Section>
-                    <TodoItemList done={true} list={list} setList={setList} toggle={toggleTodo} remove={removeTodo}></TodoItemList>
+                    <TodoItemList done={true} list={list} setList={setList} toggleTodo={toggleTodo} remove={removeTodo}></TodoItemList>
                 </Section>
                 <ToastComponent />
             </Main>

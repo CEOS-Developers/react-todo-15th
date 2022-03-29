@@ -4,9 +4,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { runToast } from './toast/Toast';
 
 const InputTodo = ({ list, setList }) => {
-    const [form, setForm] = useState('');
+    const [inputValue, setInputValue] = useState('');
     const handleChange = (e) => {
-        setForm(e.target.value);
+        setInputValue(e.target.value);
     };
 
     const handleInput = () => {
@@ -15,26 +15,30 @@ const InputTodo = ({ list, setList }) => {
                 ...list,
                 {
                     id: uuidv4(),
-                    content: form,
+                    content: inputValue,
                     done: false,
                 },
             ]);
         };
 
-        form // 입력한 값이 있고,
-            ? !list.find((item) => item.content === form) //중복되는 값이 없을 때
-                ? createItem()
-                : runToast('동일한 내용으론 작성할 수 없어요!')
-            : runToast('할 일을 입력해주세요!');
+        if (inputValue) {
+            if (list.find((item) => item.content === inputValue)) {
+                runToast('동일한 내용으론 작성할 수 없어요!');
+            } else {
+                createItem();
+            }
+        } else {
+            runToast('할 일을 입력해주세요!');
+        }
 
         //입력창 초기화
-        setForm('');
+        setInputValue('');
     };
 
     return (
         <>
             <InputBox>
-                <InputText id="input-form" onSubmit={handleInput} value={form} onChange={handleChange} placeholder="할 일을 입력해 주세요." />
+                <InputText id="input-form" onSubmit={handleInput} value={inputValue} onChange={handleChange} placeholder="할 일을 입력해 주세요." />
                 <InputButton id="input-button" type="submit" onClick={handleInput}>
                     +
                 </InputButton>
