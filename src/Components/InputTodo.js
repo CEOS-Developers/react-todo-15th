@@ -8,6 +8,7 @@ const InputTodo = ({ list, setList }) => {
     const handleChange = (e) => {
         setForm(e.target.value);
     };
+
     const handleInput = () => {
         const createItem = () => {
             setList([
@@ -30,17 +31,11 @@ const InputTodo = ({ list, setList }) => {
         setForm('');
     };
 
-    const handleEnter = () => {
-        if (window.event.keyCode == 13) {
-            handleInput();
-        }
-    };
-
     return (
         <>
             <InputBox>
-                <InputText id="input-form" onKeyUp={handleEnter} value={form} onChange={handleChange} placeholder="할 일을 입력해 주세요." />
-                <InputButton id="input-button" onClick={handleInput}>
+                <InputText id="input-form" onSubmit={handleInput} value={form} onChange={handleChange} placeholder="할 일을 입력해 주세요." />
+                <InputButton id="input-button" type="submit" onClick={handleInput}>
                     +
                 </InputButton>
             </InputBox>
@@ -50,7 +45,7 @@ const InputTodo = ({ list, setList }) => {
 
 export default InputTodo;
 
-const InputBox = styled.div`
+const InputBox = styled.form`
     display: flex;
     justify-content: space-between;
     align-items: center;

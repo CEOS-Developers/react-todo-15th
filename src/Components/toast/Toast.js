@@ -7,6 +7,7 @@ export const ToastComponent = () => {
 export const runToast = (string) => {
     let removeToast;
     const toast = document.getElementById('toast');
+    console.log('toast');
 
     if (toast.classList.contains('reveal')) {
         clearTimeout(removeToast);
