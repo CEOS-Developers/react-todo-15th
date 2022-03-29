@@ -1,23 +1,9 @@
 import styled, { createGlobalStyle } from "styled-components";
+//import DoneList from "./donelist";
 
-const Styledul = styled.ul
-`margin: 0;
-padding: 0;
-flex: 0.5;
-border-bottom: 1px solid grey;
-overflow: auto;
-list-style:none;
-cursor: pointer;
-`
-   ;
-
-const Styledtitle = styled.span
-`font-size: 20px;`
-;
-
-const Styledlist = styled.li
+const StyledLi = styled.li
 ` color: gray;
-text-decoration:line-through;
+  text-decoration:line-through;
 `
 ;
 
@@ -29,32 +15,31 @@ margin:4px;
 `
 ;
 
-function done({setDoneToDoList ,doneToDoList ,setToDoList}){
-    const moveToDoButton = (item,index) =>{
+function done({type,setDoneToDoList ,doneToDoList ,setToDoList}){
+    const moveToDoButton = (item,id) =>{
    
         setToDoList((current) => [item, ...current]);
-        setDoneToDoList(doneToDoList.filter((item, todoIndex) => index !== todoIndex));
-        
-    
+        setDoneToDoList(doneToDoList.filter((item, doneId) => id !== doneId));
       }
         
-      const deleteDoneButton = index => {
-        setDoneToDoList(doneToDoList.filter((item, todoIndex) => index !== todoIndex));
+      const deleteDoneButton = id => {
+        setDoneToDoList(doneToDoList.filter((item, doneId) => id !== doneId));
         };
 
         return (
 
 
-            <Styledul className = "done-box">
-            <Styledtitle className="title">👻Done({doneToDoList.length})</Styledtitle>
-              {doneToDoList.map((item, index) => (
-              <Styledlist className ="done-list" key={index}>
-             <Styledemoji onClick={() => moveToDoButton(item,index)}>📂</Styledemoji>
-             {item}
-             <Styledemoji onClick={() => deleteDoneButton(index)}>❌</Styledemoji>
-             </Styledlist>
+            <ul className = "done-box">
+            <div className="title">👻Done({doneToDoList.length})</div>
+              {doneToDoList.map((item, id) => (
+               <StyledLi key={id}>
+               <Styledemoji onClick={() => moveToDoButton(item,id)}>📂</Styledemoji>
+               {item}
+               <Styledemoji onClick={() => deleteDoneButton(id)}>❌</Styledemoji>
+               </StyledLi>
+              
           ))}
-          </Styledul>
+          </ul>
 
         );
 }

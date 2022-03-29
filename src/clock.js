@@ -1,10 +1,5 @@
 import styled from "styled-components";
 
-
-const StyledButton = styled.h1
-   `text-align: center`
-   ;
-   
    function Clock() {
     const date = new Date();
    
@@ -14,9 +9,16 @@ const StyledButton = styled.h1
     
    
     
+    
    return <StyledButton>{`${hours}:${minutes}:${seconds}`}</StyledButton>;
      
-}
+   
+   
+};
  
+const StyledButton = styled.h1
+   `text-align: center`
+   ;
+
 setInterval(Clock, 1000);
 export default Clock;

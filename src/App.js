@@ -1,10 +1,10 @@
 import { useState } from "react";
-import './style.css'; //이번 과제는 컴포넌트 분리가 어려워서 css를 사용했습니다 ㅠㅠ
+import './style.css';
 import './background.js';
 import Clock from './clock.js';
-import Todobox from "./toDo.js";
+import Todobox from "./ToDo.js";
 import Donebox from "./done.js"; 
-
+import styled  from "styled-components";
 
 function App() {
   const [toDo, inputToDo] = useState("");
@@ -18,48 +18,75 @@ function App() {
 
   const submitInput = (event) => {
       event.preventDefault();
-      if (toDo === "") {
-        return;
+      if (toDo) {
+        setToDoList((currentArray) => [toDo, ...currentArray]); //입력받은 걸 배열에 넣음
       }
-      setDoneToDoList((currentArray) => [toDo, ...currentArray]); //입력받은 걸 배열에 넣음
       inputToDo("");
 
     };
 
+    const Container = styled.div
+      `
+      text-align: center;
+      width: 360px;
+      height: 600px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid grey;
+      border-radius: 9px;
+  `
+    ;
+
+    const InputBox = styled.header
+    `
+    font-family: 'SuncheonB';
+    flex: 0.3;
+    border-bottom: 1px solid grey;
+    
+    `
+    ;
+
   
 
   return (
-    <div className="center">
+    <div>
     <Clock/>
-    <div className="whiteBox">
-     
-     <h1>❗투두리스트❗</h1>
+    <Container>
+      <h1>❗투두리스트❗</h1>
     
-     <header className = "input-box">
+     <InputBox>
       
      <form onSubmit={submitInput} >
       <input
         className = "toDo"
         onChange={onChange}
         value={toDo}
-        type="text"
+        type="string"
         placeholder="할 일을 입력하세요"
+      
       />
       <span className = "toDoButton" onClick={submitInput}> +</span>
     </form>
       
-      </header>
+      </InputBox>
 
 
       <hr/>
       
-      <Todobox setDoneToDoList ={setDoneToDoList} toDoList = {toDoList} setToDoList ={setToDoList}/>
-     
-
+      <Todobox
+      type = "Todo" 
+      setDoneToDoList ={setDoneToDoList} 
+      toDoList = {toDoList} 
+      setToDoList ={setToDoList}/>
 <hr/>
+      <Donebox 
+      type = "Done"
+      setDoneToDoList ={setDoneToDoList} 
+      doneToDoList = {doneToDoList} 
+      setToDoList ={setToDoList}/>
+     </Container>
 
-<Donebox setDoneToDoList ={setDoneToDoList} doneToDoList = {doneToDoList} setToDoList ={setToDoList}/>
-      </div>
 
 </div>
   );
