@@ -1,33 +1,18 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { TodoContext } from './context/todoProvider';
 
 import GlobalStyle from './styles/GlobalStyle';
 import { Main, Section } from './styles/Container';
-import { getLocalStorage, syncLocalStorage } from './components/TodoState';
-import { runToast, ToastComponent } from './components/toast/Toast';
+import { ToastComponent } from './components/toast/Toast';
 import InputTodo from './components/InputTodo';
 import TodoItemList from './components/TodoItemList';
 
 function App() {
-    const [list, setList] = useState(() => getLocalStorage());
-
     // list 상태 변화할 때마다 로컬스토리지 동기화
-    useEffect(() => syncLocalStorage(list), [list]);
-
-    const toggleTodo = useCallback(
-        (id) => {
-            setList(list.map((item) => (item.id === id ? { ...item, done: !item.done } : item)));
-        },
-        [list]
-    );
-
-    const removeTodo = useCallback(
-        (id) => {
-            setList(list.filter((item) => item.id !== id));
-            runToast('삭제되었어요!');
-        },
-        [list]
-    );
-
+    const { list, setList } = useContext(TodoContext);
+    useEffect(() => {
+        console.log(list);
+    }, [list]);
     return (
         <>
             <GlobalStyle />
@@ -37,10 +22,10 @@ function App() {
                     <InputTodo list={list} setList={setList} />
                 </Section>
                 <Section>
-                    <TodoItemList done={false} list={list} setList={setList} toggleTodo={toggleTodo} remove={removeTodo}></TodoItemList>
+                    <TodoItemList done={false} list={list} setList={setList}></TodoItemList>
                 </Section>
                 <Section>
-                    <TodoItemList done={true} list={list} setList={setList} toggleTodo={toggleTodo} remove={removeTodo}></TodoItemList>
+                    <TodoItemList done={true} list={list} setList={setList}></TodoItemList>
                 </Section>
                 <ToastComponent />
             </Main>
