@@ -1,7 +1,6 @@
-
+//list 디자인 관리
 import styled from 'styled-components';
 
- 
 export const ListTitle = styled.div
     `font-size: 20px;
     `
@@ -9,7 +8,8 @@ export const ListTitle = styled.div
 
 export const List = styled.li
 `
-    
+    color: ${(props) => props.color || "black"};
+    text-decoration: ${(props) => props.decoration || "none"};
 `
 
 export const Button = styled.span

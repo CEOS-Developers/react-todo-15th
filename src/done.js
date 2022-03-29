@@ -1,17 +1,9 @@
 import styled, { createGlobalStyle } from "styled-components";
-//import DoneList from "./donelist";
+import { ListTitle, Button, Ul,List} from "./Container";
 
 const StyledLi = styled.li
 ` color: gray;
   text-decoration:line-through;
-`
-;
-
-const Styledemoji = styled.span
-
-`
-margin:4px;
-
 `
 ;
 
@@ -29,17 +21,17 @@ function done({type,setDoneToDoList ,doneToDoList ,setToDoList}){
         return (
 
 
-            <ul className = "done-box">
-            <div className="title">👻Done({doneToDoList.length})</div>
+            <Ul className = "done-box">
+            <ListTitle>👻Done({doneToDoList.length})</ListTitle>
               {doneToDoList.map((item, id) => (
-               <StyledLi key={id}>
-               <Styledemoji onClick={() => moveToDoButton(item,id)}>📂</Styledemoji>
+               <List color="gray" decoration ="line-through" key={id}>
+               <Button onClick={() => moveToDoButton(item,id)}>📂</Button>
                {item}
-               <Styledemoji onClick={() => deleteDoneButton(id)}>❌</Styledemoji>
-               </StyledLi>
+               <Button onClick={() => deleteDoneButton(id)}>❌</Button>
+               </List>
               
           ))}
-          </ul>
+          </Ul>
 
         );
 }

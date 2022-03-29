@@ -3,7 +3,7 @@ import './style.css';
 import './background.js';
 import Clock from './clock.js';
 import Todobox from "./ToDo.js";
-import Donebox from "./done.js"; 
+import Donebox from "./Done.js"; 
 import styled  from "styled-components";
 
 function App() {
