@@ -1,12 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { ListTitle, Button, Ul,List} from "./Container";
 
-const StyledLi = styled.li
-` color: gray;
-  text-decoration:line-through;
-`
-;
-
 function done({type,setDoneToDoList ,doneToDoList ,setToDoList}){
     const moveToDoButton = (item,id) =>{
    
