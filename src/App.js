@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.css';
 import { useState } from 'react';
+import { GlobalStyle } from './styles/GlobalStyle';
+import styled from 'styled-components';
 import TodoList from './components/TodoList';
 import TodoInsert from './components/TodoInsert';
 
-let nextId = 4;
+let gNextId = 4;
 
 const App = () => {
   const [todos, setTodos] = useState([
@@ -30,12 +32,12 @@ const App = () => {
   const onInsertTodo = (text) => {
     if (text === '') return;
     const todo = {
-      id: nextId,
+      id: gNextId,
       text,
       isDone: false,
     };
     setTodos((todos) => todos.concat(todo));
-    ++nextId;
+    ++gNextId;
   };
 
   const onIsDoneToggle = (id) => {
@@ -51,58 +53,61 @@ const App = () => {
   };
 
   return (
-    <div className="Screen">
-      <div className="Container">
-        <TodoList
-          todos={todos}
-          doneCnt={doneCnt}
-          todoCnt={todoCnt}
-          onIsDoneToggle={onIsDoneToggle}
-          onRemove={onRemove}
-        />
-        <TodoInsert onInsertTodo={onInsertTodo} />
-      </div>
-    </div>
+    <>
+      <GlobalStyle />
+      <Screen>
+        <Wrapper>
+          <TodoList
+            todos={todos}
+            doneCnt={doneCnt}
+            todoCnt={todoCnt}
+            onIsDoneToggle={onIsDoneToggle}
+            onRemove={onRemove}
+          />
+          <TodoInsert onInsertTodo={onInsertTodo} />
+        </Wrapper>
+      </Screen>
+    </>
     /*
-    ** <Component hierarchy>
-    **
-    **        App
-    **       /   \
-    ** TodoList  TodoInsert
-    **    |
-    ** TodoItem
-    **
-    *
-    ** <Tag hierarchy>
-    **
-    ** Screen
-    **  ㄴ Container
-    **     ㄴ TodoList
-    **        ㄴ TodoTitle (header)
-    **        ㄴ TodoItem (section)
-    **           ㄴ Content (flex-container)
-    **              ㄴ CheckButton (flex-container), Text, EditButton, DeleteButton
-    **     ㄴ TodoInsert
-    **        ㄴ Form (flex-container)
-    **           ㄴ input, SubmitButton
-    */
+     ** <Component hierarchy>
+     **
+     **        App
+     **       /   \
+     ** TodoList  TodoInsert
+     **    |
+     ** TodoItem
+     **
+     **
+     ** <Tag hierarchy>
+     **
+     ** Screen
+     **  ㄴ Wrapper
+     **     ㄴ TodoList
+     **        ㄴ TodoTitle (header)
+     **        ㄴ TodoItem (section)
+     **           ㄴ Content
+     **              ㄴ CheckButton, Text, EditButton, DeleteButton
+     **     ㄴ TodoInsert (section)
+     **        ㄴ Form
+     **           ㄴ input, SubmitButton
+     */
   );
 };
 
-export default App;
+const Screen = styled.div`
+  width: 360px;
+  height: 600px;
+  background: #fff;
 
-/*
- ** <Reference>
- **
- ** importing React 와 JSX 사용의 상관관계
- ** https://hwani.dev/import-react/
- **
- ** React icons
- ** https://react-icons.github.io/react-icons/
- **
- ** How can I interpolate JSX with an expression in a string?
- ** https://stackoverflow.com/questions/30372538/how-can-i-interpolate-jsx-with-an-expression-in-a-string
- **
- ** React className naming convention
- ** https://stackoverflow.com/questions/57221878/react-classname-naming-convention
- */
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(105, 85, 85, 0.5);
+`;
+
+const Wrapper = styled.div`
+  margin: 0% 4.5% 0% 4.5%;
+`;
+
+export default App;

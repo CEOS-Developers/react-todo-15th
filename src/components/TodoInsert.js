@@ -16,18 +16,20 @@ const TodoInsert = ({ onInsertTodo }) => {
   };
 
   return (
-    <form className="Form" onSubmit={onSubmit}>
-      <input
-        className="Input"
-        placeholder=" Please type here..."
-        autoFocus
-        value={value}
-        onChange={onChange}
-      />
-      <button className="Button" type="submit">
-        <BsPlusCircle />
-      </button>
-    </form>
+    <section>
+      <form className="Form" onSubmit={onSubmit}>
+        <input
+          className="Input"
+          placeholder=" Please type here..."
+          autoFocus
+          value={value}
+          onChange={onChange}
+        />
+        <button className="Button" type="submit">
+          <BsPlusCircle />
+        </button>
+      </form>
+    </section>
   );
 };
 
