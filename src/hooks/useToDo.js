@@ -1,23 +1,38 @@
 import { useState } from "react";
 
 
-const useToDo=(setDoneToDoList ,toDoList ,setToDoList) => {
+const useToDo=(type,setDoneToDoList, List ,setToDoList) => {
   
-    const deleteToDoButton = id => {
-        setToDoList(toDoList.filter((item, todoId) => id !== todoId));
+  
+  const setToDo = (item,id) => {
+                           if(type === "Todo") 
+                           setToDoList(List.filter((item, index) => id !== index));
+                          else
+                           setDoneToDoList(List.filter((item, index) => id !== index));
+                          
+                          }
+
+  const setDoneToDo = (item,id) => {
+                             if(type === "Todo") 
+                               setDoneToDoList((current) => [item, ...current]);
+                             else
+                                setToDoList((current) => [item, ...current]);
+  }
+  const deleteButton = (item,id) => {
+     
+      setToDo(item,id);
         
       };
         
-      const moveDoneButton = (item,id) =>{
+      const moveButton = (item,id) =>{
         
-        setDoneToDoList((current) => [item, ...current]);
-        setToDoList(toDoList.filter((item,  todoId) => id !== todoId));
-        
-    
+       setDoneToDo(item,id);
+       setToDo(item,id);
+      
       };
 
 
-  return {deleteToDoButton, moveDoneButton};
+  return {deleteButton, moveButton};
 };
 
 

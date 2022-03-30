@@ -1,8 +1,21 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { ListTitle, Button, Ul,List} from "./Container";
+import useToDo from "./hooks/useToDo";
 
-function done({type,setDoneToDoList ,doneToDoList ,setToDoList}){
-    const moveToDoButton = (item,id) =>{
+/*type DoneProps = {
+
+  type : string;
+  setDoneToDoList: ()=>void;
+  doneToDoList : Array<string>;
+  setToDoList: ()=>void;
+}
+*/
+
+function Done({type,setDoneToDoList ,doneToDoList ,setToDoList}){
+  
+  const {deleteButton, moveButton} = useToDo(type,setDoneToDoList ,doneToDoList ,setToDoList);
+  
+  const moveToDoButton = (item,id) =>{
    
         setToDoList((current) => [item, ...current]);
         setDoneToDoList(doneToDoList.filter((item, doneId) => id !== doneId));
@@ -19,9 +32,9 @@ function done({type,setDoneToDoList ,doneToDoList ,setToDoList}){
             <ListTitle>👻Done({doneToDoList.length})</ListTitle>
               {doneToDoList.map((item, id) => (
                <List color="gray" decoration ="line-through" key={id}>
-               <Button onClick={() => moveToDoButton(item,id)}>📂</Button>
+               <Button onClick={() => moveButton(item,id)}>📂</Button>
                {item}
-               <Button onClick={() => deleteDoneButton(id)}>❌</Button>
+               <Button onClick={() => deleteButton(item,id)}>❌</Button>
                </List>
               
           ))}
@@ -30,4 +43,4 @@ function done({type,setDoneToDoList ,doneToDoList ,setToDoList}){
         );
 }
 
-export default done;
+export default Done;

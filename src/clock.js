@@ -7,7 +7,9 @@ import styled from "styled-components";
     const minutes = String(date.getMinutes()).padStart(2, "0");
     const seconds = String(date.getSeconds()).padStart(2, "0");
     
-   
+   const StyledButton = styled.h1
+   `text-align: center`
+   ;
     
     
    return <StyledButton>{`${hours}:${minutes}:${seconds}`}</StyledButton>;
@@ -16,9 +18,7 @@ import styled from "styled-components";
    
 };
  
-const StyledButton = styled.h1
-   `text-align: center`
-   ;
+
 
 setInterval(Clock, 1000);
 export default Clock;

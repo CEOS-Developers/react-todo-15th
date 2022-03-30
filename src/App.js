@@ -1,10 +1,11 @@
 import { useState } from "react";
 import './style.css';
 import './background.js';
-import Clock from './clock.js';
-import Todobox from "./ToDo.js";
-import Donebox from "./Done.js"; 
+import Clock from './clock';
+import Todobox from "./ToDo";
+import Donebox from "./Done"; 
 import styled  from "styled-components";
+import InputForm from "./Inputform";
 
 function App() {
   const [toDo, inputToDo] = useState("");
@@ -14,7 +15,6 @@ function App() {
   
   //inputToDo를 통해 입력받음
   const onChange = (event) => inputToDo(event.target.value);
-
 
   const submitInput = (event) => {
       event.preventDefault();
@@ -54,23 +54,23 @@ function App() {
     <Clock/>
     <Container>
       <h1>❗투두리스트❗</h1>
-    
      <InputBox>
-      
+    
+     
      <form onSubmit={submitInput} >
-      <input
-        className = "toDo"
-        onChange={onChange}
-        value={toDo}
-        type="string"
-        placeholder="할 일을 입력하세요"
       
-      />
-      <span className = "toDoButton" onClick={submitInput}> +</span>
-    </form>
-      
-      </InputBox>
-
+        <input
+          className = "toDo"
+          onChange={e => inputToDo(e.target.value)}
+          value={toDo}
+          type="string"
+          placeholder="할 일을 입력하세요"
+        
+        />
+  
+        <span className = "toDoButton" onClick={submitInput}> +</span>
+      </form>
+    </InputBox>
 
       <hr/>
       
