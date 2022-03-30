@@ -14,20 +14,7 @@ import useToDo from "./hooks/useToDo";
 function Done({type,setDoneToDoList ,doneToDoList ,setToDoList}){
   
   const {deleteButton, moveButton} = useToDo(type,setDoneToDoList ,doneToDoList ,setToDoList);
-  
-  const moveToDoButton = (item,id) =>{
-   
-        setToDoList((current) => [item, ...current]);
-        setDoneToDoList(doneToDoList.filter((item, doneId) => id !== doneId));
-      }
-        
-      const deleteDoneButton = id => {
-        setDoneToDoList(doneToDoList.filter((item, doneId) => id !== doneId));
-        };
-
         return (
-
-
             <Ul className = "done-box">
             <ListTitle>👻Done({doneToDoList.length})</ListTitle>
               {doneToDoList.map((item, id) => (

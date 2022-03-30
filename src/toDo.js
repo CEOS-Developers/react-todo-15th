@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components";
+
 import useToDo from "./hooks/useToDo";
 import { ListTitle, Button, Ul, List} from "./Container";
 import TodoItem from "./TodoItem";
@@ -16,16 +16,17 @@ function ToDo({type,setDoneToDoList ,toDoList ,setToDoList}){
     
  const {deleteButton, moveButton} = useToDo(type,setDoneToDoList ,toDoList ,setToDoList);
     
-
 return (
   <Ul>
   <ListTitle>✍️To Do({toDoList.length})</ListTitle>
- {toDoList.map((item, id) => (
+ {
+ toDoList.map((item, id) => (
 <List key={id}>
+<div>
 <Button onClick={() => moveButton(item,id)}>✔️</Button>
 {item}
 <Button onClick={() => deleteButton(item,id)}>❌</Button>
-
+</div>
 </List>
 ))}
 </Ul>

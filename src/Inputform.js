@@ -22,6 +22,7 @@ function Inputform ({toDoList,setToDoList}){
       width: 300px;
       height: 50px;
       border-radius: 9px;
+
       
       `
       
@@ -40,11 +41,12 @@ function Inputform ({toDoList,setToDoList}){
       return(
       <Form onSubmit={submitInput} >
         <Input
-          className = "toDo"
           onChange={onChange}
           value={toDo}
-          type="string"
+          type="text"
           placeholder="할 일을 입력하세요"
+          autoFocus = "autoFocus"
+          spellCheck="false"
         
         />
         <ToDoButton onClick={submitInput}>+</ToDoButton>
