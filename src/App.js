@@ -1,5 +1,4 @@
 import { useState } from "react";
-import './style.css';
 import './background.js';
 import Clock from './clock';
 import Todobox from "./ToDo";
@@ -8,24 +7,10 @@ import styled  from "styled-components";
 import InputForm from "./Inputform";
 
 function App() {
-  //const [toDo, inputToDo] = useState("");
   const [toDoList, setToDoList] = useState([]);
   const [doneToDoList, setDoneToDoList] = useState([]);
 
-  
-  //inputToDo를 통해 입력받음
-  //const onChange = (event) => inputToDo(event.target.value);
-
-  /*const submitInput = (event) => {
-      event.preventDefault();
-      if (toDo) {
-        setToDoList((currentArray) => [toDo, ...currentArray]); //입력받은 걸 배열에 넣음
-      }
-      inputToDo("");
-
-    };
-*/
-    const Container = styled.div
+  const Container = styled.div
       `
       text-align: center;
       width: 360px;
@@ -60,25 +45,23 @@ function App() {
     toDoList={toDoList} 
     setToDoList ={setToDoList}/>
     </InputBox>
-
       <hr/>
-      
       <Todobox
       type = "Todo" 
       setDoneToDoList ={setDoneToDoList} 
       toDoList = {toDoList} 
       setToDoList ={setToDoList}/>
-<hr/>
+       <hr/>
       <Donebox 
       type = "Done"
       setDoneToDoList ={setDoneToDoList} 
       doneToDoList = {doneToDoList} 
       setToDoList ={setToDoList}/>
      </Container>
-
-
 </div>
+   
   );
+  
 }
 
 export default App;

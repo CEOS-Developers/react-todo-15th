@@ -4,8 +4,7 @@ import styled  from "styled-components";
 function Inputform ({toDoList,setToDoList}){
 
     const [toDo, inputToDo] = useState("");
-    //const [toDoList, setToDoList] = useState([]);
-
+  
     const onChange = (event) => inputToDo(event.target.value);
 
     const submitInput = (event) => {
@@ -19,14 +18,13 @@ function Inputform ({toDoList,setToDoList}){
     
     const Input = styled.input
       `
-
+      font-family: 'SuncheonB';
       width: 300px;
       height: 50px;
       border-radius: 9px;
       
       `
       
-
       const ToDoButton = styled.span
       `
       cursor: pointer;
