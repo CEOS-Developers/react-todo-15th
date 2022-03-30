@@ -1,37 +1,63 @@
-import { useState } from "react";
-//import React = require("react");
+import { useCallback, useState } from "react";
+import styled  from "styled-components";
 
-function Inputform (toDo, toDoList, inputToDo, setToDoList){
+function Inputform ({toDoList,setToDoList}){
 
-    //const [toDo, inputToDo] = useState("");
+    const [toDo, inputToDo] = useState("");
     //const [toDoList, setToDoList] = useState([]);
 
+    const onChange = (event) => inputToDo(event.target.value);
+
     const submitInput = (event) => {
-        event.preventDefault();
-        if (toDo) {
-          setToDoList((currentArray) => [toDo, ...currentArray]); //입력받은 걸 배열에 넣음
-        }
-        inputToDo("");
-  
-      };
+      event.preventDefault();
+      
+      if (toDo) {
+        setToDoList((toDoArray) => [toDo, ...toDoArray]); //입력받은 걸 배열에 넣음
+      }
+      inputToDo("");
+    };
+    
+    const Input = styled.input
+      `
+
+      width: 300px;
+      height: 50px;
+      border-radius: 9px;
+      
+      `
+      
+
+      const ToDoButton = styled.span
+      `
+      cursor: pointer;
+      margin-left :5px;
+      `
+      
+      const Form = styled.form
+      `
+      margin-bottom: 10px;
+      `
+      ;
 
       return(
-      <form onSubmit={submitInput} >
-      
-        <input
+      <Form onSubmit={submitInput} >
+        <Input
           className = "toDo"
-          onChange={e => inputToDo(e.target.value)}
+          onChange={onChange}
           value={toDo}
           type="string"
           placeholder="할 일을 입력하세요"
         
         />
-  
-        <span className = "toDoButton" onClick={submitInput}> +</span>
-      </form>
+        <ToDoButton onClick={submitInput}>+</ToDoButton>
+      </Form>
       );
         
       
+
+
+
 }
+
 
 export default Inputform;
