@@ -4,13 +4,21 @@ declare module 'react' {
   }
 }
 
+interface IItemProps {
+  id: string;
+  text: string;
+  isDoneList: Array<String>;
+  handleTextClick: (string) => void;
+  handleDeleteBtnClick: (string) => void;
+}
+
 const Item = ({
   id,
   text,
   isDoneList,
   handleTextClick,
   handleDeleteBtnClick,
-}) => {
+}: IItemProps) => {
   return (
     <span>
       <li id={id} isDoneList={isDoneList} onClick={handleTextClick}>

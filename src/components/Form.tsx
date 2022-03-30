@@ -2,13 +2,14 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 const Form = ({ setSavedList }) => {
+  type input = { text: string };
   const [input, setInput] = useState('');
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
     if (input) {
