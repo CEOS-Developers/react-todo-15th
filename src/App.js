@@ -49,7 +49,6 @@ function App() {
       setDoneToDoList ={setDoneToDoList} 
       toDoList = {toDoList} 
       setToDoList ={setToDoList}/>
-      
        <hr/>
       <Donebox 
       type = "Done"

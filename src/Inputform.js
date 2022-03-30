@@ -52,11 +52,6 @@ function Inputform ({toDoList,setToDoList}){
         <ToDoButton onClick={submitInput}>+</ToDoButton>
       </Form>
       );
-        
-      
-
-
-
 }
 
 
