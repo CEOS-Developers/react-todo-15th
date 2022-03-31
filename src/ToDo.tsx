@@ -1,7 +1,8 @@
 
 import useToDo from "./hooks/useToDo";
 import { ListTitle, Button, Ul, List} from "./ListDesign";
-import TodoItem from "./TodoItem";
+import { Dispatch, SetStateAction} from "react";
+import {ItemList} from "./type";
 
 /* type ToDoProps = {
 
@@ -12,15 +13,16 @@ import TodoItem from "./TodoItem";
 }
 */
 
-function ToDo({type,setDoneToDoList ,toDoList ,setToDoList}){
+function ToDo({type,setDoneToDoList ,toDoList ,setToDoList}: ItemList){
     
- const {deleteButton, moveButton} = useToDo(type,setDoneToDoList ,toDoList ,setToDoList);
+  let list : string[] = ItemList;
+ const {deleteButton, moveButton} = useToDo(type,setDoneToDoList ,list ,setToDoList);
     
 return (
   <Ul>
-  <ListTitle>✍️To Do({toDoList.length})</ListTitle>
+  <ListTitle>✍️To Do({list.length})</ListTitle>
  {
- toDoList.map((item, id) => (
+ list.map((item, id) => (
 <List key={id}>
 <div>
 <Button onClick={() => moveButton(item,id)}>✔️</Button>
