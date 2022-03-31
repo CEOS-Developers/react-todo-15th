@@ -2,7 +2,6 @@ import styled, { createGlobalStyle } from "styled-components";
 import { ListTitle, Button, Ul,List} from "./ListDesign";
 import useToDo from "./hooks/useToDo";
 import {ItemList} from "./type";
-import React = require("react");
 
 /*type DoneProps = {
 
@@ -13,7 +12,7 @@ import React = require("react");
 }
 */
 
-function Done({type,setDoneToDoList ,ItemList ,setToDoList}){
+function Done({type,setDoneToDoList ,ItemList ,setToDoList} : ItemList){
   
   let list : string[] = ItemList;
 

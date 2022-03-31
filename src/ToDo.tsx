@@ -3,7 +3,7 @@ import useToDo from "./hooks/useToDo";
 import { ListTitle, Button, Ul, List} from "./ListDesign";
 import { Dispatch, SetStateAction} from "react";
 import {ItemList} from "./type";
-import React = require("react");
+
 
 /* type ToDoProps = {
 

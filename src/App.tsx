@@ -1,16 +1,14 @@
 import { useState } from "react";
-import './background.js';
+import './background';
 import Clock from './clock';
 import Todobox from "./ToDo";
 import Donebox from "./Done"; 
-import styled  from "styled-components";
 import InputForm from "./Inputform";
-import React = require("react");
 import {Container, InputBox} from "./BoxDesign";
 
 function App() {
-  const [toDoList, setToDoList] = useState([]);
-  const [doneToDoList, setDoneToDoList] = useState([]);
+  const [toDoList, setToDoList] = useState<string[]>([]);
+  const [doneToDoList, setDoneToDoList] = useState<string[]>([]);
 
 
 

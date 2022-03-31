@@ -3,9 +3,9 @@ import { Dispatch, SetStateAction} from "react";
 export interface IProps{
 
   type : string;
-  setDoneToDoList:  Dispatch<SetStateAction<string[]>>
+  setDoneToDoList:  Dispatch<SetStateAction<string[]>>;
   list : Array<string>;
-  setToDoList: Dispatch<SetStateAction<string[]>>
+  setToDoList: Dispatch<SetStateAction<string[]>>;
 
 }
 
