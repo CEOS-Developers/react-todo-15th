@@ -9,13 +9,23 @@ const TodoList = ({ todos, doneCnt, todoCnt, handleIsDoneToggle, handleRemoveTod
       <TodoHeader>Todo ({todoCnt})</TodoHeader>
       <TodoSection>
         {todoItems.map((todo) => (
-          <TodoItem todo={todo} key={todo.id} handleIsDoneToggle={handleIsDoneToggle} handleRemoveTodo={handleRemoveTodo} />
+          <TodoItem
+            todo={todo}
+            key={todo.id}
+            handleIsDoneToggle={handleIsDoneToggle}
+            handleRemoveTodo={handleRemoveTodo}
+          />
         ))}
       </TodoSection>
       <DoneHeader>Done ({doneCnt})</DoneHeader>
       <DoneSection>
         {doneItems.map((todo) => (
-          <TodoItem todo={todo} key={todo.id} handleIsDoneToggle={handleIsDoneToggle} handleRemoveTodo={handleRemoveTodo} />
+          <TodoItem
+            todo={todo}
+            key={todo.id}
+            handleIsDoneToggle={handleIsDoneToggle}
+            handleRemoveTodo={handleRemoveTodo}
+          />
         ))}
       </DoneSection>
     </>

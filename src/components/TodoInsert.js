@@ -3,26 +3,26 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 const TodoInsert = ({ handleTodoInsert }) => {
-  const [value, setValue] = useState('');
+  const [inputValue, setInputValue] = useState('');
 
-  const onChange = (e) => {
-    setValue(e.target.value);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleTodoInsert(inputValue);
+    setInputValue('');
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    handleTodoInsert(value);
-    setValue('');
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
   };
 
   return (
     <section>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Input
           placeholder=" Please type here..."
           autoFocus
-          value={value}
-          onChange={onChange}
+          value={inputValue}
+          onChange={handleChange}
         />
         <SubmitButton type="submit">
           <BsPlusCircle />

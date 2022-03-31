@@ -25,8 +25,14 @@ const App = () => {
       isDone: false,
     },
   ]);
-  const doneCnt = todos.filter((todo) => todo.isDone).length;
-  const todoCnt = todos.length - doneCnt;
+
+  const handleIsDoneToggle = (id) => {
+    setTodos((todos) => todos.map((todo) => (todo.id === id ? { ...todo, isDone: !todo.isDone } : todo)));
+  };
+
+  const handleRemoveTodo = (id) => {
+    setTodos((todos) => todos.filter((todo) => todo.id !== id));
+  };
 
   const handleTodoInsert = (text) => {
     if (text) {
@@ -40,13 +46,8 @@ const App = () => {
     }
   };
 
-  const handleIsDoneToggle = (id) => {
-    setTodos((todos) => todos.map((todo) => (todo.id === id ? { ...todo, isDone: !todo.isDone } : todo)));
-  };
-
-  const handleRemoveTodo = (id) => {
-    setTodos((todos) => todos.filter((todo) => todo.id !== id));
-  };
+  const doneCnt = todos.filter((todo) => todo.isDone).length;
+  const todoCnt = todos.length - doneCnt;
 
   return (
     <>
@@ -58,7 +59,8 @@ const App = () => {
             doneCnt={doneCnt}
             todoCnt={todoCnt}
             handleIsDoneToggle={handleIsDoneToggle}
-            handleRemoveTodo={handleRemoveTodo} />
+            handleRemoveTodo={handleRemoveTodo}
+          />
           <TodoInsert handleTodoInsert={handleTodoInsert} />
         </Wrapper>
       </Screen>
