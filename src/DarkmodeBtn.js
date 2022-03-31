@@ -58,7 +58,7 @@ const ToggleBtn = styled.input`
 const DarkmodeBtn = ({ darkMode, setDarkMode }) => {
   return (
     <ToggleContainer>
-        <ToggleBtn type="checkbox" checked={darkMode} onChange={(e) => setDarkMode(!darkMode)} />;
+        <ToggleBtn type="checkbox" checked={darkMode} onChange={(e) => setDarkMode(!darkMode)} />
     </ToggleContainer>
   )
 };
