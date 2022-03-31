@@ -28,31 +28,23 @@ const TodoInputForm = () => {
   );
 
   return (
-    <TitleContents>
-      <TodoTitle>📝 투두리스트</TodoTitle>
-      <TodoInputItems onSubmit={_addTodoItem}>
-        <TodoInput
-          placeholder="할 일을 입력하세요"
-          value={newText}
-          onChange={_handleTextChange}
-        />
-        <TodoInputBtn type="submit">+</TodoInputBtn>
-      </TodoInputItems>
-    </TitleContents>
+    <TodoInputItems onSubmit={_addTodoItem}>
+      <TodoInput
+        placeholder="할 일을 입력하세요"
+        value={newText}
+        onChange={_handleTextChange}
+      />
+      <TodoInputBtn type="submit">+</TodoInputBtn>
+    </TodoInputItems>
   );
 };
 
-const TitleContents = styled.section`
-  padding-bottom: 15px;
-  border-bottom: 1px solid lightgrey;
-`;
-const TodoTitle = styled.h2`
-  padding-left: 20px;
-`;
 const TodoInputItems = styled.form`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid lightgrey;
 `;
 const TodoInput = styled.input`
   border: 1px solid lightgrey;

@@ -26,6 +26,9 @@ const App = () => {
   return (
     <Container>
       <Box>
+        <TitleContents>
+          <TodoTitle>📝 투두리스트</TodoTitle>
+        </TitleContents>
         <TodoInputForm />
         <TodoList />
         <DoneList />
@@ -34,6 +37,10 @@ const App = () => {
   );
 };
 
+const TitleContents = styled.section``;
+const TodoTitle = styled.h2`
+  padding-left: 20px;
+`;
 const Container = styled.div`
   height: 100vh;
   display: flex;
