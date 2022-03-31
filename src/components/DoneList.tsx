@@ -29,4 +29,4 @@ const TodoContents = styled.section`
   padding: 0 20px;
 `;
 
-export default React.memo(DoneList);
+export default DoneList;

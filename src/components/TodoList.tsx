@@ -30,4 +30,4 @@ const TodoContents = styled.section`
   border-bottom: 1px solid lightgrey;
 `;
 
-export default React.memo(TodoList);
+export default TodoList;

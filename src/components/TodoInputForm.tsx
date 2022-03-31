@@ -78,4 +78,4 @@ const TodoInputBtn = styled.button`
   }
 `;
 
-export default React.memo(TodoInputForm);
+export default TodoInputForm;
