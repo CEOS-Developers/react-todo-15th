@@ -4,17 +4,14 @@ import styled from 'styled-components';
 
 const TodoInsert = ({ handleTodoInsert }) => {
   const [inputValue, setInputValue] = useState('');
-
   const handleSubmit = (e) => {
     e.preventDefault();
     handleTodoInsert(inputValue);
     setInputValue('');
   };
-
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
-
   return (
     <section>
       <Form onSubmit={handleSubmit}>
@@ -31,8 +28,6 @@ const TodoInsert = ({ handleTodoInsert }) => {
     </section>
   );
 };
-
-export default TodoInsert;
 
 const Form = styled.form`
   height: 10%;
@@ -85,3 +80,5 @@ const SubmitButton = styled.button`
     cursor: pointer;
   }
 `;
+
+export default TodoInsert;

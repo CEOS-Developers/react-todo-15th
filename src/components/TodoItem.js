@@ -31,8 +31,6 @@ const TodoItem = ({ todo, handleIsDoneToggle, handleRemoveTodo }) => {
   );
 };
 
-export default TodoItem;
-
 const Wrapper = styled.div`
   margin: 3px 2px 3px 1.5px;
   border-radius: 5px;
@@ -127,3 +125,5 @@ const DeleteButton = styled.button`
     cursor: pointer;
   }
 `;
+
+export default TodoItem;

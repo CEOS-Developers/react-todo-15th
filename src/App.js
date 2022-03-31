@@ -25,15 +25,14 @@ const App = () => {
       isDone: false,
     },
   ]);
-
   const handleIsDoneToggle = (id) => {
-    setTodos((todos) => todos.map((todo) => (todo.id === id ? { ...todo, isDone: !todo.isDone } : todo)));
+    setTodos((todos) =>
+      todos.map((todo) => (todo.id === id ? { ...todo, isDone: !todo.isDone } : todo))
+    );
   };
-
   const handleRemoveTodo = (id) => {
     setTodos((todos) => todos.filter((todo) => todo.id !== id));
   };
-
   const handleTodoInsert = (text) => {
     if (text) {
       const todo = {
@@ -41,14 +40,12 @@ const App = () => {
         text,
         isDone: false,
       };
-      setTodos((todos) => todos.concat(todo));
+      setTodos((todos) => [...todos, todo]);
       ++gNextId;
     }
   };
-
   const doneCnt = todos.filter((todo) => todo.isDone).length;
   const todoCnt = todos.length - doneCnt;
-
   return (
     <>
       <GlobalStyle />
