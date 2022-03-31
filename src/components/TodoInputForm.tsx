@@ -1,37 +1,31 @@
-import React, { useState, useCallback, useContext } from "react";
+import React, { useCallback, useContext } from "react";
 import styled from "styled-components";
 import { TodoContext } from "contexts";
+import { useInput } from "hooks";
 
 const TodoInputForm = () => {
-  const [newText, setNewText] = useState("");
   const { _addTodoList } = useContext(TodoContext);
-
-  const _handleTextChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>): void => {
-      setNewText(e.target.value);
-    },
-    [],
-  );
+  const { text, _handleTextChange, _resetText } = useInput("");
 
   // todo item 추가
   const _addTodoItem = useCallback(
     (e: React.FormEvent): void => {
       e.preventDefault();
 
-      if (newText.trim()) {
+      if (text.trim()) {
         // list에 todo item 추가
-        _addTodoList(newText);
+        _addTodoList(text);
       }
-      setNewText("");
+      _resetText();
     },
-    [newText, _addTodoList],
+    [text, _resetText, _addTodoList],
   );
 
   return (
     <TodoInputItems onSubmit={_addTodoItem}>
       <TodoInput
         placeholder="할 일을 입력하세요"
-        value={newText}
+        value={text}
         onChange={_handleTextChange}
       />
       <TodoInputBtn type="submit">+</TodoInputBtn>
