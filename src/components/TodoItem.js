@@ -13,13 +13,19 @@ const TodoItem = ({ todo, onIsDoneToggle, onRemove }) => {
     <TodoItemWrapper>
       <Content>
         {isDone ? (
-          <button className="CheckButton" onClick={() => onIsDoneToggle(id)}>
+          <CheckButton onClick={() => onIsDoneToggle(id)}>
             <BsCheckCircleFill className="CheckButtonFill" />
-          </button>
+          </CheckButton>
         ) : (
-          <button className="CheckButton" onClick={() => onIsDoneToggle(id)}>
+          // <button className="CheckButton" onClick={() => onIsDoneToggle(id)}>
+          //   <BsCheckCircleFill className="CheckButtonFill" />
+          // </button>
+          <CheckButton onClick={() => onIsDoneToggle(id)}>
             <BsCheckCircle className="CheckButtonUnFill" />
-          </button>
+          </CheckButton>
+          // <button className="CheckButton" onClick={() => onIsDoneToggle(id)}>
+          //   <BsCheckCircle className="CheckButtonUnFill" />
+          // </button>
         )}
         <Text>{text}</Text>
         <EditButton>
@@ -56,6 +62,28 @@ const Content = styled.div`
 
   display: flex;
   align-items: center;
+`;
+
+const CheckButton = styled.button`
+  height: 1.5rem;
+  width: 2.2rem;
+  margin-left: -0.35rem;
+
+  font-size: 1.5rem;
+
+  background: none;
+  border: none;
+  opacity: 0.65;
+
+  flex: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    color: darkgray;
+    cursor: pointer;
+  }
 `;
 
 const Text = styled.span`
