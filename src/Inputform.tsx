@@ -1,6 +1,15 @@
 import {useState } from "react";
 import styled  from "styled-components";
 
+
+/*type InputProps = {
+
+  toDoList : string[];
+  setToDoList : Dispatch<SetStateAction<string[]>>
+};
+*/
+
+
 function Inputform ({toDoList,setToDoList}){
 
     const [toDo, inputToDo] = useState("");

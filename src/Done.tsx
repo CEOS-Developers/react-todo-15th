@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { ListTitle, Button, Ul,List} from "./Container";
+import { ListTitle, Button, Ul,List} from "./ListDesign";
 import useToDo from "./hooks/useToDo";
 
 /*type DoneProps = {
