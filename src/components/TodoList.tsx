@@ -6,6 +6,7 @@ import { TodoContext } from "contexts";
 const TodoList = () => {
   const { todoList, dispatch } = useContext(TodoContext);
 
+  // done item 추가
   const _addDoneList = useCallback(
     (todo: string): void => {
       dispatch({
@@ -16,6 +17,7 @@ const TodoList = () => {
     [dispatch],
   );
 
+  // todo item 삭제
   const _deleteTodoList = useCallback(
     (idx: number): void => {
       dispatch({
