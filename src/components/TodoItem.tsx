@@ -1,3 +1,5 @@
+// https://blog.devgenius.io/using-styled-components-and-props-with-typescript-react-a3c32a496f47
+
 import styled from 'styled-components';
 import { ReactComponent as Remove } from '../assets/remove.svg';
 import useTodoContext from '../hooks/useTodoContext';
@@ -7,7 +9,6 @@ interface ITodoItemProps {
     item: ITodoItem;
 }
 
-// https://blog.devgenius.io/using-styled-components-and-props-with-typescript-react-a3c32a496f47
 interface IBtn {
     done: boolean;
 }
@@ -52,6 +53,10 @@ const RadioButton = styled.div<IBtn>`
     border: 2px solid #8989bb;
     cursor: pointer;
     background-color: ${(props: any) => (props.done ? '#8989bb' : 'none')};
+    &:hover {
+        background-color: #cacae4;
+        border-color: #cacae4;
+    }
 `;
 
 const ItemContent = styled.div`

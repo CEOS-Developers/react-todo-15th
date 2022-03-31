@@ -1,13 +1,14 @@
+// https://felixgerschau.com/react-typescript-context/ : react.FC (함수형 컴포넌트)
+
 import { createContext, FC } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
-import { TodoItemContext } from '../Interface';
+import { ITodoItemContext } from '../Interface';
 
-export const TodoContext = createContext<TodoItemContext>({
+export const TodoContext = createContext<ITodoItemContext>({
     list: [],
     setList: () => {},
 });
 
-// https://felixgerschau.com/react-typescript-context/ : react.FC (함수형 컴포넌트)
 const TodoProvider: FC = ({ children }) => {
     const { list, setList } = useLocalStorage('item', []);
 

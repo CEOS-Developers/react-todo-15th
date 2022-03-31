@@ -6,7 +6,7 @@ export interface ITodoItem {
     done: boolean;
 }
 
-export interface TodoItemContext {
+export interface ITodoItemContext {
     list: ITodoItem[];
     setList: Dispatch<SetStateAction<ITodoItem[]>>;
 }
