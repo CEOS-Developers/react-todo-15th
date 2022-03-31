@@ -2,7 +2,7 @@ import { useEffect ,useState } from "react";
 import styled from "styled-components";
 
    function Clock() {
-      const [time, setTime] = useState();
+      const [time, setTime] = useState<string>();
       
       function getTime (){
       const date = new Date();
