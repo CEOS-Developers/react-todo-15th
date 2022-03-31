@@ -7,20 +7,20 @@ const DoneList = () => {
   const { doneList, dispatch } = useContext(TodoContext);
 
   const _addTodoList = useCallback(
-    (todo: string) => {
+    (todo: string): void => {
       dispatch({
         type: "ADD_TODO",
-        value: { text: todo },
+        todo: { text: todo },
       });
     },
     [dispatch],
   );
 
   const _deleteDoneList = useCallback(
-    (idx: number) => {
+    (idx: number): void => {
       dispatch({
         type: "DELETE_DONE",
-        value: idx,
+        idx,
       });
     },
     [dispatch],

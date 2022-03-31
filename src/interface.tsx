@@ -18,5 +18,6 @@ export interface IState {
 
 export interface IAction {
   type: "ADD_TODO" | "DELETE_TODO" | "ADD_DONE" | "DELETE_DONE";
-  value: any;
+  todo?: { text: string };
+  idx?: number;
 }

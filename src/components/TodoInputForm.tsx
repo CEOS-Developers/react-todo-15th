@@ -16,7 +16,7 @@ const TodoInputForm = () => {
         // list에 todo item 추가
         dispatch({
           type: "ADD_TODO",
-          value: { text },
+          todo: { text },
         });
       }
       _resetText();

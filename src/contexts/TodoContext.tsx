@@ -18,27 +18,27 @@ const initialState = {
 const TodoContext = createContext<IState>(initialState);
 
 const reducer = (state: IState, action: IAction): IState => {
-  const { type, value } = action;
+  const { type, todo, idx } = action;
   switch (type) {
     case "ADD_TODO":
       return {
         ...state,
-        todoList: [...state.todoList, value],
+        todoList: todo ? [...state.todoList, todo] : state.todoList,
       };
     case "DELETE_TODO":
       return {
         ...state,
-        todoList: state.todoList.filter((_, todoIdx) => todoIdx !== value),
+        todoList: state.todoList.filter((_, todoIdx) => todoIdx !== idx),
       };
     case "ADD_DONE":
       return {
         ...state,
-        doneList: [...state.doneList, value],
+        doneList: todo ? [...state.doneList, todo] : state.doneList,
       };
     case "DELETE_DONE":
       return {
         ...state,
-        doneList: state.doneList.filter((_, todoIdx) => todoIdx !== value),
+        doneList: state.doneList.filter((_, todoIdx) => todoIdx !== idx),
       };
     default:
       throw new Error();
