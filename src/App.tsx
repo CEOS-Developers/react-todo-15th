@@ -5,32 +5,14 @@ import Todobox from "./ToDo";
 import Donebox from "./Done"; 
 import styled  from "styled-components";
 import InputForm from "./Inputform";
+import React = require("react");
+import {Container, InputBox} from "./BoxDesign";
 
 function App() {
   const [toDoList, setToDoList] = useState([]);
   const [doneToDoList, setDoneToDoList] = useState([]);
 
-  const Container = styled.div
-  `
-  text-align: center;
-  width: 360px;
-  height: 600px;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1px solid grey;
-  border-radius: 9px;
-`
-;
 
-const InputBox = styled.header
-`
-font-family: 'SuncheonB';
-flex: 0.3;
-border-bottom: 1px solid grey;
-
-`
-;
 
   return (
     <div>
