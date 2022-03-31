@@ -3,7 +3,11 @@ import { TodoContext } from '../context/todoProvider';
 import TodoItem from './TodoItem';
 import { List } from '../styles/Container';
 
-const TodoItemList = ({ done }) => {
+interface ITodoItemListProps {
+    done: Boolean;
+}
+
+const TodoItemList = ({ done }: ITodoItemListProps) => {
     const { list } = useContext(TodoContext);
     const sectionList = list.filter((item) => item.done === done);
 

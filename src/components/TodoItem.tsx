@@ -1,8 +1,18 @@
 import styled from 'styled-components';
 import { ReactComponent as Remove } from '../assets/remove.svg';
 import useTodoContext from '../hooks/useTodoContext';
+import { ITodoItem } from '../Interface';
 
-const TodoItem = ({ item }) => {
+interface ITodoItemProps {
+    item: ITodoItem;
+}
+
+// https://blog.devgenius.io/using-styled-components-and-props-with-typescript-react-a3c32a496f47
+interface IBtn {
+    done: boolean;
+}
+
+const TodoItem = ({ item }: ITodoItemProps) => {
     const { id, content, done } = item;
     const { deleteItem, toggleItem } = useTodoContext();
 
@@ -34,14 +44,14 @@ const ItemContentBox = styled.div`
     display: flex;
 `;
 
-const RadioButton = styled.div`
+const RadioButton = styled.div<IBtn>`
     width: 16px;
     height: 16px;
     margin-right: 10px;
     border-radius: 50%;
     border: 2px solid #8989bb;
     cursor: pointer;
-    background-color: ${(props) => (props.done ? '#8989bb' : 'none')};
+    background-color: ${(props: any) => (props.done ? '#8989bb' : 'none')};
 `;
 
 const ItemContent = styled.div`

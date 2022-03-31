@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction } from 'react';
 
-export interface TodoItem {
+export interface ITodoItem {
     id: string;
     content: string;
     done: boolean;
 }
 
 export interface TodoItemContext {
-    list: TodoItem[];
-    setList: Dispatch<SetStateAction<TodoItem[]>>;
+    list: ITodoItem[];
+    setList: Dispatch<SetStateAction<ITodoItem[]>>;
 }
