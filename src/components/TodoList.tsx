@@ -1,10 +1,30 @@
-import { useContext } from "react";
+import { useContext, useCallback } from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
 import { TodoContext } from "contexts";
 
 const TodoList = () => {
-  const { todoList, _addDoneList, _deleteTodoList } = useContext(TodoContext);
+  const { todoList, dispatch } = useContext(TodoContext);
+
+  const _addDoneList = useCallback(
+    (todo: string) => {
+      dispatch({
+        type: "ADD_DONE",
+        value: { text: todo },
+      });
+    },
+    [dispatch],
+  );
+
+  const _deleteTodoList = useCallback(
+    (idx: number) => {
+      dispatch({
+        type: "DELETE_TODO",
+        value: idx,
+      });
+    },
+    [dispatch],
+  );
 
   return (
     <TodoContents>

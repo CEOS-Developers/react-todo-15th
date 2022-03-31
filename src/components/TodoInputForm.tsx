@@ -4,7 +4,7 @@ import { TodoContext } from "contexts";
 import { useInput } from "hooks";
 
 const TodoInputForm = () => {
-  const { _addTodoList } = useContext(TodoContext);
+  const { dispatch } = useContext(TodoContext);
   const { text, _handleTextChange, _resetText } = useInput("");
 
   // todo item 추가
@@ -14,11 +14,14 @@ const TodoInputForm = () => {
 
       if (text.trim()) {
         // list에 todo item 추가
-        _addTodoList(text);
+        dispatch({
+          type: "ADD_TODO",
+          value: { text },
+        });
       }
       _resetText();
     },
-    [text, _resetText, _addTodoList],
+    [text, _resetText, dispatch],
   );
 
   return (
