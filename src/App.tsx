@@ -44,16 +44,18 @@ border-bottom: 1px solid grey;
     setToDoList ={setToDoList}/>
     </InputBox>
       <hr/>
+      
       <Todobox
       type = "Todo" 
       setDoneToDoList ={setDoneToDoList} 
-      toDoList = {toDoList} 
+      ItemList = {toDoList} 
       setToDoList ={setToDoList}/>
        <hr/>
+
       <Donebox 
       type = "Done"
       setDoneToDoList ={setDoneToDoList} 
-      doneToDoList = {doneToDoList} 
+      ItemList = {doneToDoList} 
       setToDoList ={setToDoList}/>
      </Container>
 </div>

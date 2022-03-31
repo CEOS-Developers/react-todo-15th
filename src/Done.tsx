@@ -1,6 +1,8 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { ListTitle, Button, Ul,List} from "./ListDesign";
 import useToDo from "./hooks/useToDo";
+import {ItemList} from "./type";
+import React = require("react");
 
 /*type DoneProps = {
 
@@ -11,13 +13,15 @@ import useToDo from "./hooks/useToDo";
 }
 */
 
-function Done({type,setDoneToDoList ,doneToDoList ,setToDoList}){
+function Done({type,setDoneToDoList ,ItemList ,setToDoList}){
   
-  const {deleteButton, moveButton} = useToDo(type,setDoneToDoList ,doneToDoList ,setToDoList);
+  let list : string[] = ItemList;
+
+  const {deleteButton, moveButton} = useToDo(type,setDoneToDoList ,list ,setToDoList);
         return (
             <Ul className = "done-box">
-            <ListTitle>👻Done({doneToDoList.length})</ListTitle>
-              {doneToDoList.map((item, id) => (
+            <ListTitle>👻Done({ItemList.length})</ListTitle>
+              {ItemList.map((item, id) => (
                <List color="gray" decoration ="line-through" key={id}>
                <Button onClick={() => moveButton(item,id)}>📂</Button>
                {item}

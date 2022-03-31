@@ -1,22 +1,22 @@
 import {useState } from "react";
 import styled  from "styled-components";
+import { Dispatch, SetStateAction} from "react";
+import useInput from "./hooks/useInput";
+import React = require("react");
 
-
-/*type InputProps = {
+type InputProps = {
 
   toDoList : string[];
   setToDoList : Dispatch<SetStateAction<string[]>>
 };
-*/
 
 
-function Inputform ({toDoList,setToDoList}){
 
-    const [toDo, inputToDo] = useState("");
-  
-    const onChange = (event) => inputToDo(event.target.value);
+function Inputform ({toDoList,setToDoList} : InputProps){
 
-    const submitInput = (event) => {
+  const{toDo, onChange ,inputToDo} = useInput();
+
+    const submitInput = (event : React.SyntheticEvent) => {
       event.preventDefault();
       
       if (toDo) {
@@ -54,7 +54,7 @@ function Inputform ({toDoList,setToDoList}){
           value={toDo}
           type="text"
           placeholder="할 일을 입력하세요"
-          autoFocus = "autoFocus"
+          autoFocus = {true}
           spellCheck="false"
         
         />

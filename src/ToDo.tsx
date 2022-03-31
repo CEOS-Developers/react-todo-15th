@@ -3,6 +3,7 @@ import useToDo from "./hooks/useToDo";
 import { ListTitle, Button, Ul, List} from "./ListDesign";
 import { Dispatch, SetStateAction} from "react";
 import {ItemList} from "./type";
+import React = require("react");
 
 /* type ToDoProps = {
 
@@ -13,7 +14,7 @@ import {ItemList} from "./type";
 }
 */
 
-function ToDo({type,setDoneToDoList ,toDoList ,setToDoList}: ItemList){
+function ToDo({type,setDoneToDoList ,ItemList ,setToDoList}: ItemList){
     
   let list : string[] = ItemList;
  const {deleteButton, moveButton} = useToDo(type,setDoneToDoList ,list ,setToDoList);
