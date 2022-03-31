@@ -1,10 +1,10 @@
 import { useState } from "react";
-import './background';
+import './Design/background';
 import Clock from './clock';
-import Todobox from "./ToDo";
-import Donebox from "./Done"; 
-import InputForm from "./Inputform";
-import {Container, InputBox} from "./BoxDesign";
+import Todobox from "./component/ToDo";
+import Donebox from "./component/Done"; 
+import InputForm from "./component/Inputform";
+import {Container, InputBox} from "./Design/BoxDesign";
 
 function App() {
   const [toDoList, setToDoList] = useState<string[]>([]);

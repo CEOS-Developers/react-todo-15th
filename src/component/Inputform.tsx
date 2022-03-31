@@ -1,7 +1,7 @@
 import {useState } from "react";
 import styled  from "styled-components";
 import { Dispatch, SetStateAction} from "react";
-import useInput from "./hooks/useInput";
+import useInput from "../hooks/useInput";
 
 
 type InputProps = {

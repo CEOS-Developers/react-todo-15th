@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { ListTitle, Button, Ul,List} from "./ListDesign";
-import useToDo from "./hooks/useToDo";
-import {ItemList} from "./type";
+import { ListTitle, Button, Ul,List} from "../Design/ListDesign";
+import useToDo from "../hooks/useToDo";
+import {ItemList} from "../type/type";
 
 /*type DoneProps = {
 

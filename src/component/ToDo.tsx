@@ -1,8 +1,8 @@
 
-import useToDo from "./hooks/useToDo";
-import { ListTitle, Button, Ul, List} from "./ListDesign";
+import useToDo from "../hooks/useToDo";
+import { ListTitle, Button, Ul, List} from "../Design/ListDesign";
 import { Dispatch, SetStateAction} from "react";
-import {ItemList} from "./type";
+import {ItemList} from "../type/type";
 
 
 /* type ToDoProps = {
