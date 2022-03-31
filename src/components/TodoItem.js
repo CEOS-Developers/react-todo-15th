@@ -1,17 +1,17 @@
 import { BsCheckCircleFill, BsCheckCircle, BsFillPencilFill, BsFillTrashFill } from 'react-icons/bs';
 import styled from 'styled-components';
 
-const TodoItem = ({ todo, onIsDoneToggle, onRemove }) => {
+const TodoItem = ({ todo, handleIsDoneToggle, handleRemoveTodo }) => {
   const { id, text, isDone } = todo;
   return (
     <Wrapper>
       <Content>
         {isDone ? (
-          <CheckButton onClick={() => onIsDoneToggle(id)}>
+          <CheckButton onClick={() => handleIsDoneToggle(id)}>
             <BsCheckCircleFill />
           </CheckButton>
         ) : (
-          <CheckButton onClick={() => onIsDoneToggle(id)}>
+          <CheckButton onClick={() => handleIsDoneToggle(id)}>
             <BsCheckCircle />
           </CheckButton>
         )}
@@ -21,7 +21,7 @@ const TodoItem = ({ todo, onIsDoneToggle, onRemove }) => {
         </EditButton>
         <DeleteButton
           onClick={() => {
-            onRemove(id);
+            handleRemoveTodo(id);
           }}
         >
           <BsFillTrashFill />

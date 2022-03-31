@@ -2,7 +2,7 @@ import { BsPlusCircle } from 'react-icons/bs';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-const TodoInsert = ({ onInsertTodo }) => {
+const TodoInsert = ({ handleTodoInsert }) => {
   const [value, setValue] = useState('');
 
   const onChange = (e) => {
@@ -11,7 +11,7 @@ const TodoInsert = ({ onInsertTodo }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onInsertTodo(value);
+    handleTodoInsert(value);
     setValue('');
   };
 
@@ -24,9 +24,9 @@ const TodoInsert = ({ onInsertTodo }) => {
           value={value}
           onChange={onChange}
         />
-        <Button type="submit">
+        <SubmitButton type="submit">
           <BsPlusCircle />
-        </Button>
+        </SubmitButton>
       </Form>
     </section>
   );
@@ -63,7 +63,7 @@ const Input = styled.input`
   }
 `;
 
-const Button = styled.button`
+const SubmitButton = styled.button`
   width: 48px;
   height: 48px;
   margin: 0% -2% 4% 0%;

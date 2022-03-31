@@ -1,34 +1,24 @@
 import TodoItem from './TodoItem';
 import styled from 'styled-components';
 
-const TodoList = ({ todos, doneCnt, todoCnt, onIsDoneToggle, onRemove }) => {
+const TodoList = ({ todos, doneCnt, todoCnt, handleIsDoneToggle, handleRemoveTodo }) => {
   const todoItems = todos.filter((todo) => todo.isDone === false);
   const doneItems = todos.filter((todo) => todo.isDone === true);
   return (
-    <div>
+    <>
       <TodoHeader>Todo ({todoCnt})</TodoHeader>
       <TodoSection>
         {todoItems.map((todo) => (
-          <TodoItem
-            todo={todo}
-            key={todo.id}
-            onIsDoneToggle={onIsDoneToggle}
-            onRemove={onRemove}
-          />
+          <TodoItem todo={todo} key={todo.id} handleIsDoneToggle={handleIsDoneToggle} handleRemoveTodo={handleRemoveTodo} />
         ))}
       </TodoSection>
       <DoneHeader>Done ({doneCnt})</DoneHeader>
       <DoneSection>
         {doneItems.map((todo) => (
-          <TodoItem
-            todo={todo}
-            key={todo.id}
-            onIsDoneToggle={onIsDoneToggle}
-            onRemove={onRemove}
-          />
+          <TodoItem todo={todo} key={todo.id} handleIsDoneToggle={handleIsDoneToggle} handleRemoveTodo={handleRemoveTodo} />
         ))}
       </DoneSection>
-    </div>
+    </>
   );
 };
 

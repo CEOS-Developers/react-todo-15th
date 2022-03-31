@@ -28,26 +28,23 @@ const App = () => {
   const doneCnt = todos.filter((todo) => todo.isDone).length;
   const todoCnt = todos.length - doneCnt;
 
-  const onInsertTodo = (text) => {
-    if (text === '') return;
-    const todo = {
-      id: gNextId,
-      text,
-      isDone: false,
-    };
-    setTodos((todos) => todos.concat(todo));
-    ++gNextId;
+  const handleTodoInsert = (text) => {
+    if (text) {
+      const todo = {
+        id: gNextId,
+        text,
+        isDone: false,
+      };
+      setTodos((todos) => todos.concat(todo));
+      ++gNextId;
+    }
   };
 
-  const onIsDoneToggle = (id) => {
-    setTodos((todos) =>
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
-      )
-    );
+  const handleIsDoneToggle = (id) => {
+    setTodos((todos) => todos.map((todo) => (todo.id === id ? { ...todo, isDone: !todo.isDone } : todo)));
   };
 
-  const onRemove = (id) => {
+  const handleRemoveTodo = (id) => {
     setTodos((todos) => todos.filter((todo) => todo.id !== id));
   };
 
@@ -60,10 +57,9 @@ const App = () => {
             todos={todos}
             doneCnt={doneCnt}
             todoCnt={todoCnt}
-            onIsDoneToggle={onIsDoneToggle}
-            onRemove={onRemove}
-          />
-          <TodoInsert onInsertTodo={onInsertTodo} />
+            handleIsDoneToggle={handleIsDoneToggle}
+            handleRemoveTodo={handleRemoveTodo} />
+          <TodoInsert handleTodoInsert={handleTodoInsert} />
         </Wrapper>
       </Screen>
     </>
@@ -81,14 +77,22 @@ const App = () => {
      **
      ** Screen
      **  ㄴ Wrapper
-     **     ㄴ TodoList
-     **        ㄴ TodoTitle (header)
-     **        ㄴ TodoItem (section)
-     **           ㄴ Content
-     **              ㄴ CheckButton, Text, EditButton, DeleteButton
-     **     ㄴ TodoInsert (section)
+     **     ㄴ [TodoList]
+     **        ㄴ TodoHeader
+     **        ㄴ TodoSection
+     **           ㄴ TodoItem
+     **              ㄴ Wrapper
+     **                 ㄴ Content
+     **                    ㄴ CheckButton, Text, DeleteButton
+     **        ㄴ DoneHeader
+     **        ㄴ DoneSection
+     **           ㄴ TodoItem
+     **              ㄴ Wrapper
+     **                 ㄴ Content
+     **                    ㄴ CheckButton, Text, DeleteButton
+     **     ㄴ [TodoInsert]
      **        ㄴ Form
-     **           ㄴ input, SubmitButton
+     **           ㄴ Input, SubmitButton
      */
   );
 };
@@ -106,7 +110,7 @@ const Screen = styled.div`
 `;
 
 const Wrapper = styled.div`
-  margin: 0% 4.5% 0% 4.5%;
+  margin: 0% 4.5%;
 `;
 
 export default App;
