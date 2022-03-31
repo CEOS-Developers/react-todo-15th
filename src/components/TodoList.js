@@ -1,24 +1,12 @@
 import TodoItem from './TodoItem';
 import styled from 'styled-components';
-// import './TodoList.css';
 
 const TodoList = ({ todos, doneCnt, todoCnt, onIsDoneToggle, onRemove }) => {
   const todoItems = todos.filter((todo) => todo.isDone === false);
   const doneItems = todos.filter((todo) => todo.isDone === true);
   return (
     <div>
-      {/* <header className="TodoTitle">Todo ({todoCnt})</header> */}
       <TodoHeader>Todo ({todoCnt})</TodoHeader>
-      {/* <section className="TodoList">
-        {todoItems.map((todo) => (
-          <TodoItem
-            todo={todo}
-            key={todo.id}
-            onIsDoneToggle={onIsDoneToggle}
-            onRemove={onRemove}
-          />
-        ))}
-      </section> */}
       <TodoSection>
         {todoItems.map((todo) => (
           <TodoItem
@@ -29,19 +17,7 @@ const TodoList = ({ todos, doneCnt, todoCnt, onIsDoneToggle, onRemove }) => {
           />
         ))}
       </TodoSection>
-
-      {/* <header className="DoneTitle">Done ({doneCnt})</header> */}
       <DoneHeader>Done ({doneCnt})</DoneHeader>
-      {/* <section className="DoneList">
-        {doneItems.map((todo) => (
-          <TodoItem
-            todo={todo}
-            key={todo.id}
-            onIsDoneToggle={onIsDoneToggle}
-            onRemove={onRemove}
-          />
-        ))}
-      </section> */}
       <DoneSection>
         {doneItems.map((todo) => (
           <TodoItem

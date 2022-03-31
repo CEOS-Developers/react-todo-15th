@@ -1,21 +1,21 @@
-.TodoItem {
+/* .TodoItem {
   margin: 3px 2px 3px 1.5px;
   border-radius: 5px;
   box-shadow: 0.8px 1.5px 3px 0.8px rgba(0, 0, 0, 0.25);
   padding: 0.7rem;
-}
+} */
 
-.TodoItem + .TodoItem {
+/* .TodoItem + .TodoItem {
   margin-top: 10px;
-}
+} */
 
-.Content {
+/* .Content {
   height: 1.5rem;
   width: 100%;
 
   display: flex;
   align-items: center;
-}
+} */
 
 .CheckButton {
   height: 1.5rem;
@@ -48,7 +48,7 @@
   cursor: pointer;
 }
 
-.Text {
+/* .Text {
   height: 1.2rem;
   width: 100%;
 
@@ -60,15 +60,16 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-}
+} */
 
+/* todo */
 .Content.Done .Text {
   opacity: 0.5;
   font-weight: 400;
   text-decoration: line-through;
 }
 
-.EditButton {
+/* .EditButton {
   width: 20px;
   height: 20px;
   margin-right: 1.5%;
@@ -78,18 +79,19 @@
   opacity: 0.3;
 
   flex: none;
-}
+} */
 
-.EditButton:hover {
+/* .EditButton:hover {
   opacity: 1;
   cursor: pointer;
-}
+} */
 
-.EditButton {
+/* .EditButton {
   font-size: 1rem;
   color: #3f464d;
-}
+} */
 
+/*
 .DeleteButton {
   width: 20px;
   height: 20px;
@@ -110,4 +112,4 @@
 .DeleteButton {
   font-size: 1.1rem;
   color: #3f464d;
-}
+} */
