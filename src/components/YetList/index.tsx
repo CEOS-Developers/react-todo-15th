@@ -7,8 +7,16 @@ import {
   YetNumStyle,
 } from './style';
 import PropTypes from 'prop-types';
+import { ITodoList } from 'interface';
 
-const Index = ({ list, yetNum, onToggle, onDelete }) => {
+interface IYetListProps {
+  list: [];
+  yetNum: number;
+  onToggle: () => void;
+  onDelete: () => void;
+}
+
+const Index = ({ list, yetNum, onToggle, onDelete }: IYetListProps) => {
   return (
     <DivYetList>
       <YetNumStyle>
@@ -18,7 +26,7 @@ const Index = ({ list, yetNum, onToggle, onDelete }) => {
         <span> src/components/yetList.js</span>
       </YetNumStyle>
       <Unordered>
-        {list.map((item, index) => (
+        {list.map((item: ITodoList, index: number) => (
           <RowDivInYetList key={index}>
             {!item.isDone && (
               <>

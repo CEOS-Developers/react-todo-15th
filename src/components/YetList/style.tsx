@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const DivYetList = styled.div`
-  //border: 2px solid olivedrab;
   margin-bottom: 10px;
   color: white;
   height: 200px;
@@ -11,17 +10,15 @@ export const DivYetList = styled.div`
 export const Unordered = styled.ul`
   margin: 0px;
   padding: 0px;
-  //border: 1px solid red;
 `;
 
 export const YetNumStyle = styled.div`
   font-size: 14px;
-  //border: 2px dotted white;
 `;
 
 export const RowDivInYetList = styled.div`
   display: flex;
-  //border: 1px solid red;
+
   margin-bottom: 5px;
 `;
 
