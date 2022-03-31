@@ -1,12 +1,19 @@
 //list 디자인 관리
 import styled from 'styled-components';
 
+interface ILIst {
+
+    color ?:string;
+    decoration ?:string;
+    
+  }
+
 export const ListTitle = styled.div
     `font-size: 20px;
     `
 ;
 
-export const List = styled.li
+export const List = styled.li<ILIst>
 `
     color: ${(props) => props.color || "black"};
     text-decoration: ${(props) => props.decoration || "none"};
