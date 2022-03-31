@@ -17,7 +17,7 @@ import React = require("react");
 function ToDo({type,setDoneToDoList ,ItemList ,setToDoList}: ItemList){
     
   let list : string[] = ItemList;
- const {deleteButton, moveButton} = useToDo(type,setDoneToDoList ,list ,setToDoList);
+ const {deleteButton, moveButton} = useToDo({type,setDoneToDoList ,list ,setToDoList});
     
 return (
   <Ul>

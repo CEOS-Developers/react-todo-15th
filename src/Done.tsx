@@ -17,7 +17,7 @@ function Done({type,setDoneToDoList ,ItemList ,setToDoList}){
   
   let list : string[] = ItemList;
 
-  const {deleteButton, moveButton} = useToDo(type,setDoneToDoList ,list ,setToDoList);
+  const {deleteButton, moveButton} = useToDo({type,setDoneToDoList ,list ,setToDoList});
         return (
             <Ul className = "done-box">
             <ListTitle>👻Done({ItemList.length})</ListTitle>

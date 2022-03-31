@@ -1,4 +1,4 @@
-import {IProps} from "./type";
+import {IProps} from "../type";
 
 
 
