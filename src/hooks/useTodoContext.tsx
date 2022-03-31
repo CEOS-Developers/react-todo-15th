@@ -2,14 +2,14 @@ import { useContext } from 'react';
 import { TodoContext } from '../context/todoProvider';
 import { v4 as uuidv4 } from 'uuid';
 import { runToast } from '../components/toast/Toast';
-
+import { TodoItem } from '../Interface';
 // https://github.com/CEOS-Developers/react-todo-15th/pull/11/files#diff-4fd5b35d6c3fbfd63c97f711bd5fe3408b11551836f6cec1ecfb67a498d2843a
 // 김선종 멘트님 코드 많이 참고했습니다..!
 
 const useTodoContext = () => {
     const { list, setList } = useContext(TodoContext);
 
-    const addItem = (value) => {
+    const addItem = (value: string): void => {
         const createItem = () => {
             setList([
                 ...list,
@@ -32,12 +32,12 @@ const useTodoContext = () => {
         }
     };
 
-    const deleteItem = (id) => {
-        setList((list) => list.filter((item) => item.id !== id));
+    const deleteItem = (id: string): void => {
+        setList((list: TodoItem[]) => list.filter((item: TodoItem) => item.id !== id));
         runToast('삭제되었어요!');
     };
 
-    const toggleItem = (id) => {
+    const toggleItem = (id: string): void => {
         setList((list) => list.map((item) => (item.id === id ? { ...item, done: !item.done } : item)));
     };
 

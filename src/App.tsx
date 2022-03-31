@@ -1,6 +1,4 @@
-import React, { useContext, useEffect } from 'react';
-import { TodoContext } from './context/todoProvider';
-
+import TodoProvider from './context/todoProvider';
 import GlobalStyle from './styles/GlobalStyle';
 import { Main, Section } from './styles/Container';
 import { ToastComponent } from './components/toast/Toast';
@@ -9,7 +7,7 @@ import TodoItemList from './components/TodoItemList';
 
 function App() {
     return (
-        <>
+        <TodoProvider>
             <GlobalStyle />
             <Main>
                 <Section>
@@ -24,7 +22,7 @@ function App() {
                 </Section>
                 <ToastComponent />
             </Main>
-        </>
+        </TodoProvider>
     );
 }
 

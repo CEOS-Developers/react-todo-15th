@@ -1,9 +1,11 @@
+import { FormEvent } from 'react';
 import useInput from './useInput';
 
-const useForm = (initialValue, handler) => {
+//handler : any... 방법을 못찾겠습니다.ㅜㅜㅜ
+const useForm = (initialValue: string, handler: any) => {
     const { value, setValue, onChange } = useInput(initialValue);
 
-    const onSubmit = (e) => {
+    const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         //새 할일 추가 or 할일 내용 변경
