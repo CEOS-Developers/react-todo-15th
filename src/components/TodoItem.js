@@ -1,31 +1,19 @@
-import {
-  BsCheckCircleFill,
-  BsCheckCircle,
-  BsFillPencilFill,
-  BsFillTrashFill,
-} from 'react-icons/bs';
+import { BsCheckCircleFill, BsCheckCircle, BsFillPencilFill, BsFillTrashFill } from 'react-icons/bs';
 import styled from 'styled-components';
-import './TodoItem.css';
 
 const TodoItem = ({ todo, onIsDoneToggle, onRemove }) => {
   const { id, text, isDone } = todo;
   return (
-    <TodoItemWrapper>
+    <Wrapper>
       <Content>
         {isDone ? (
           <CheckButton onClick={() => onIsDoneToggle(id)}>
-            <BsCheckCircleFill className="CheckButtonFill" />
+            <BsCheckCircleFill />
           </CheckButton>
         ) : (
-          // <button className="CheckButton" onClick={() => onIsDoneToggle(id)}>
-          //   <BsCheckCircleFill className="CheckButtonFill" />
-          // </button>
           <CheckButton onClick={() => onIsDoneToggle(id)}>
-            <BsCheckCircle className="CheckButtonUnFill" />
+            <BsCheckCircle />
           </CheckButton>
-          // <button className="CheckButton" onClick={() => onIsDoneToggle(id)}>
-          //   <BsCheckCircle className="CheckButtonUnFill" />
-          // </button>
         )}
         <Text>{text}</Text>
         <EditButton>
@@ -39,13 +27,13 @@ const TodoItem = ({ todo, onIsDoneToggle, onRemove }) => {
           <BsFillTrashFill />
         </DeleteButton>
       </Content>
-    </TodoItemWrapper>
+    </Wrapper>
   );
 };
 
 export default TodoItem;
 
-const TodoItemWrapper = styled.div`
+const Wrapper = styled.div`
   margin: 3px 2px 3px 1.5px;
   border-radius: 5px;
   box-shadow: 0.8px 1.5px 3px 0.8px rgba(0, 0, 0, 0.25);
