@@ -3,11 +3,12 @@ import InputForm from '../InputForm';
 import YetList from '../YetList';
 import DoneList from '../DoneList';
 import { ITodoList } from 'interface';
+import getLocalValue from "../../hooks/getLocalValue";
 
 const Index = () => {
   const listText = 'list';
 
-  const localData = JSON.parse(localStorage.getItem(listText) || '') || [];
+  const localData = getLocalValue()
   // localDate 를 처음에 가져와서 새로고침해도 데이터가 유지되게 설정
 
   const [yetNum, setYetNum] = useState(0);
@@ -33,7 +34,7 @@ const Index = () => {
 
     const text = (e.target as HTMLElement).textContent;
     // 로컬스토리지에 저장된 값
-    const data = JSON.parse(localStorage.getItem(listText) || '');
+    const data = getLocalValue()
     // 두 값을 이용해서 클릭된 값만 isDone 상태 토글
     let indexClicked = 0;
     let obj;
@@ -57,8 +58,8 @@ const Index = () => {
     ).innerText.slice(0, -4);
 
     // 현재 데이터 가져오기
-    const data = JSON.parse(localStorage.getItem(listText) || '');
 
+    const data = getLocalValue()
     // 데이터 삭제
     const updatedDate = data.filter((item: ITodoList) => {
       return item.contents.trim() !== text.trim();
@@ -80,7 +81,8 @@ const Index = () => {
   }, [list]);
 
   const findNum = () => {
-    const data = JSON.parse(localStorage.getItem(listText) || '');
+
+    const data = getLocalValue()
     let yetCtn = 0;
     let doneCtn = 0;
 
