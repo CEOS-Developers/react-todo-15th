@@ -7,8 +7,8 @@ import TodoInput from "./TodoInput.js";
 import TodoList from "./TodoList";
 
 export default function App() {
-  /*저장된 인풋의 공간 */
-  const [input, setInput] = useState("0");
+  const [number, setNumber] = useState('0');
+  const [input, setInput] = useState("빈 할일" + number);
   const [todos, setTodos] = useState([
     {
       text: "make code runnable",
@@ -41,6 +41,7 @@ export default function App() {
       id: nextId.current,
       done: false
     };
+    setNumber = (current => current+1);
     nextId.current++;
     setTodos([...todos, todo]);
     console.log(todos);
