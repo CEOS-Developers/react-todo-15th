@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { IListBtn } from 'interface';
 export const DivDoneList = styled.div`
   //border: 2px solid indianred;
   margin-bottom: 10px;
@@ -19,7 +19,7 @@ export const DoneNumStyle = styled.div`
   font-size: 14px;
 `;
 
-export const ListBtn = styled.button`
+export const ListBtn = styled.button<IListBtn>`
   cursor: grab;
   color: white;
   background: blue;

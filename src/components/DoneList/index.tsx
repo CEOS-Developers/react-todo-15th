@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { DivDoneList, DoneNumStyle, ListBtn, Unordered } from './style';
 import { IDoneList, ITodoList } from 'interface';
 
@@ -23,18 +21,6 @@ const Index = ({ list, onToggle, doneNum }: IDoneList) => {
       </Unordered>
     </DivDoneList>
   );
-};
-
-Index.propTypes = {
-  list: PropTypes.arrayOf(
-    PropTypes.shape({
-      contents: PropTypes.string,
-      id: PropTypes.number,
-      isDone: PropTypes.bool,
-    })
-  ).isRequired,
-  doneNum: PropTypes.number.isRequired,
-  onToggle: PropTypes.func.isRequired,
 };
 
 export default Index;

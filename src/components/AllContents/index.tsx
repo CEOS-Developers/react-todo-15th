@@ -1,51 +1,46 @@
-import styled from 'styled-components';
-import { useEffect, useState } from 'react';
-
-import Title from '../Title';
+import React, { useEffect, useState } from 'react';
 import InputForm from '../InputForm';
 import YetList from '../YetList';
 import DoneList from '../DoneList';
+import { ITodoList } from 'interface';
 
 const Index = () => {
   const listText = 'list';
-  // 텍스트 이름과 변수 이름을 같게하면 좋을 것 같다는 피드백을 받았던 거 같은데
-  // list 를 다른 변수에 사용해 버렸음. 변수 이름 정하는 센스를 더 길러야 겠음
 
-  const localData = JSON.parse(localStorage.getItem(listText)) || [];
+  const localData = JSON.parse(localStorage.getItem(listText) || '') || [];
   // localDate 를 처음에 가져와서 새로고침해도 데이터가 유지되게 설정
 
   const [yetNum, setYetNum] = useState(0);
   const [doneNum, setDoneNum] = useState(0);
   const [contents, setContents] = useState('');
   const [list, setList] = useState(localData);
-  const onChange = (e) => setContents(e.target.value);
-  const onSubmit = (e) => {
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setContents(e.target.value);
+  const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     const obj = {
       contents,
       id: Date.now(),
       isDone: false,
     };
-    setList((prev) => [...prev, obj]);
+    setList((prev: []) => [...prev, obj]);
     setContents('');
   };
-  const onToggle = (e) => {
+  const onToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
     // 클릭된 값
-    const text = e.target.textContent;
+
+    const text = (e.target as HTMLElement).textContent;
     // 로컬스토리지에 저장된 값
-    const data = JSON.parse(localStorage.getItem(listText));
+    const data = JSON.parse(localStorage.getItem(listText) || '');
     // 두 값을 이용해서 클릭된 값만 isDone 상태 토글
     let indexClicked = 0;
     let obj;
-    data.map((item, index) => {
+    data.map((item: ITodoList, index: number) => {
       if (item.contents === text) {
         obj = { ...item };
         obj.isDone = !item.isDone;
         indexClicked = index;
-      } else {
-        // switch 에서 default 값 처럼 if 를 쓰면 else 도 써주는 게 좋다는 코멘트를 봤던 거 같은데
-        // 그럴 경우 여긴 뭘 넣어야 좋을까요?
-        // null ???!
       }
     });
     const updatedDate = [...data];
@@ -53,15 +48,18 @@ const Index = () => {
     setList(updatedDate);
     localStorage.setItem(listText, JSON.stringify(list));
   };
-  const onDelete = (e) => {
+  const onDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
     // 클릭된 텍스트 찾기
-    const text = e.target.parentNode.innerText.slice(0, -4);
+
+    const text = (
+      (e.target as HTMLElement).parentNode as HTMLElement
+    ).innerText.slice(0, -4);
 
     // 현재 데이터 가져오기
-    const data = JSON.parse(localStorage.getItem(listText));
+    const data = JSON.parse(localStorage.getItem(listText) || '');
 
     // 데이터 삭제
-    const updatedDate = data.filter((item) => {
+    const updatedDate = data.filter((item: ITodoList) => {
       return item.contents.trim() !== text.trim();
     });
 
@@ -81,12 +79,12 @@ const Index = () => {
   }, [list]);
 
   const findNum = () => {
-    const data = JSON.parse(localStorage.getItem(listText));
+    const data = JSON.parse(localStorage.getItem(listText) || '');
     let yetCtn = 0;
     let doneCtn = 0;
 
     // isDone === true, false 인 경우에 따라서 개수를 세어 줘야 함
-    data.map((item) => {
+    data.map((item: ITodoList) => {
       if (item.isDone === false) {
         yetCtn += 1;
       } else {

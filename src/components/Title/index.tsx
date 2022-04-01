@@ -1,5 +1,4 @@
 import { Cir1, Cir2, Cir3, Etc, DivTitle, CircleContainer } from './style';
-import { useState } from 'react';
 
 const Index = () => {
   return (

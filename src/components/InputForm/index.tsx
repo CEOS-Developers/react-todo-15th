@@ -7,10 +7,10 @@ const Index = ({ onSubmit, onChange, contents }: IInputFormProps) => {
     <div>
       <DivInputForm>
         <form style={{ display: 'flex' }} onSubmit={onSubmit} action="">
-          <SpanStyle>
+          <span style={{ display: 'flex', background: 'black' }}>
             <Rec>~/</Rec>
             <Triangle />
-          </SpanStyle>
+          </span>
           <InputStyle
             maxLength={maxLength}
             required
