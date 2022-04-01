@@ -29,7 +29,6 @@ const TodoItem = ({ item }: ITodoItemProps) => {
 
     const inputRef = useRef<HTMLInputElement>(null);
     const editFormRef = useRef<HTMLFormElement>(null);
-    const menuRef = useRef<HTMLButtonElement>(null);
 
     //참고3 : editForm 외의 부분을 클릭했을 때 setEdit(false)
     useEffect(() => {
