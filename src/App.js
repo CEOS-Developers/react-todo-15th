@@ -1,31 +1,51 @@
 import "./App.css";
 import React from "react";
 import { useState } from "react";
+import { useEffect } from "react";
 import { useRef } from "react";
 import WelcomeText from "./WelcomeText.js";
 import TodoInput from "./TodoInput.js";
 import TodoList from "./TodoList";
 
 export default function App() {
-  const [number, setNumber] = useState('0');
-  const [input, setInput] = useState("빈 할일" + number);
+
+  const [input, setInput] = useState("입력없음");
   const [todos, setTodos] = useState([
     {
-      text: "make code runnable",
+      text: "디버깅 완료하기",
       id: 1,
       done: false
     },
     {
-      text: "refactorying code",
+      text: "코드 리팩토링하기",
       id: 2,
       done: false
     },
     {
-      text: "study useeffect",
+      text: "타입스크립트 이해하기",
       id: 3,
       done: false
     }
   ]);
+
+  const TODO = 'todo';
+  const saveTodo = function () {
+    console.log('save is running');
+    localStorage.setItem(TODO, JSON.stringify(todos));
+  };
+  
+  useEffect(() => {
+    saveTodo(TODO, todos);
+  }, [todos]);
+
+  useEffect(() => {
+    const loadStorage = localStorage.getItem(TODO);
+    if (loadStorage) {
+      const loadTodo = JSON.parse(loadStorage);
+      setTodos(loadTodo);
+    }
+  }, []);
+
   const nextId = useRef(4);
   /*저장된 할 일의 목록 */
 
@@ -41,7 +61,6 @@ export default function App() {
       id: nextId.current,
       done: false
     };
-    setNumber = (current => current+1);
     nextId.current++;
     setTodos([...todos, todo]);
     console.log(todos);
