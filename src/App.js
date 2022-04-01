@@ -29,13 +29,10 @@ export default function App() {
   ]);
 
   const TODO = 'todo';
-  const saveTodo = function () {
-    console.log('save is running');
-    localStorage.setItem(TODO, JSON.stringify(todos));
-  };
   
   useEffect(() => {
-    saveTodo(TODO, todos);
+    console.log('save is running');
+    localStorage.setItem(TODO, JSON.stringify(todos));
   }, [todos]);
 
   useEffect(() => {
