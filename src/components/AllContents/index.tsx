@@ -3,12 +3,12 @@ import InputForm from '../InputForm';
 import YetList from '../YetList';
 import DoneList from '../DoneList';
 import { ITodoList } from 'interface';
-import getLocalValue from "../../hooks/getLocalValue";
+import getLocalValue from '../../hooks/getLocalValue';
 
 const Index = () => {
   const listText = 'list';
 
-  const localData = getLocalValue()
+  const localData = getLocalValue();
   // localDate 를 처음에 가져와서 새로고침해도 데이터가 유지되게 설정
 
   const [yetNum, setYetNum] = useState(0);
@@ -20,21 +20,26 @@ const Index = () => {
     setContents(e.target.value);
   const handleFormSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-
-    const obj = {
-      contents,
-      id: Date.now(),
-      isDone: false,
-    };
-    setList((prev: []) => [...prev, obj]);
-    setContents('');
+    const val = getLocalValue();
+    const checkArry = val.filter((item: ITodoList) => {
+      return item.contents === contents;
+    });
+    if (checkArry.length === 0) {
+      const obj = {
+        contents,
+        id: Date.now(),
+        isDone: false,
+      };
+      setList((prev: []) => [...prev, obj]);
+      setContents('');
+    }
   };
   const onToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
     // 클릭된 값
 
     const text = (e.target as HTMLElement).textContent;
     // 로컬스토리지에 저장된 값
-    const data = getLocalValue()
+    const data = getLocalValue();
     // 두 값을 이용해서 클릭된 값만 isDone 상태 토글
     let indexClicked = 0;
     let obj;
@@ -59,7 +64,7 @@ const Index = () => {
 
     // 현재 데이터 가져오기
 
-    const data = getLocalValue()
+    const data = getLocalValue();
     // 데이터 삭제
     const updatedDate = data.filter((item: ITodoList) => {
       return item.contents.trim() !== text.trim();
@@ -81,8 +86,7 @@ const Index = () => {
   }, [list]);
 
   const findNum = () => {
-
-    const data = getLocalValue()
+    const data = getLocalValue();
     let yetCtn = 0;
     let doneCtn = 0;
 
