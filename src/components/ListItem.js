@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaTrash } from "react-icons/fa";
 
-const ListItem = (props) => {
+import { GlobalContext } from "../context/GlobalState";
+
+const ListItem = ({ item }) => {
+  const { deleteItem, moveItem } = useContext(GlobalContext);
+
   return (
     <div className="item">
       <div className="itemScrollArea">
@@ -9,23 +13,12 @@ const ListItem = (props) => {
           className="itemFinish"
           type="button"
           onClick={() => {
-            props.dispatchListState({
-              type: "MODIFY",
-              payload: {
-                id: props.item.id,
-                type: props.modType,
-                content: props.item.content,
-              },
-            });
+            moveItem(item.id);
           }}
         >
           <p className="itemTitle">
             {/* listType의 done/todo에 따라 del 태그 삽입 */}
-            {props.listType === "done" ? (
-              <del>{props.item.content}</del>
-            ) : (
-              props.item.content
-            )}
+            {item.type === "done" ? <del>{item.content}</del> : item.content}
           </p>
         </button>
       </div>
@@ -33,14 +26,7 @@ const ListItem = (props) => {
         className="itemDelete"
         type="button"
         onClick={() => {
-          props.dispatchListState({
-            type: "DELETE",
-            payload: {
-              id: props.item.id,
-              type: props.item.type,
-              content: props.item.content,
-            },
-          });
+          deleteItem(item.id);
         }}
       >
         <p className="deleteIcon">

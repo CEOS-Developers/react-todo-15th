@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
+
+import { GlobalContext } from "../context/GlobalState";
 
 // styled component를 사용한다
 
@@ -60,16 +62,13 @@ const SubmitBtn = styled.button`
 
 const InputContainer = (props) => {
   const [text, setText] = useState("");
+  const { addItem } = useContext(GlobalContext);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // form 내 입력이 존재하는 경우만 업데이트 한다
     if (text !== "") {
       const uid = new Date().getTime().toString();
-      props.dispatchListState({
-        type: "ADD",
-        payload: { id: uid, type: "todo", content: text },
-      });
+      addItem(uid, "todo", text);
       setText("");
     }
   };
