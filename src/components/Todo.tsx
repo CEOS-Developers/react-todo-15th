@@ -5,7 +5,6 @@ const Todo = ({ isDoneList, savedList, setSavedList }) => {
   const filteredList = savedList?.filter((item) => item.isDone === isDoneList);
 
   const handleTextClick = (e) => {
-    console.log('clicked');
     const newList = (filteredList) =>
       filteredList.map((item) =>
         item.id === e.target.id ? { ...item, isDone: !item.isDone } : item

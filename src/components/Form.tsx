@@ -23,15 +23,13 @@ const Form = ({ setSavedList }) => {
   };
 
   return (
-    <form>
+    <form onSubmit={handleFormSubmit}>
       <InputContainer
         value={input}
         onChange={handleInputChange}
         placeholder="할일을 입력하세요"
       />
-      <SubmitButton type="submit" onClick={handleFormSubmit}>
-        +
-      </SubmitButton>
+      <SubmitButton type="submit">+</SubmitButton>
     </form>
   );
 };
