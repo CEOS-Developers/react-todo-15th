@@ -1,97 +1,75 @@
+import "./styles.css";
 import React from "react";
-import "./App.css";
-import Title from "./Title.js";
-import TodoInput from "./TodoInput.js";
-import TodoList from "./TodoList.js";
 import { useState } from "react";
 import { useRef } from "react";
-/*import { createGlobalStyle } from 'styled-components';
+import WelcomeText from "./WelcomeText.js";
+import TodoInput from "./TodoInput.js";
+import TodoList from "./TodoList";
 
-const GlobalStyle = createGlobalStyle`*/
-
-/*
-
-  const deleteTodo = useCallback((id) => {
-    todo = todo.filter((toDo) => toDo.id !== Number(id));
-  })
-
-  const toggleTodo = useCallback((id) => {
-    todo.forEach((element) => {
-      if (element.id === Number(id)) {
-        element.done = !element.done;
-      }
-  })
-*/
-function App() {
-  const [input, setInput] = useState({
-    text: ""
-  });
-  const { text } = input;
-  const onChange = (e) => {
-    const { text } = e.target;
-    setInput({
-      ...input,
-      [text]: text
-    });
-  };
+export default function App() {
+  /*저장된 인풋의 공간 */
+  const [input, setInput] = useState("0");
   const [todos, setTodos] = useState([
     {
-      id: 1,
       text: "make code runnable",
+      id: 1,
       done: false
     },
     {
-      id: 2,
       text: "refactorying code",
+      id: 2,
       done: false
     },
     {
-      id: 3,
       text: "study useeffect",
+      id: 3,
       done: false
     }
   ]);
-
   const nextId = useRef(4);
-  const onClick = (e) => {
+  /*저장된 할 일의 목록 */
+
+  function changeInput(event) {
+    const value = event.target.value;
+    setInput(value);
+    console.log(value);
+  }
+
+  function clickButton(event) {
     const todo = {
+      text: input,
       id: nextId.current,
-      text: e.target.value,
       done: false
     };
-
-    setTodos(todos.concat(todo));
-
-    setInput({
-      text: ""
-    });
     nextId.current++;
-  };
+    setTodos([...todos, todo]);
+    console.log(todos);
+  }
 
-  const onRemove = (key) => {
-    setTodos(todos.filter((todo) => todo.id !== key));
-  };
-
-  const onToggle = (id) => {
-    setTodos(
+  function todoToggle(event) {
+    const key = event.target.id;
+    console.log(key);
+    setTodos((todos) =>
       todos.map((todo) =>
-        todo.id === id ? { ...todo, done: !todo.done } : todo
+        todo.id === Number(key)
+          ? { text: todo.text, id: todo.id, done: !todo.done }
+          : todo
       )
     );
-  };
+    console.log("Toggle.");
+  }
+
+  function todoDelete(event) {
+    const key = event.target.id;
+    setTodos(todos.filter((todo) => todo.id !== Number(key)));
+    console.log("Delete.");
+  }
 
   return (
     <div className="App">
-      <Title />
-      <TodoInput text={text} onChange={onChange} onClick={onClick} />
-      <TodoList
-        onChange={onChange}
-        onRemove={onRemove}
-        onToggle={onToggle}
-        todos={todos}
-      />
+      <WelcomeText />
+      <TodoInput input={input} onClick={clickButton} onChange={changeInput} />
+      <TodoList todos={todos} onToggle={todoToggle} onDelete={todoDelete} />
     </div>
   );
 }
-
-export default App;
