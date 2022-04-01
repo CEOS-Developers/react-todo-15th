@@ -13,6 +13,7 @@ export const ListTitle = styled.div
     `
 ;
 
+
 export const List = styled.li<ILIst>
 `
     color: ${(props) => props.color || "black"};
