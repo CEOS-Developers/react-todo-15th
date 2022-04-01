@@ -1,16 +1,24 @@
-import { DivInputForm, InputStyle, Rec, Triangle, SpanStyle } from './style';
+import {
+  DivInputForm,
+  InputStyle,
+  Rec,
+  Triangle,
+  SpanStyle,
+  flex,
+} from './style';
 import { IInputFormProps } from 'interface';
-const maxLength: number = 18;
 
 const Index = ({ onSubmit, onChange, contents }: IInputFormProps) => {
+  const maxLength: number = 18;
+
   return (
     <div>
       <DivInputForm>
-        <form style={{ display: 'flex' }} onSubmit={onSubmit} action="">
-          <span style={{ display: 'flex', background: 'black' }}>
+        <form style={flex} onSubmit={onSubmit} action="">
+          <SpanStyle>
             <Rec>~/</Rec>
             <Triangle />
-          </span>
+          </SpanStyle>
           <InputStyle
             maxLength={maxLength}
             required

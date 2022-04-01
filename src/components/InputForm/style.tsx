@@ -47,7 +47,8 @@ export const Triangle = styled.div`
 `;
 
 export const SpanStyle = styled.span`
-  display: 'flex';
-  flex-direction: row;
-  background: 'black';
+  display: flex;
+  background: black;
 `;
+
+export const flex = { display: 'flex' };
