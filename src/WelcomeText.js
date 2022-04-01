@@ -36,7 +36,7 @@ const TitleInfo = styled.span`
 const TitleName = styled.span`
     font-family: sans-serif;
     text-align: left;
-    padding-left: 10px;
+    padding-left: 20px;
     display: span;
     color: blue;
 `;
@@ -46,7 +46,7 @@ const WelcomeText = () => {
     <WelcomBox>
       <WelcomTitle>
         <TitleInfo>집중해서 마치는 오늘 할 일</TitleInfo>
-        <span id="TitleName">기어업</span>
+        <TitleName>기어업</TitleName>
       </WelcomTitle>
       <WelcomText>
         기어업은 스스로 집중해서 일을 끝내고싶은 사람들을 위해 여기 있어요.
