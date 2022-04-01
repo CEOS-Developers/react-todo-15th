@@ -16,66 +16,30 @@
   }
   
   .TodoItem {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    
   }
   
-  #WelcomTitle {
-    margin: 20px 20px 20px 20px;
-    width: 100vw;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    font-size: 1.2rem;
-    font-weight: Bold;
-  }
-  
-  #TitleInfo {
-    display: span;
-  }
-  
-  #TitleName {
-    padding-left: 10px;
-    display: span;
-    color: blue;
-  }
-  
-  #WelcomText {
-    margin: 20px 20px 20px 20px;
-    width: 100%;
-    display: block;
-  }
   
   #InputBox {
-    margin: 20px 20px 20px 20px;
+    
   }
   
   #InputText {
     margin: 20px 20px 20px 0px;
-    width: 100%;
-    font-size: 1.2rem;
-    font-weight: Bold;
+    
   }
   
   #InputField {
     margin: 20px 20px 20px 0px;
-    width: 80vw;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    
   }
   
   #TodoInput {
-    display: span;
-    width: 90%;
+    
   }
   
   #TodoBtn {
-    margin: 0px 0px 0px 20px;
-    display: span;
-    width: 40px;
-    text-align: center;
+   
   }
   
   #TodoListBox {
