@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 
 import ListItem from "../components/ListItem";
-import { GlobalContext } from "../context/GlobalState";
+import { StateContext } from "../context/GlobalContext";
+import { ItemType } from "../Objects";
 
 const ItemSection = styled.section`
   display: flex;
@@ -25,8 +26,8 @@ const SectionTitle = styled.h4`
   margin-bottom: 1rem;
 `;
 
-const ListItemContainer = ({ title, listType }) => {
-  const { listItems } = useContext(GlobalContext);
+const ListItemContainer = ({ title, listType }:{title: String, listType: ItemType}) => {
+  const listItems = useContext(StateContext);
 
   return (
     <ItemSection>

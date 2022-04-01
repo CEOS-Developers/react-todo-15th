@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
 
-import { GlobalContext } from "../context/GlobalState";
+import { DispatchContext } from "../context/GlobalContext";
+import { ActionType, ItemType } from "../Objects";
 
 const AppInput = styled.div`
   width: 28rem;
@@ -58,15 +59,22 @@ const SubmitBtn = styled.button`
   }
 `;
 
-const InputContainer = (props) => {
+const InputContainer = () => {
   const [text, setText] = useState("");
-  const { addItem } = useContext(GlobalContext);
+  const dispatch = useContext(DispatchContext);
 
-  const submitHandler = (e) => {
+  const addItem = (uid:string, itemType: ItemType, itemContent: string) => {
+    dispatch({
+      type: ActionType.ADD,
+      payload: { id: uid, type: itemType, content: itemContent },
+    });
+  };
+
+  const submitHandler = (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (text !== "") {
       const uid = new Date().getTime().toString();
-      addItem(uid, "todo", text);
+      addItem(uid, ItemType.Todo, text);
       setText("");
     }
   };

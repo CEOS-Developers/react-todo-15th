@@ -34,12 +34,7 @@ export default createGlobalStyle`
     display: grid;
     place-items: center;
     background-color: #fa8bff;
-    background-image: linear-gradient(
-      45deg,
-      #fa8bff 0%,
-      #2bd2ff 52%,
-      #2bff88 90%
-    );
+    background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
     font-family: var(--ff-main);
     color: white;
   }

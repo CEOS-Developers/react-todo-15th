@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { FaTrash } from "react-icons/fa";
 import styled from "styled-components";
 
-import { GlobalContext } from "../context/GlobalState";
+import { DispatchContext} from "../context/GlobalContext";
+import { Item, ActionType, ItemType } from "../Objects";
 
-const Item = styled.div`
+const ItemDiv = styled.div`
   display: flex;
   width: "100%";
   justify-content: space-between;
@@ -70,11 +71,29 @@ const DeleteIcon = styled.p`
   color: gray;
 `;
 
-const ListItem = ({ item }) => {
-  const { deleteItem, moveItem } = useContext(GlobalContext);
+const ListItem = ({ item }: {item: Item}) => {
+  const dispatch = useContext(DispatchContext);
+
+    const moveItem = (uid: string) => {
+    dispatch({
+      type: ActionType.MODIFY,
+      payload: {
+        id: uid,
+      },
+    });
+  };
+
+  const deleteItem = (uid: string) => {
+    dispatch({
+      type: ActionType.DELETE,
+      payload: {
+        id: uid,
+      },
+    });
+  };
 
   return (
-    <Item>
+    <ItemDiv>
       <ItemScrollDiv>
         <ItemFinishButton
           type="button"
@@ -84,7 +103,7 @@ const ListItem = ({ item }) => {
         >
           <ItemTitle>
             {/* listType의 done/todo에 따라 del 태그 삽입 */}
-            {item.type === "done" ? <del>{item.content}</del> : item.content}
+            {item.type === ItemType.Done ? <del>{item.content}</del> : item.content}
           </ItemTitle>
         </ItemFinishButton>
       </ItemScrollDiv>
@@ -98,7 +117,7 @@ const ListItem = ({ item }) => {
           <FaTrash />
         </DeleteIcon>
       </ItemDeleteButton>
-    </Item>
+    </ItemDiv>
   );
 };
 
