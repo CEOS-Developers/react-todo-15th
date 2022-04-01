@@ -29,7 +29,7 @@ export default function App() {
   ]);
 
   const TODO = 'todo';
-  
+
   useEffect(() => {
     console.log('save is running');
     localStorage.setItem(TODO, JSON.stringify(todos));
@@ -41,7 +41,7 @@ export default function App() {
       const loadTodo = JSON.parse(loadStorage);
       setTodos(loadTodo);
     }
-  }, []);
+  }, [todos]);
 
   const nextId = useRef(4);
   /*저장된 할 일의 목록 */
