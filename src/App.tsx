@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
 import TodoList from './components/TodoList';
@@ -26,7 +25,9 @@ const App = () => {
   ]);
   const handleIsDoneToggle = (id: number) => {
     setTodos((todos) =>
-      todos.map((todo) => (todo.id === id ? { ...todo, isDone: !todo.isDone } : todo))
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
+      )
     );
   };
   const handleRemoveTodo = (id: number) => {
@@ -75,18 +76,12 @@ const App = () => {
      ** Screen
      **  ㄴ Wrapper
      **     ㄴ [TodoList]
-     **        ㄴ TodoHeader
-     **        ㄴ TodoSection
+     **        ㄴ StyledHeader
+     **        ㄴ StyledSection
      **           ㄴ TodoItem
      **              ㄴ Wrapper
      **                 ㄴ Content
-     **                    ㄴ CheckButton, Text, DeleteButton
-     **        ㄴ DoneHeader
-     **        ㄴ DoneSection
-     **           ㄴ TodoItem
-     **              ㄴ Wrapper
-     **                 ㄴ Content
-     **                    ㄴ CheckButton, Text, DeleteButton
+     **                    ㄴ CheckButton, Text, StyledButton
      **     ㄴ [TodoInsert]
      **        ㄴ Form
      **           ㄴ Input, SubmitButton
