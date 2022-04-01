@@ -1,8 +1,13 @@
 // https://blog.devgenius.io/using-styled-components-and-props-with-typescript-react-a3c32a496f47
+// https://krpeppermint100.medium.com/ts-useref-%EC%9E%90%EC%84%B8%ED%9E%88-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-typescript-uselayouteffect-c9f1cf02ca5a
 
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { ReactComponent as Remove } from '../assets/remove.svg';
+import { ReactComponent as Edit } from '../assets/edit.svg';
+import { ReactComponent as Send } from '../assets/send.svg';
 import useTodoContext from '../hooks/useTodoContext';
+import useForm from '../hooks/useForm';
 import { ITodoItem } from '../Interface';
 
 interface ITodoItemProps {
@@ -11,23 +16,63 @@ interface ITodoItemProps {
 
 interface IBtn {
     done: boolean;
+    edit: boolean;
 }
 
 const TodoItem = ({ item }: ITodoItemProps) => {
     const { id, content, done } = item;
-    const { deleteItem, toggleItem } = useTodoContext();
+    const { deleteItem, toggleItem, editItem } = useTodoContext();
+
+    const [edit, setEdit] = useState(false);
+    const { value, onChange, onSubmit } = useForm(item.content, editItem, item.id);
+
+    const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        const { current } = inputRef;
+        if (current !== null) {
+            current.focus();
+        }
+    }, [edit]);
+
+    const handleEditBtn = () => {
+        setEdit(true);
+    };
 
     return (
         <Item>
-            <ItemContentBox
-                onClick={() => {
-                    toggleItem(id);
-                }}
-            >
-                <RadioButton done={done}></RadioButton>
-                <ItemContent>{content}</ItemContent>
+            {edit ? (
+                <ItemEditForm
+                    onSubmit={(e) => {
+                        onSubmit(e);
+                        setEdit(false);
+                    }}
+                >
+                    <InputEdit value={value} onChange={onChange} ref={inputRef} />
+                    <StyledSubmitEdit type="submit">
+                        <Send />
+                    </StyledSubmitEdit>
+                </ItemEditForm>
+            ) : (
+                <ItemContentBox
+                    onClick={() => {
+                        toggleItem(id);
+                    }}
+                >
+                    <RadioButton done={done} edit={false}></RadioButton>
+                    <ItemContent>{content}</ItemContent>
+                </ItemContentBox>
+            )}
+            <ItemContentBox>
+                {edit ? (
+                    ''
+                ) : (
+                    <>
+                        <StyledEdit onClick={handleEditBtn} />
+                        <StyledRemove onClick={() => deleteItem(item.id)} />
+                    </>
+                )}
             </ItemContentBox>
-            <StyledRemove onClick={() => deleteItem(id)} />
         </Item>
     );
 };
@@ -52,7 +97,7 @@ const RadioButton = styled.div<IBtn>`
     border-radius: 50%;
     border: 2px solid #8989bb;
     cursor: pointer;
-    background-color: ${(props: any) => (props.done ? '#8989bb' : 'none')};
+    background-color: ${(props: IBtn) => (props.done ? '#8989bb' : 'none')};
     &:hover {
         background-color: #cacae4;
         border-color: #cacae4;
@@ -62,7 +107,7 @@ const RadioButton = styled.div<IBtn>`
 const ItemContent = styled.div`
     cursor: pointer;
     line-height: 16px;
-    width: 250px;
+    width: 220px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -74,4 +119,39 @@ const StyledRemove = styled(Remove)`
     &:hover {
         fill: black;
     }
+`;
+
+const ItemEditForm = styled.form`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+    width: 100%;
+    border-radius: 8px;
+    background-color: #f1f1f1;
+`;
+
+const InputEdit = styled.input`
+    height: 30px;
+    width: 260px;
+    padding: 0px 10px;
+    border: none;
+    background-color: #f1f1f1;
+    &:focus {
+        outline: 0;
+    }
+`;
+
+const StyledEdit = styled(Edit)`
+    padding-right: 15px;
+    fill: #d3d3d3;
+    &:hover {
+        fill: black;
+    }
+`;
+
+const StyledSubmitEdit = styled.button`
+    padding-right: 10px;
+    fill: #black;
+    border: none;
 `;

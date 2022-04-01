@@ -4,23 +4,21 @@ import useTodoContext from '../hooks/useTodoContext';
 
 const InputTodo = () => {
     const { addItem } = useTodoContext();
-    const { value, onChange, onSubmit } = useForm('', addItem);
+    const { value, onChange, onSubmit } = useForm('', addItem, '');
 
     return (
         <>
-            <InputBox onSubmit={onSubmit}>
-                <InputText id="input-form" value={value} onChange={onChange} placeholder="할 일을 입력해 주세요." />
-                <InputButton id="input-button" type="submit">
-                    +
-                </InputButton>
-            </InputBox>
+            <InputForm onSubmit={onSubmit}>
+                <InputText value={value} onChange={onChange} placeholder="할 일을 입력해 주세요." />
+                <InputButton type="submit">+</InputButton>
+            </InputForm>
         </>
     );
 };
 
 export default InputTodo;
 
-const InputBox = styled.form`
+const InputForm = styled.form`
     display: flex;
     justify-content: space-between;
     align-items: center;

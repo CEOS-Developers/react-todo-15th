@@ -42,7 +42,12 @@ const useTodoContext = () => {
         setList((list) => list.map((item) => (item.id === id ? { ...item, done: !item.done } : item)));
     };
 
-    return { addItem, deleteItem, toggleItem };
+    const editItem = (value: string, id: string): void => {
+        setList((list) => list.map((item) => (item.id === id ? { ...item, content: value } : item)));
+        runToast('수정되었어요!');
+    };
+
+    return { addItem, deleteItem, toggleItem, editItem };
 };
 
 export default useTodoContext;
