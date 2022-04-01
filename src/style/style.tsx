@@ -11,3 +11,8 @@ export const Container = styled.div`
   border-radius: 10px;
   z-index: -1;
 `;
+
+export const SpanStyle = styled.span`
+  color: white;
+  marginbottom: 5px;
+`;

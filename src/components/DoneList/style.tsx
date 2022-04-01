@@ -26,6 +26,7 @@ export const ListBtn = styled.button<IListBtn>`
   border: 1px dotted blue;
   opacity: 0.5;
   text-decoration: line-through;
+  margin-bottom: 5px;
 `;
 
 export const SpanStyle = styled.span`
