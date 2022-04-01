@@ -30,6 +30,16 @@ interface ITodoListProps {
   handleRemoveTodo: IHandleRemoveTodo;
 }
 
-export type {
-  ITodo, IHandleIsDoneToggle, IHandleRemoveTodo, IHandleTodoInsert, ITodoListProps, ITodoItemProps,
+interface IStyledButtonProps {
+  size?: string;
 }
+
+export type {
+  ITodo,
+  IHandleIsDoneToggle,
+  IHandleRemoveTodo,
+  IHandleTodoInsert,
+  ITodoListProps,
+  ITodoItemProps,
+  IStyledButtonProps,
+};

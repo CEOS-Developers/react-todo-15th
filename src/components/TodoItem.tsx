@@ -1,8 +1,17 @@
-import { BsCheckCircleFill, BsCheckCircle, BsFillPencilFill, BsFillTrashFill } from 'react-icons/bs';
+import {
+  BsCheckCircleFill,
+  BsCheckCircle,
+  BsFillPencilFill,
+  BsFillTrashFill,
+} from 'react-icons/bs';
 import styled from 'styled-components';
-import {ITodoItemProps} from '../interface';
+import { ITodoItemProps, IStyledButtonProps } from '../interface';
 
-const TodoItem = ({ todo, handleIsDoneToggle, handleRemoveTodo }: ITodoItemProps) => {
+const TodoItem = ({
+  todo,
+  handleIsDoneToggle,
+  handleRemoveTodo,
+}: ITodoItemProps) => {
   const { id, text, isDone } = todo;
   return (
     <Wrapper>
@@ -17,16 +26,17 @@ const TodoItem = ({ todo, handleIsDoneToggle, handleRemoveTodo }: ITodoItemProps
           </CheckButton>
         )}
         <Text>{text}</Text>
-        <EditButton>
+        <StyledButton>
           <BsFillPencilFill />
-        </EditButton>
-        <DeleteButton
+        </StyledButton>
+        <StyledButton
+          size="1.1rem"
           onClick={() => {
             handleRemoveTodo(id);
           }}
         >
           <BsFillTrashFill />
-        </DeleteButton>
+        </StyledButton>
       </Content>
     </Wrapper>
   );
@@ -87,32 +97,12 @@ const Text = styled.span`
   overflow: hidden;
 `;
 
-const EditButton = styled.button`
+const StyledButton = styled.button<IStyledButtonProps>`
   width: 20px;
   height: 20px;
   margin-right: 1.5%;
 
-  font-size: 1rem;
-  color: #3f464d;
-
-  background: none;
-  border: none;
-  opacity: 0.3;
-
-  flex: none;
-
-  &:hover {
-    opacity: 1;
-    cursor: pointer;
-  }
-`;
-
-const DeleteButton = styled.button`
-  width: 20px;
-  height: 20px;
-  margin-right: 1.5%;
-
-  font-size: 1.1rem;
+  font-size: ${({ size }) => size || '1rem'};
   color: #3f464d;
 
   background: none;
