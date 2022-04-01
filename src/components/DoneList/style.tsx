@@ -27,3 +27,8 @@ export const ListBtn = styled.button<IListBtn>`
   opacity: 0.5;
   text-decoration: line-through;
 `;
+
+export const SpanStyle = styled.span`
+  color: #bf9053;
+  fontweight: bold;
+`;

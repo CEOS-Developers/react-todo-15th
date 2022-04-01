@@ -1,14 +1,18 @@
-import { DivDoneList, DoneNumStyle, ListBtn, Unordered } from './style';
+import {
+  DivDoneList,
+  DoneNumStyle,
+  ListBtn,
+  Unordered,
+  SpanStyle,
+} from './style';
 import { IDoneList, ITodoList } from 'interface';
 
 const Index = ({ list, onToggle, doneNum }: IDoneList) => {
   return (
     <DivDoneList>
       <DoneNumStyle>
-        <span style={{ color: '#BF9053', fontWeight: 'bold' }}>
-          DONE ({doneNum})
-        </span>
-        <span> src/components/doneList.js</span>
+        <SpanStyle>DONE ({doneNum})</SpanStyle>
+        <span> src/components/doneList.tsx</span>
       </DoneNumStyle>
       <Unordered>
         {list.map((item: ITodoList, index: number) => (
