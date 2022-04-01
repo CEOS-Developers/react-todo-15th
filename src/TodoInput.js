@@ -5,16 +5,16 @@ const InputBox = styled.div`
     font-family: sans-serif;
     text-align: left;
     margin: 20px 20px 20px 20px;
-    width: 80%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
 `;
 
 const InputField = styled.div`
     font-family: sans-serif;
     text-align: left;
     margin: 20px 20px 20px 20px;
+    width: 80%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
 `;
 
 const InputText = styled.label`
@@ -25,15 +25,19 @@ const InputText = styled.label`
     font-weight: Bold;
 `;
 
-const TodoInput = styled.input`
+const TodoInsert = styled.input`
     font-family: sans-serif;
     text-align: left;
+    display: span;
+    width: 90%;
 `;
 
 const TodoBtn = styled.button`
     font-family: sans-serif;
-    text-align: left;
-    margin: 20px 20px 20px 20px;
+    margin: 0px 0px 0px 20px;
+    display: span;
+    width: 40px;
+    text-align: center;
 `;
 
 const TodoInput = ({ input, onClick, onChange }) => {
@@ -43,7 +47,7 @@ const TodoInput = ({ input, onClick, onChange }) => {
         오늘도 좋은 하루예요.
       </InputText>
       <InputField>
-        <TodoInput
+        <TodoInsert 
           onChange={onChange}
           text={input}
           id="TodoInput"

@@ -9,6 +9,9 @@ const ListEachBox = styled.div`
 const ListEach = styled.li`
     font-family: sans-serif;
     text-align: left;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between; 
 `;
 
 const ListButton = styled.button`
