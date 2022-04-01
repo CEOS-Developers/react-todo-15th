@@ -1,27 +1,23 @@
+import { IItemProps } from './Interface';
+
 declare module 'react' {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
     isDoneList?: boolean;
   }
 }
 
-interface IItemProps {
-  id: string;
-  text: string;
-  isDoneList: boolean;
-  handleTextClick: React.MouseEventHandler<HTMLLIElement>;
-  handleDeleteBtnClick: React.MouseEventHandler<HTMLButtonElement>;
-}
-
-const Item = (props: IItemProps) => {
+const Item = ({
+  id,
+  text,
+  isDoneList,
+  handleTextClick,
+  handleDeleteBtnClick,
+}: IItemProps) => {
   return (
     <span>
-      <li
-        id={props.id}
-        isDoneList={props.isDoneList}
-        onClick={props.handleTextClick}
-      >
-        {props.text} &nbsp;
-        <button id={props.id} onClick={props.handleDeleteBtnClick}>
+      <li id={id} isDoneList={isDoneList} onClick={() => handleTextClick(id)}>
+        {text} &nbsp;
+        <button id={id} onClick={handleDeleteBtnClick}>
           X
         </button>
       </li>

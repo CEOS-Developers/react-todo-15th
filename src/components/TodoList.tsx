@@ -5,18 +5,17 @@ import { ILists } from './Interface';
 const TodoList = ({ isDoneList, savedList, setSavedList }: ILists) => {
   const filteredList = savedList?.filter((item) => item.isDone === isDoneList);
 
-  const handleTextClick = (e) => {
-    const newList = (filteredList) =>
+  const handleTextClick = (id: string) => {
+    setSavedList((filteredList) =>
       filteredList.map((item) =>
-        item.id === e.target.id ? { ...item, isDone: !item.isDone } : item
-      );
-
-    setSavedList(newList);
+        item.id === id ? { ...item, isDone: !item.isDone } : item
+      )
+    );
   };
 
-  const handleDeleteBtnClick = (e) => {
+  const handleDeleteBtnClick = (button) => {
     const newList = (filteredList) =>
-      filteredList.filter((todo) => todo.id !== e.target.id);
+      filteredList.filter((todo) => todo.id !== button.id);
 
     setSavedList(newList);
   };
