@@ -3,8 +3,6 @@ import styled from "styled-components";
 
 import { GlobalContext } from "../context/GlobalState";
 
-// styled component를 사용한다
-
 const AppInput = styled.div`
   width: 28rem;
   margin-bottom: 1rem;
@@ -12,7 +10,6 @@ const AppInput = styled.div`
 
 const FormControl = styled.form`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   width: 100%;
 `;
@@ -26,6 +23,7 @@ const FormInput = styled.input`
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   padding-left: 1.2rem;
   font-family: var(--ff-main);
+  outline: none;
   &:hover {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
   }
@@ -36,7 +34,7 @@ const AppTitle = styled.div`
   display: flex;
   text-align: center;
   justify-content: center;
-  margin: 1.5rem 0 1.5rem 0;
+  margin: 1.5rem 0;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 `;
 

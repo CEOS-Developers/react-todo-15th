@@ -1,9 +1,9 @@
 import { React, useState, useReducer, useEffect } from "react";
-import { FaBookReader } from "react-icons/fa";
 
 import { GlobalProvider } from "./context/GlobalState";
 import InputContainer from "./containers/InputContainer";
 import ListItemContainer from "./containers/ListItemContainer";
+import GlobalStyle from "./GlobalStyles";
 
 //로컬 스토리지의 정보구성 {list: {item1, item2, ...}}
 
@@ -12,6 +12,7 @@ function App() {
 
   return (
     <GlobalProvider>
+      <GlobalStyle />
       <div className="background">
         <div className="container">
           <InputContainer />

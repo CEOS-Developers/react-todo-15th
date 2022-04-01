@@ -1,9 +1,7 @@
 import React, { createContext, useReducer, useEffect } from "react";
 import AppReducer from "./AppReducer";
 
-const initialItems = localStorage.getItem("list")
-  ? JSON.parse(localStorage.getItem("list"))
-  : [];
+const initialItems = JSON.parse(localStorage.getItem("list")) || [];
 
 export const GlobalContext = createContext(initialItems);
 
@@ -43,7 +41,7 @@ export const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
-        listItems: listItems,
+        listItems,
         addItem,
         moveItem,
         deleteItem,
