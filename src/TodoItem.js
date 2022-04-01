@@ -1,28 +1,36 @@
 import React from "react";
-import "./App.css";
+import "./App.js";
 
-function List({ text, key, onRemove, onToggle }) {
-  return (
-    <div>
-      <li>
-        <button onToggle={onToggle}>check</button>
-        <span>({text})</span>
-        <button onRemove={() => onRemove(key)} key={key}>
-          -
-        </button>
-      </li>
-    </div>
-  );
+function List({ text, id, todoDone, onToggle, onDelete, keyDone }) {
+  if (todoDone === Boolean(keyDone)) {
+    return (
+      <div>
+        <li>
+          <button id={id} onClick={onToggle}>
+            ✔
+          </button>
+          <span>{text}</span>
+          <button id={id} onClick={onDelete}>
+            🚮
+          </button>
+        </li>
+      </div>
+    );
+  } else {
+    return <></>;
+  }
 }
 
-const TodoItem = ({ todos, onRemove, onToggle }) => {
+const TodoItem = ({ todos, onToggle, onDelete, keyDone }) => {
   return (
     <div>
       {todos.map((todo) => (
         <List
           text={todo.text}
-          key={todo.id}
-          onRemove={onRemove}
+          id={todo.id}
+          todoDone={todo.done}
+          keyDone={keyDone}
+          onDelete={onDelete}
           onToggle={onToggle}
         />
       ))}
