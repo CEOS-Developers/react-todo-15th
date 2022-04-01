@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import Item from './Item';
+import { ILists } from './Interface';
 
-const TodoList = ({ isDoneList, savedList, setSavedList }) => {
+const TodoList = ({ isDoneList, savedList, setSavedList }: ILists) => {
   const filteredList = savedList?.filter((item) => item.isDone === isDoneList);
 
   const handleTextClick = (e) => {
@@ -28,12 +29,12 @@ const TodoList = ({ isDoneList, savedList, setSavedList }) => {
           : `To do: ${filteredList?.length}개`}
       </ListTitle>
       <List>
-        {filteredList?.map(({ id, text }) => (
+        {filteredList?.map(({ id, text, isDone }) => (
           <Item
             key={id}
             id={id}
             text={text}
-            isDoneList={isDoneList}
+            isDoneList={isDone}
             handleTextClick={handleTextClick}
             handleDeleteBtnClick={handleDeleteBtnClick}
           />

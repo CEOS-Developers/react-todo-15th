@@ -1,13 +1,13 @@
 declare module 'react' {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
-    isDoneList?: Array<Object>;
+    isDoneList?: boolean;
   }
 }
 
 interface IItemProps {
   id: string;
   text: string;
-  isDoneList: Array<Object>;
+  isDoneList: boolean;
   handleTextClick: React.MouseEventHandler<HTMLLIElement>;
   handleDeleteBtnClick: React.MouseEventHandler<HTMLButtonElement>;
 }

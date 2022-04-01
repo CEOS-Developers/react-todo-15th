@@ -5,11 +5,21 @@ import Form from './components/Form';
 
 function App() {
   const [savedList, setSavedList] = useState([]);
+  const handleTodoInsert = (text: string) => {
+    if (text) {
+      const todo = {
+        id: Date.now().toString(),
+        text,
+        isDone: false,
+      };
+      setSavedList((savedList) => [...savedList, todo]);
+    }
+  };
   return (
     <Wrapper>
       <GlobalStyle />
       <Main>
-        <Form savedList={savedList} setSavedList={setSavedList} />
+        <Form handleTodoInsert={handleTodoInsert} />
         <MainTitle>할 일 목록</MainTitle>
         <TodoList
           isDoneList={false}

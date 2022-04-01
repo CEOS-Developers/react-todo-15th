@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { IHandleTodoInsert } from './Interface';
 
-const Form = ({ setSavedList }) => {
+interface ITodoInsertProps {
+  handleTodoInsert: IHandleTodoInsert;
+}
+
+const Form = ({ handleTodoInsert }: ITodoInsertProps) => {
   const [input, setInput] = useState<string>('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,8 +17,7 @@ const Form = ({ setSavedList }) => {
     e.preventDefault();
 
     if (input) {
-      const todo = { id: Date.now().toString(), text: input, isDone: false };
-      setSavedList((savedList) => [todo, ...savedList]);
+      handleTodoInsert(input);
     } else {
       alert('할일을 입력해 주세요');
     }
@@ -24,6 +28,7 @@ const Form = ({ setSavedList }) => {
   return (
     <form onSubmit={handleFormSubmit}>
       <InputContainer
+        id={Date.now().toString()}
         value={input}
         onChange={handleInputChange}
         placeholder="할일을 입력하세요"
