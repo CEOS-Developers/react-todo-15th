@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Item from './Item';
 
-const Todo = ({ isDoneList, savedList, setSavedList }) => {
+const TodoList = ({ isDoneList, savedList, setSavedList }) => {
   const filteredList = savedList?.filter((item) => item.isDone === isDoneList);
 
   const handleTextClick = (e) => {
@@ -42,7 +42,7 @@ const Todo = ({ isDoneList, savedList, setSavedList }) => {
     </>
   );
 };
-export default Todo;
+export default TodoList;
 
 const ListTitle = styled.h2`
   font-size: 14px;
