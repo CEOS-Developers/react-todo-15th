@@ -2,8 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 const Form = ({ setSavedList }) => {
-  type input = { text: string };
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState<string>('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
