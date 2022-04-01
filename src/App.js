@@ -8,7 +8,7 @@ import TodoInput from "./TodoInput.js";
 import TodoList from "./TodoList";
 
 export default function App() {
-
+  const TODO = 'todos';
   const [input, setInput] = useState("입력없음");
   const [todos, setTodos] = useState([
     {
@@ -28,19 +28,17 @@ export default function App() {
     }
   ]);
 
-  const TODO = 'todo';
-
-  useEffect(() => {
-    console.log('save is running');
-    localStorage.setItem(TODO, JSON.stringify(todos));
-  }, [todos]);
-
   useEffect(() => {
     const loadStorage = localStorage.getItem(TODO);
     if (loadStorage) {
       const loadTodo = JSON.parse(loadStorage);
       setTodos(loadTodo);
     }
+  }, []);
+
+  useEffect(() => {
+    console.log('save is running');
+    localStorage.setItem(TODO, JSON.stringify(todos));
   }, [todos]);
 
   const nextId = useRef(4);
