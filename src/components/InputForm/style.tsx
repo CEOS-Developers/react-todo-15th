@@ -45,3 +45,8 @@ export const Triangle = styled.div`
   border-right: 10px solid transparent;
   border-bottom: 10px solid transparent;
 `;
+
+export const SpanStyle = styled.span`
+  display: 'flex';
+  background: 'black';
+`;
