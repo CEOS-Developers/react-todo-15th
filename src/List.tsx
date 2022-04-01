@@ -9,22 +9,17 @@ const ListEachBox = styled.div`
 const ListEach = styled.li`
     font-family: sans-serif;
     text-align: left;
-    list-style: none;
 `;
 
 const ListButton = styled.button`
     font-family: sans-serif;
-    text-align: center;
-    Background-color : #307858;
-    border-radius : 5rem;
-    width : 30px;
-    height : 30px;
+    text-align: left;
+    Background-color : yellow;
 `;
 
 const ListText = styled.span`
     font-family: sans-serif;
     text-align: left;
-    color : #2f3820;
 `;
 
 const List = ({ text, id, todoDone, onToggle, onDelete, keyDone }) => {

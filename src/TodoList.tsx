@@ -12,14 +12,12 @@ const ListTitle = styled.h3`
     font-family: sans-serif;
     text-align: left;
     margin: 20px 20px 20px 20px;
-    color : #2f3820;
 `;
 
 const ListBox = styled.ul`
     font-family: sans-serif;
     text-align: left;
     margin: 20px 20px 20px 20px;
-    padding-left: 0px;
 `;
 
 

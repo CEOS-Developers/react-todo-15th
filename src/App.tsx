@@ -5,24 +5,10 @@ import { useRef } from "react";
 import WelcomeText from "./WelcomeText.js";
 import TodoInput from "./TodoInput.js";
 import TodoList from "./TodoList";
-import styled from 'styled-components';
-
-const AppBox = styled.div`
-    font-family: sans-serif;
-    text-align: center;
-    background-color: #ffc3e0;
-    position : absolute;
-    left : 50%;
-    top : 50%;
-    transform : translate(-50%, -50%);
-    width: 50rem;
-    padding: 5%;
-    border-radius: 3rem;
-`;
 
 export default function App() {
   const TODO = 'todos';
-  const [input, setInput] = useState("입력없음");
+  const [input, setInput] = useState("");
   const [todos, setTodos] = useState([
     {
       text: "디버깅 완료하기",
@@ -64,14 +50,18 @@ export default function App() {
   }
 
   function clickButton(event) {
-    const todo = {
-      text: input,
-      id: nextId.current,
-      done: false
-    };
-    nextId.current++;
-    setTodos([...todos, todo]);
-    console.log(todos);
+    if (input==="") {
+      alert('입력한 내용이 없어요!');
+    } else {
+      const todo = {
+        text: input,
+        id: nextId.current,
+        done: false
+      };
+      nextId.current++;
+      setTodos([...todos, todo]);
+      setInput("");
+    }
   }
 
   function todoToggle(event) {
@@ -87,7 +77,6 @@ export default function App() {
     console.log("Toggle.");
   }
 
-
   function todoDelete(event) {
     const key = event.target.id;
     setTodos(todos.filter((todo) => todo.id !== Number(key)));
@@ -95,10 +84,10 @@ export default function App() {
   }
 
   return (
-    <AppBox>
+    <div className="App">
       <WelcomeText />
       <TodoInput input={input} onClick={clickButton} onChange={changeInput} />
       <TodoList todos={todos} onToggle={todoToggle} onDelete={todoDelete} />
-    </AppBox>
+    </div>
   );
 }

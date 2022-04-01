@@ -24,7 +24,6 @@ const InputText = styled.label`
     width: 100%;
     font-size: 1.2rem;
     font-weight: Bold;
-    color : #2f3820;
 `;
 
 const TodoInsert = styled.input`
@@ -32,20 +31,14 @@ const TodoInsert = styled.input`
     text-align: left;
     display: span;
     width: 90%;
-    color : #2f3820;
 `;
 
 const TodoBtn = styled.button`
     font-family: sans-serif;
     margin: 0px 0px 0px 20px;
     display: span;
-    height : 40px;
-    border-radius : 5rem;
     width: 40px;
     text-align: center;
-    background-color : #2f3820;
-    color : #000000;
-
 `;
 
 const TodoInput = ({ input, onClick, onChange }) => {

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const RowBox = styled.div`
     font-family: sans-serif;
     text-align: left;
-    padding-left: 0px;
+    padding : 3%;
 `;
 
 const TodoItem = ({ todos, onToggle, onDelete, keyDone }) => {
