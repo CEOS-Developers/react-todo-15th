@@ -24,6 +24,10 @@ export const DivTitle = styled.div`
   border-top-right-radius: 10px;
 `;
 
+export const CircleContainer = styled.div`
+  display: flex;
+`;
+
 export const Cir1 = styled.div`
   cursor: pointer;
   width: 10px;
