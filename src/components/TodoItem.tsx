@@ -1,5 +1,6 @@
-// https://blog.devgenius.io/using-styled-components-and-props-with-typescript-react-a3c32a496f47
-// https://krpeppermint100.medium.com/ts-useref-%EC%9E%90%EC%84%B8%ED%9E%88-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-typescript-uselayouteffect-c9f1cf02ca5a
+// 1. https://blog.devgenius.io/using-styled-components-and-props-with-typescript-react-a3c32a496f47
+// 2. https://krpeppermint100.medium.com/ts-useref-%EC%9E%90%EC%84%B8%ED%9E%88-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0-typescript-uselayouteffect-c9f1cf02ca5a
+// 3. https://close-up.tistory.com/entry/React-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%ED%8A%B9%EC%A0%95-%EC%98%81%EC%97%AD-%EC%99%B8-%ED%81%B4%EB%A6%AD-%EA%B0%90%EC%A7%80
 
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
@@ -27,7 +28,23 @@ const TodoItem = ({ item }: ITodoItemProps) => {
     const { value, onChange, onSubmit } = useForm(item.content, editItem, item.id);
 
     const inputRef = useRef<HTMLInputElement>(null);
+    const editFormRef = useRef<HTMLFormElement>(null);
+    const menuRef = useRef<HTMLButtonElement>(null);
 
+    //참고3 : editForm 외의 부분을 클릭했을 때 setEdit(false)
+    useEffect(() => {
+        const handleClickOutside = (e: MouseEvent): void => {
+            if (editFormRef.current && !editFormRef.current.contains(e.target as Node)) {
+                setEdit(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [inputRef]);
+
+    // 참고2
     useEffect(() => {
         const { current } = inputRef;
         if (current !== null) {
@@ -47,6 +64,7 @@ const TodoItem = ({ item }: ITodoItemProps) => {
                         onSubmit(e);
                         setEdit(false);
                     }}
+                    ref={editFormRef}
                 >
                     <InputEdit value={value} onChange={onChange} ref={inputRef} />
                     <StyledSubmitEdit type="submit">
@@ -88,8 +106,10 @@ const Item = styled.li`
 
 const ItemContentBox = styled.div`
     display: flex;
+    align-items: center;
 `;
 
+// 참고1
 const RadioButton = styled.div<IBtn>`
     width: 16px;
     height: 16px;
