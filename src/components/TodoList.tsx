@@ -1,7 +1,8 @@
 import TodoItem from './TodoItem';
 import styled from 'styled-components';
+import {ITodoListProps} from '../interface'
 
-const TodoList = ({ todos, doneCnt, todoCnt, handleIsDoneToggle, handleRemoveTodo }) => {
+const TodoList = ({ todos, doneCnt, todoCnt, handleIsDoneToggle, handleRemoveTodo }: ITodoListProps) => {
   const todoItems = todos.filter((todo) => todo.isDone === false);
   const doneItems = todos.filter((todo) => todo.isDone === true);
   return (

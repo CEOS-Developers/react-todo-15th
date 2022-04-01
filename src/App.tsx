@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import { GlobalStyle } from './styles/GlobalStyle';
 import styled from 'styled-components';
 import TodoList from './components/TodoList';
 import TodoInsert from './components/TodoInsert';
@@ -25,15 +24,15 @@ const App = () => {
       isDone: false,
     },
   ]);
-  const handleIsDoneToggle = (id) => {
+  const handleIsDoneToggle = (id: number) => {
     setTodos((todos) =>
       todos.map((todo) => (todo.id === id ? { ...todo, isDone: !todo.isDone } : todo))
     );
   };
-  const handleRemoveTodo = (id) => {
+  const handleRemoveTodo = (id: number) => {
     setTodos((todos) => todos.filter((todo) => todo.id !== id));
   };
-  const handleTodoInsert = (text) => {
+  const handleTodoInsert = (text: string) => {
     if (text) {
       const todo = {
         id: gNextId,
@@ -48,7 +47,6 @@ const App = () => {
   const todoCnt = todos.length - doneCnt;
   return (
     <>
-      <GlobalStyle />
       <Screen>
         <Wrapper>
           <TodoList

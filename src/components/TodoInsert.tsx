@@ -1,15 +1,20 @@
 import { BsPlusCircle } from 'react-icons/bs';
 import { useState } from 'react';
 import styled from 'styled-components';
+import {IHandleTodoInsert} from '../interface'
 
-const TodoInsert = ({ handleTodoInsert }) => {
+interface ITodoInsertProps {
+  handleTodoInsert: IHandleTodoInsert;
+}
+
+const TodoInsert = ({ handleTodoInsert }: ITodoInsertProps) => {
   const [inputValue, setInputValue] = useState('');
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     handleTodoInsert(inputValue);
     setInputValue('');
   };
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
   return (

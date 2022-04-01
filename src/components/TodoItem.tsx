@@ -1,7 +1,8 @@
 import { BsCheckCircleFill, BsCheckCircle, BsFillPencilFill, BsFillTrashFill } from 'react-icons/bs';
 import styled from 'styled-components';
+import {ITodoItemProps} from '../interface';
 
-const TodoItem = ({ todo, handleIsDoneToggle, handleRemoveTodo }) => {
+const TodoItem = ({ todo, handleIsDoneToggle, handleRemoveTodo }: ITodoItemProps) => {
   const { id, text, isDone } = todo;
   return (
     <Wrapper>
@@ -73,7 +74,7 @@ const CheckButton = styled.button`
 `;
 
 const Text = styled.span`
-  height: 1.2rem;
+  height: 1.35rem;
   width: 100%;
 
   margin-left: 0.25rem;
