@@ -2,10 +2,14 @@ import React from "react";
 import styled from 'styled-components';
 
 const WelcomBox = styled.div`
+    font-family: sans-serif;
+    text-align: left;
     margin: 20px 20px 20px 20px;
 `;
 
 const WelcomTitle = styled.div`
+    font-family: sans-serif;
+    text-align: left;
     margin: 20px 20px 20px 20px;
     width: 100vw;
     display: flex;
@@ -16,16 +20,22 @@ const WelcomTitle = styled.div`
 `; 
 
 const WelcomText = styled.div`
+    font-family: sans-serif;
+    text-align: left;
     margin: 20px 20px 20px 20px;
     width: 100%;
     display: block;
 `; 
 
 const TitleInfo = styled.span`
+    font-family: sans-serif;
+    text-align: left;
     display: span;
 `;
 
 const TitleName = styled.span`
+    font-family: sans-serif;
+    text-align: left;
     padding-left: 10px;
     display: span;
     color: blue;
