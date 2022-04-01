@@ -1,29 +1,15 @@
 import React from "react";
-import "./App.js";
+import List from "./List.js";
+import styled from 'styled-components';
 
-function List({ text, id, todoDone, onToggle, onDelete, keyDone }) {
-  if (todoDone === Boolean(keyDone)) {
-    return (
-      <div>
-        <li>
-          <button id={id} onClick={onToggle}>
-            ✔
-          </button>
-          <span>{text}</span>
-          <button id={id} onClick={onDelete}>
-            🚮
-          </button>
-        </li>
-      </div>
-    );
-  } else {
-    return <></>;
-  }
-}
+const RowBox = styled.div`
+    font-family: sans-serif;
+    text-align: left;
+`;
 
 const TodoItem = ({ todos, onToggle, onDelete, keyDone }) => {
   return (
-    <div>
+    <RowBox>
       {todos.map((todo) => (
         <List
           text={todo.text}
@@ -34,7 +20,7 @@ const TodoItem = ({ todos, onToggle, onDelete, keyDone }) => {
           onToggle={onToggle}
         />
       ))}
-    </div>
+    </RowBox>
   );
 };
 
