@@ -5,11 +5,10 @@ const Todo = ({ isDoneList, savedList, setSavedList }) => {
   const filteredList = savedList?.filter((item) => item.isDone === isDoneList);
 
   const handleTextClick = (e) => {
+    console.log('clicked');
     const newList = (filteredList) =>
       filteredList.map((item) =>
-        item.id === parseInt(e.target.id)
-          ? { ...item, isDone: !item.isDone }
-          : item
+        item.id === e.target.id ? { ...item, isDone: !item.isDone } : item
       );
 
     setSavedList(newList);
@@ -17,7 +16,7 @@ const Todo = ({ isDoneList, savedList, setSavedList }) => {
 
   const handleDeleteBtnClick = (e) => {
     const newList = (filteredList) =>
-      filteredList.filter((todo) => todo.id !== parseInt(e.target.id));
+      filteredList.filter((todo) => todo.id !== e.target.id);
 
     setSavedList(newList);
   };

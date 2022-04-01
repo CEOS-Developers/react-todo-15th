@@ -9,11 +9,11 @@ const Form = ({ setSavedList }) => {
     setInput(e.target.value);
   };
 
-  const handleFormSubmit = (e: React.SyntheticEvent) => {
+  const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (input) {
-      const todo = { id: Date.now(), text: input, isDone: false };
+      const todo = { id: Date.now().toString(), text: input, isDone: false };
       setSavedList((savedList) => [todo, ...savedList]);
     } else {
       alert('할일을 입력해 주세요');
