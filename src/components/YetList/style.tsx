@@ -16,6 +16,11 @@ export const YetNumStyle = styled.div`
   font-size: 14px;
 `;
 
+export const SpanStyle = styled.span`
+  color: #bf9053;
+  fontweight: bold;
+`;
+
 export const RowDivInYetList = styled.div`
   display: flex;
 

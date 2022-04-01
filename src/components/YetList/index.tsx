@@ -5,6 +5,7 @@ import {
   RowDivInYetList,
   Unordered,
   YetNumStyle,
+  SpanStyle,
 } from './style';
 
 import { ITodoList, IYetListProps } from 'interface';
@@ -13,9 +14,7 @@ const Index = ({ list, yetNum, onToggle, onDelete }: IYetListProps) => {
   return (
     <DivYetList>
       <YetNumStyle>
-        <span style={{ color: '#BF9053', fontWeight: 'bold' }}>
-          TO DO ({yetNum})
-        </span>
+        <SpanStyle>TO DO ({yetNum})</SpanStyle>
         <span> src/components/yetList.tsx</span>
       </YetNumStyle>
       <Unordered>
