@@ -19,6 +19,7 @@ const InputField = styled.div`
 
 const InputText = styled.label`
     font-family: sans-serif;
+    margin: 20px 20px 20px 20px;
     text-align: left;
     width: 100%;
     font-size: 1.2rem;
