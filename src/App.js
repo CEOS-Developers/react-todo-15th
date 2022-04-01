@@ -8,7 +8,7 @@ import TodoList from "./TodoList";
 
 export default function App() {
   const TODO = 'todos';
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState("입력없음");
   const [todos, setTodos] = useState([
     {
       text: "디버깅 완료하기",
@@ -50,18 +50,14 @@ export default function App() {
   }
 
   function clickButton(event) {
-    if (input==="") {
-      alert('입력한 내용이 없어요!');
-    } else {
-      const todo = {
-        text: input,
-        id: nextId.current,
-        done: false
-      };
-      nextId.current++;
-      setTodos([...todos, todo]);
-      setInput();
-    }
+    const todo = {
+      text: input,
+      id: nextId.current,
+      done: false
+    };
+    nextId.current++;
+    setTodos([...todos, todo]);
+    console.log(todos);
   }
 
   function todoToggle(event) {
