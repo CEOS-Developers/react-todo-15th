@@ -52,12 +52,12 @@ const Input = styled.input`
   border: solid 2px #3f464d;
   opacity: 0.55;
 
-  &:focus {
+  :focus {
     opacity: 1;
     border: solid 2.2px #3f464d;
   }
 
-  &:hover {
+  :hover {
     opacity: 1;
     border: solid 2.2px #3f464d;
   }
@@ -80,7 +80,7 @@ const SubmitButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  &:hover {
+  :hover {
     opacity: 1;
     cursor: pointer;
   }

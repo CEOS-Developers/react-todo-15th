@@ -16,16 +16,20 @@ interface IHandleTodoInsert {
   (text: string): void;
 }
 
-interface ITodoItemProps {
-  todo: ITodo;
-  handleIsDoneToggle: IHandleIsDoneToggle;
-  handleRemoveTodo: IHandleRemoveTodo;
-}
-
 interface ITodoListProps {
   todos: ITodo[];
   doneCnt: number;
   todoCnt: number;
+  handleIsDoneToggle: IHandleIsDoneToggle;
+  handleRemoveTodo: IHandleRemoveTodo;
+}
+
+interface IType {
+  type: 'todo' | 'done';
+}
+
+interface ITodoItemProps {
+  todo: ITodo;
   handleIsDoneToggle: IHandleIsDoneToggle;
   handleRemoveTodo: IHandleRemoveTodo;
 }
@@ -40,6 +44,7 @@ export type {
   IHandleRemoveTodo,
   IHandleTodoInsert,
   ITodoListProps,
+  IType,
   ITodoItemProps,
   IStyledButtonProps,
 };

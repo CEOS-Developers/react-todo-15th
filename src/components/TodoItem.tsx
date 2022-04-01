@@ -77,7 +77,7 @@ const CheckButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  &:hover {
+  :hover {
     color: darkgray;
     cursor: pointer;
   }
@@ -111,7 +111,7 @@ const StyledButton = styled.button<IStyledButtonProps>`
 
   flex: none;
 
-  &:hover {
+  :hover {
     opacity: 1;
     cursor: pointer;
   }

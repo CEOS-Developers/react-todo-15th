@@ -1,14 +1,20 @@
 import TodoItem from './TodoItem';
 import styled from 'styled-components';
-import {ITodoListProps} from '../interface'
+import { ITodoListProps, IType } from '../interface';
 
-const TodoList = ({ todos, doneCnt, todoCnt, handleIsDoneToggle, handleRemoveTodo }: ITodoListProps) => {
+const TodoList = ({
+  todos,
+  doneCnt,
+  todoCnt,
+  handleIsDoneToggle,
+  handleRemoveTodo,
+}: ITodoListProps) => {
   const todoItems = todos.filter((todo) => todo.isDone === false);
   const doneItems = todos.filter((todo) => todo.isDone === true);
   return (
     <>
-      <TodoHeader>Todo ({todoCnt})</TodoHeader>
-      <TodoSection>
+      <StyledHeader type="todo">Todo ({todoCnt})</StyledHeader>
+      <StyledSection type="todo">
         {todoItems.map((todo) => (
           <TodoItem
             todo={todo}
@@ -17,9 +23,9 @@ const TodoList = ({ todos, doneCnt, todoCnt, handleIsDoneToggle, handleRemoveTod
             handleRemoveTodo={handleRemoveTodo}
           />
         ))}
-      </TodoSection>
-      <DoneHeader>Done ({doneCnt})</DoneHeader>
-      <DoneSection>
+      </StyledSection>
+      <StyledHeader type="done">Done ({doneCnt})</StyledHeader>
+      <StyledSection type="done">
         {doneItems.map((todo) => (
           <TodoItem
             todo={todo}
@@ -28,35 +34,19 @@ const TodoList = ({ todos, doneCnt, todoCnt, handleIsDoneToggle, handleRemoveTod
             handleRemoveTodo={handleRemoveTodo}
           />
         ))}
-      </DoneSection>
+      </StyledSection>
     </>
   );
 };
 
-const TodoHeader = styled.header`
-  margin: 6% 0% 3% 3%;
-
+const StyledHeader = styled.header<IType>`
+  margin: ${({ type }) => (type === 'todo' ? '6% 0% 3% 3%' : '4% 0% 3% 3%')};
   font-size: 1.4rem;
   font-weight: bold;
 `;
 
-const TodoSection = styled.section`
-  height: 260px;
-  overflow: auto;
-`;
-
-
-
-
-const DoneHeader = styled.header`
-  margin: 4% 0% 3% 3%;
-
-  font-size: 1.4rem;
-  font-weight: bold;
-`;
-
-const DoneSection = styled.section`
-  height: 170px;
+const StyledSection = styled.section<IType>`
+  height: ${({ type }) => (type === 'todo' ? '260px' : '170px')};
   overflow: auto;
 `;
 
