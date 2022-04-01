@@ -15,10 +15,11 @@ const Index = () => {
   const [contents, setContents] = useState('');
   const [list, setList] = useState(localData);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+  const handleContentsChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setContents(e.target.value);
-  const onSubmit = (e: React.SyntheticEvent) => {
+  const handleFormSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
+
     const obj = {
       contents,
       id: Date.now(),
@@ -50,7 +51,7 @@ const Index = () => {
   };
   const onDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
     // 클릭된 텍스트 찾기
-
+    console.dir((e.target as HTMLElement).parentNode);
     const text = (
       (e.target as HTMLElement).parentNode as HTMLElement
     ).innerText.slice(0, -4);
@@ -97,7 +98,11 @@ const Index = () => {
 
   return (
     <div>
-      <InputForm onSubmit={onSubmit} onChange={onChange} contents={contents} />
+      <InputForm
+        handleFormSubmit={handleFormSubmit}
+        handleContentsChange={handleContentsChange}
+        contents={contents}
+      />
       <YetList
         list={list}
         yetNum={yetNum}

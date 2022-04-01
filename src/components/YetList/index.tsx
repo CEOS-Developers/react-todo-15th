@@ -18,8 +18,8 @@ const Index = ({ list, yetNum, onToggle, onDelete }: IYetListProps) => {
         <span> src/components/yetList.tsx</span>
       </YetNumStyle>
       <Unordered>
-        {list.map((item: ITodoList, index: number) => (
-          <RowDivInYetList key={index}>
+        {list.map((item: ITodoList) => (
+          <RowDivInYetList key={item.id}>
             {!item.isDone && (
               <>
                 <ListBtn onClick={onToggle}>{item.contents}</ListBtn>

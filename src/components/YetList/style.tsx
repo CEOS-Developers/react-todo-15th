@@ -16,11 +16,6 @@ export const YetNumStyle = styled.div`
   font-size: 14px;
 `;
 
-export const SpanStyle = styled.span`
-  color: #bf9053;
-  fontweight: bold;
-`;
-
 export const RowDivInYetList = styled.div`
   display: flex;
 
@@ -42,4 +37,9 @@ export const DeleteBtn = styled.button`
   border: none;
   opacity: 0.5;
   margin-left: auto;
+`;
+
+export const SpanStyle = styled.span`
+  color: #bf9053;
+  fontweight: bold;
 `;

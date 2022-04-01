@@ -15,8 +15,8 @@ const Index = ({ list, onToggle, doneNum }: IDoneList) => {
         <span> src/components/doneList.tsx</span>
       </DoneNumStyle>
       <Unordered>
-        {list.map((item: ITodoList, index: number) => (
-          <div key={index}>
+        {list.map((item: ITodoList) => (
+          <div key={item.id}>
             {item.isDone && (
               <ListBtn onClick={onToggle}>{item.contents}</ListBtn>
             )}
