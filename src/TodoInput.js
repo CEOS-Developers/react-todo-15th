@@ -1,17 +1,23 @@
 import React from "react";
-import "./App.css";
 
-const TodoInput = ({ text, onChange, onClick }) => {
+const TodoInput = ({ input, onClick, onChange }) => {
   return (
-    <div className="input-box">
-      <h3>오늘도 좋은 하루예요.</h3>
-      <input
-        type="text"
-        id="todo-input"
-        placeholder="오늘 할 일을 입력하세요."
-        onChange={onChange}
-      />
-      <input type="button" onClick={onClick} />
+    <div id="InputBox" className="Box">
+      <label htmlFor="TodoInput" id="InputText">
+        오늘도 좋은 하루예요.
+      </label>
+      <div id="InputField">
+        <input
+          onChange={onChange}
+          text={input}
+          id="TodoInput"
+          type="text"
+          placeholder="이번에 할 일은.."
+        />
+        <button id="TodoBtn" onClick={onClick}>
+          +
+        </button>
+      </div>
     </div>
   );
 };
