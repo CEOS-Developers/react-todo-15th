@@ -1,6 +1,10 @@
 import { FormEvent } from 'react';
 import useInput from './useInput';
 
+interface IHandler {
+    handler: (value: string, id: string) => void;
+}
+
 //handler : any... 방법을 못찾겠습니다.ㅜㅜㅜ
 const useForm = (initialValue: string, handler: any, id: string | null) => {
     const { value, setValue, onChange } = useInput(initialValue);
