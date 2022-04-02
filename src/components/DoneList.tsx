@@ -4,22 +4,22 @@ import TodoItem from "./TodoItem";
 import { useTodo } from "hooks";
 
 const DoneList = () => {
-  const { doneList, _addTodo, _deleteDone } = useTodo();
+  const { doneList, addTodo, deleteDone } = useTodo();
 
   // todo item 추가
   const _addTodoList = useCallback(
     (todo: string): void => {
-      _addTodo({ text: todo });
+      addTodo({ text: todo });
     },
-    [_addTodo],
+    [addTodo],
   );
 
   // done item 삭제
   const _deleteDoneList = useCallback(
     (idx: number): void => {
-      _deleteDone(idx);
+      deleteDone(idx);
     },
-    [_deleteDone],
+    [deleteDone],
   );
 
   return (

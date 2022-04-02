@@ -4,16 +4,16 @@ const useInput = (initialValue: string) => {
   const [text, setText] = useState(initialValue);
 
   // input text 변경
-  const _handleTextChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setText(e.target.value);
   };
 
   // 입력값 초기화
-  const _resetText = (): void => {
+  const resetText = (): void => {
     setText("");
   };
 
-  return { text, _handleTextChange, _resetText };
+  return { text, handleTextChange, resetText };
 };
 
 export default useInput;

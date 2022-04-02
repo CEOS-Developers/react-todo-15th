@@ -1,11 +1,10 @@
 import React, { useCallback } from "react";
 import styled from "styled-components";
-import { useTodo } from "hooks";
-import { useInput } from "hooks";
+import { useTodo, useInput } from "hooks";
 
 const TodoInputForm = () => {
-  const { _addTodo } = useTodo();
-  const { text, _handleTextChange, _resetText } = useInput("");
+  const { addTodo } = useTodo();
+  const { text, handleTextChange, resetText } = useInput("");
 
   // todo item 추가
   const _addTodoItem = useCallback(
@@ -14,11 +13,11 @@ const TodoInputForm = () => {
 
       if (text.trim()) {
         // list에 todo item 추가
-        _addTodo({ text: text });
+        addTodo({ text: text });
       }
-      _resetText();
+      resetText();
     },
-    [text, _resetText, _addTodo],
+    [text, resetText, addTodo],
   );
 
   return (
@@ -26,7 +25,7 @@ const TodoInputForm = () => {
       <TodoInput
         placeholder="할 일을 입력하세요"
         value={text}
-        onChange={_handleTextChange}
+        onChange={handleTextChange}
       />
       <TodoInputBtn type="submit">+</TodoInputBtn>
     </TodoInputItems>
