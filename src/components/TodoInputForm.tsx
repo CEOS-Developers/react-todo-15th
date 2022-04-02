@@ -1,10 +1,10 @@
-import React, { useCallback, useContext } from "react";
+import React, { useCallback } from "react";
 import styled from "styled-components";
-import { TodoContext } from "contexts";
+import { useTodo } from "hooks";
 import { useInput } from "hooks";
 
 const TodoInputForm = () => {
-  const { dispatch } = useContext(TodoContext);
+  const { _addTodo } = useTodo();
   const { text, _handleTextChange, _resetText } = useInput("");
 
   // todo item 추가
@@ -14,14 +14,11 @@ const TodoInputForm = () => {
 
       if (text.trim()) {
         // list에 todo item 추가
-        dispatch({
-          type: "ADD_TODO",
-          todo: { text },
-        });
+        _addTodo({ text: text });
       }
       _resetText();
     },
-    [text, _resetText, dispatch],
+    [text, _resetText, _addTodo],
   );
 
   return (

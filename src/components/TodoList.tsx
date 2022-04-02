@@ -1,31 +1,25 @@
-import { useContext, useCallback } from "react";
+import { useCallback } from "react";
 import styled from "styled-components";
 import TodoItem from "./TodoItem";
-import { TodoContext } from "contexts";
+import { useTodo } from "hooks";
 
 const TodoList = () => {
-  const { todoList, dispatch } = useContext(TodoContext);
+  const { todoList, _addDone, _deleteTodo } = useTodo();
 
   // done item 추가
   const _addDoneList = useCallback(
     (todo: string): void => {
-      dispatch({
-        type: "ADD_DONE",
-        todo: { text: todo },
-      });
+      _addDone({ text: todo });
     },
-    [dispatch],
+    [_addDone],
   );
 
   // todo item 삭제
   const _deleteTodoList = useCallback(
     (idx: number): void => {
-      dispatch({
-        type: "DELETE_TODO",
-        idx,
-      });
+      _deleteTodo(idx);
     },
-    [dispatch],
+    [_deleteTodo],
   );
 
   return (
