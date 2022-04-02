@@ -5,7 +5,7 @@ import StatusBar from "./TodoStatusBar";
 import Title from "./TodoTitle";
 import ScrollView from "./TodoScrollView";
 
-import * as Icons from './Icons';
+import * as Icons from "./Icons";
 
 const ScreenWrapper = styled.div`
   display: flex;
@@ -62,9 +62,9 @@ const ScreenFooter = styled.footer`
   width: 100%;
   background: white;
 
-${({ darkMode }) =>
-  darkMode &&
-  `
+  ${({ darkMode }) =>
+    darkMode &&
+    `
   background: #2c2c2e;
 `}
 `;
@@ -141,7 +141,10 @@ const TodoScreen = ({ darkMode, ...props }) => {
     if (content !== "") {
       const newTodo = {
         id: todosId,
-        time: ('0' + date.getHours()).substr(-2) + ":" + ('0' + date.getMinutes()).substr(-2),
+        time:
+          ("0" + date.getHours()).substr(-2) +
+          ":" +
+          ("0" + date.getMinutes()).substr(-2),
         text: content,
         completed: false,
       };
@@ -198,7 +201,11 @@ const TodoScreen = ({ darkMode, ...props }) => {
             />
           </TodoInputForm>
           <TodoInputSend onClick={handleSubmit}>
-            {darkMode ? <TodoInputSendImg src={Icons.WhiteArrow} /> : <TodoInputSendImg src={Icons.BlackArrow} />}
+            {darkMode ? (
+              <TodoInputSendImg src={Icons.WhiteArrow} />
+            ) : (
+              <TodoInputSendImg src={Icons.BlackArrow} />
+            )}
           </TodoInputSend>
         </InputWrapper>
       </ScreenFooter>

@@ -4,7 +4,6 @@ import styled, { createGlobalStyle } from "styled-components";
 import DarkmodeBtn from "./DarkmodeBtn";
 import TodoScreen from "./components/TodoScreen";
 import TodoMockup from "./components/TodoMockup";
-import { useEffect } from "react/cjs/react.production.min";
 
 const GlobalStyle = createGlobalStyle`
   body {

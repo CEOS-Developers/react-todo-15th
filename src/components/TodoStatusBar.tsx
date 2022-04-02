@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-import * as Icons from './Icons';
+import * as Icons from "./Icons";
 
 const StatusBarWrapper = styled.main`
   display: flex;
@@ -38,15 +38,33 @@ const TodoStatusBar = ({ date, darkMode, ...props }) => {
     <StatusBarWrapper>
       <StatusBarIconWrapper>
         <StatusBarTime darkMode={darkMode}>
-            {('0' + date.getHours()).substr(-2) + ":" + ('0' + date.getMinutes()).substr(-2)}
+          {("0" + date.getHours()).substr(-2) +
+            ":" +
+            ("0" + date.getMinutes()).substr(-2)}
         </StatusBarTime>
-        {darkMode ? <StatusBarIcon src={Icons.WhiteLocation} /> : <StatusBarIcon src={Icons.BlackLocation} />}
+        {darkMode ? (
+          <StatusBarIcon src={Icons.WhiteLocation} />
+        ) : (
+          <StatusBarIcon src={Icons.BlackLocation} />
+        )}
       </StatusBarIconWrapper>
 
       <StatusBarIconWrapper>
-        {darkMode ? <StatusBarIcon src={Icons.WhiteCellular} /> : <StatusBarIcon src={Icons.BlackCellular} />}
-        {darkMode ? <StatusBarIcon src={Icons.WhiteWifi} /> : <StatusBarIcon src={Icons.BlackWifi} />}
-        {darkMode ? <StatusBarIcon src={Icons.WhiteBattery} /> : <StatusBarIcon src={Icons.BlackBattery} />}
+        {darkMode ? (
+          <StatusBarIcon src={Icons.WhiteCellular} />
+        ) : (
+          <StatusBarIcon src={Icons.BlackCellular} />
+        )}
+        {darkMode ? (
+          <StatusBarIcon src={Icons.WhiteWifi} />
+        ) : (
+          <StatusBarIcon src={Icons.BlackWifi} />
+        )}
+        {darkMode ? (
+          <StatusBarIcon src={Icons.WhiteBattery} />
+        ) : (
+          <StatusBarIcon src={Icons.BlackBattery} />
+        )}
       </StatusBarIconWrapper>
     </StatusBarWrapper>
   );

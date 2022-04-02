@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import * as Icons from './Icons';
+import * as Icons from "./Icons";
 
 const TitleWrapper = styled.main`
   display: flex;
@@ -57,7 +57,11 @@ const TodoTitle = ({ darkMode, ...props }) => {
   return (
     <TitleWrapper>
       <TitleLeftSection>
-        {darkMode ? <TitleIcon src={Icons.WhiteBack} /> : <TitleIcon src={Icons.BlackBack} />}
+        {darkMode ? (
+          <TitleIcon src={Icons.WhiteBack} />
+        ) : (
+          <TitleIcon src={Icons.BlackBack} />
+        )}
         <TitleEmptyIcon />
         <TitleEmptyIcon />
       </TitleLeftSection>
@@ -67,9 +71,21 @@ const TodoTitle = ({ darkMode, ...props }) => {
       </TitleCenterSection>
 
       <TitleRightSection>
-        {darkMode ? <TitleIcon src={Icons.WhiteSearch} /> : <TitleIcon src={Icons.BlackSearch} />}
-        {darkMode ? <TitleIcon src={Icons.WhiteFile} /> : <TitleIcon src={Icons.BlackFile} />}
-        {darkMode ? <TitleIcon src={Icons.WhiteMenu} /> : <TitleIcon src={Icons.BlackMenu} />}
+        {darkMode ? (
+          <TitleIcon src={Icons.WhiteSearch} />
+        ) : (
+          <TitleIcon src={Icons.BlackSearch} />
+        )}
+        {darkMode ? (
+          <TitleIcon src={Icons.WhiteFile} />
+        ) : (
+          <TitleIcon src={Icons.BlackFile} />
+        )}
+        {darkMode ? (
+          <TitleIcon src={Icons.WhiteMenu} />
+        ) : (
+          <TitleIcon src={Icons.BlackMenu} />
+        )}
       </TitleRightSection>
     </TitleWrapper>
   );

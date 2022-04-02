@@ -71,7 +71,9 @@ const ScrollViewListItemDate = styled.div`
 const TodoListItem = ({ darkMode, todo, toggleTodo, deleteTodo }) => {
   return !todo.completed ? (
     <ScrollViewListItem completed={todo.completed}>
-      <ScrollViewListItemDate darkMode={darkMode}>{todo.time}</ScrollViewListItemDate>
+      <ScrollViewListItemDate darkMode={darkMode}>
+        {todo.time}
+      </ScrollViewListItemDate>
       <ScrollViewListItemContent completed={todo.completed}>
         <ScrollViewListItemContentDelete
           src={icon_trash}
@@ -99,7 +101,9 @@ const TodoListItem = ({ darkMode, todo, toggleTodo, deleteTodo }) => {
           onClick={() => deleteTodo(todo.id)}
         />
       </ScrollViewListItemContent>
-      <ScrollViewListItemDate darkMode={darkMode}>{todo.time}</ScrollViewListItemDate>
+      <ScrollViewListItemDate darkMode={darkMode}>
+        {todo.time}
+      </ScrollViewListItemDate>
     </ScrollViewListItem>
   );
 };
