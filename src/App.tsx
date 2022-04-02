@@ -1,30 +1,27 @@
-import { useEffect, useCallback, useContext } from "react";
+import { useEffect, useContext } from "react";
 import styled from "styled-components";
 import { TodoInputForm, TodoList, DoneList } from "components";
 import { TodoContext } from "contexts";
 import { ITodoItem } from "interface";
 
+// save to localStorage
+const _saveLocalStorage = (type: string, list: Array<ITodoItem>): void => {
+  localStorage.setItem(type, JSON.stringify(list));
+};
+
 const App = () => {
   const { todoList, doneList } = useContext(TodoContext);
-
-  // save to localStorage
-  const _saveLocalStorage = useCallback(
-    (type: string, list: Array<ITodoItem>): void => {
-      localStorage.setItem(type, JSON.stringify(list));
-    },
-    [],
-  );
 
   // list가 변할 때마다 localStorage에 list 저장
   useEffect(() => {
     _saveLocalStorage("todoList", todoList);
-  }, [todoList, _saveLocalStorage]);
+  }, [todoList]);
   useEffect(() => {
     _saveLocalStorage("doneList", doneList);
-  }, [doneList, _saveLocalStorage]);
+  }, [doneList]);
 
   return (
-    <Container>
+    <Wrapper>
       <Box>
         <TitleContents>
           <TodoTitle>📝 투두리스트</TodoTitle>
@@ -33,7 +30,7 @@ const App = () => {
         <TodoList />
         <DoneList />
       </Box>
-    </Container>
+    </Wrapper>
   );
 };
 
@@ -41,7 +38,7 @@ const TitleContents = styled.section``;
 const TodoTitle = styled.h2`
   padding-left: 20px;
 `;
-const Container = styled.div`
+const Wrapper = styled.div`
   height: 100vh;
   display: flex;
   justify-content: center;

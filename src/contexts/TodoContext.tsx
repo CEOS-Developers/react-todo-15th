@@ -9,7 +9,7 @@ let loadTodo = todoStorage ? JSON.parse(todoStorage) : [];
 let loadDone = doneStorage ? JSON.parse(doneStorage) : [];
 
 // 전역 데이터의 초기값
-const initialState = {
+const initialState: IState = {
   todoList: loadTodo,
   doneList: loadDone,
   dispatch: () => {},
@@ -18,27 +18,27 @@ const initialState = {
 const TodoContext = createContext<IState>(initialState);
 
 const reducer = (state: IState, action: IAction): IState => {
-  const { type, todo, idx } = action;
+  const { type } = action;
   switch (type) {
     case "ADD_TODO":
       return {
         ...state,
-        todoList: todo ? [...state.todoList, todo] : state.todoList,
+        todoList: [...state.todoList, action.todo],
       };
     case "DELETE_TODO":
       return {
         ...state,
-        todoList: state.todoList.filter((_, todoIdx) => todoIdx !== idx),
+        todoList: state.todoList.filter((_, todoIdx) => todoIdx !== action.idx),
       };
     case "ADD_DONE":
       return {
         ...state,
-        doneList: todo ? [...state.doneList, todo] : state.doneList,
+        doneList: [...state.doneList, action.todo],
       };
     case "DELETE_DONE":
       return {
         ...state,
-        doneList: state.doneList.filter((_, todoIdx) => todoIdx !== idx),
+        doneList: state.doneList.filter((_, todoIdx) => todoIdx !== action.idx),
       };
     default:
       throw new Error();

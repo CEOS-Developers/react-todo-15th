@@ -11,13 +11,25 @@ export interface ITodoItemProps {
 }
 
 export interface IState {
-  todoList: Array<ITodoItem>;
-  doneList: Array<ITodoItem>;
+  todoList: ITodoItem[];
+  doneList: ITodoItem[];
   dispatch: React.Dispatch<IAction>;
 }
 
-export interface IAction {
-  type: "ADD_TODO" | "DELETE_TODO" | "ADD_DONE" | "DELETE_DONE";
-  todo?: { text: string };
-  idx?: number;
-}
+export type IAction =
+  | {
+      type: "ADD_TODO";
+      todo: { text: string };
+    }
+  | {
+      type: "DELETE_TODO";
+      idx: number;
+    }
+  | {
+      type: "ADD_DONE";
+      todo: { text: string };
+    }
+  | {
+      type: "DELETE_DONE";
+      idx: number;
+    };
