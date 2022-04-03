@@ -17,7 +17,12 @@ const Item = ({
     <span>
       <li id={id} isDoneList={isDoneList} onClick={() => handleTextClick(id)}>
         {text} &nbsp;
-        <button id={id} onClick={handleDeleteBtnClick}>
+        <button
+          id={id}
+          onClick={() => {
+            handleDeleteBtnClick(id);
+          }}
+        >
           X
         </button>
       </li>

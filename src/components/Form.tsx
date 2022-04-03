@@ -16,7 +16,7 @@ const Form = ({ handleTodoInsert }: ITodoInsertProps) => {
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (input) {
+    if (input.replace(/\s+/g, '')) {
       handleTodoInsert(input);
     } else {
       alert('할일을 입력해 주세요');

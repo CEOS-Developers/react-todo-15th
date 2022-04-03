@@ -13,11 +13,8 @@ const TodoList = ({ isDoneList, savedList, setSavedList }: ILists) => {
     );
   };
 
-  const handleDeleteBtnClick = (button) => {
-    const newList = (filteredList) =>
-      filteredList.filter((todo) => todo.id !== button.id);
-
-    setSavedList(newList);
+  const handleDeleteBtnClick = (id: string) => {
+    setSavedList((item) => item.filter((item) => item.id !== id));
   };
 
   return (

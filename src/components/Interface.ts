@@ -17,7 +17,7 @@ interface IHandleTodoInsert {
 }
 
 interface IhandleDeleteBtnClick {
-  (button: ButtonHTMLAttributes<HTMLButtonElement>): void;
+  (id: string): void;
 }
 
 interface IItemProps {
@@ -25,7 +25,7 @@ interface IItemProps {
   text: string;
   isDoneList: boolean;
   handleTextClick: handleTextClick;
-  handleDeleteBtnClick: React.MouseEventHandler<HTMLButtonElement>;
+  handleDeleteBtnClick: IhandleDeleteBtnClick;
 }
 
 interface handleTextClick {

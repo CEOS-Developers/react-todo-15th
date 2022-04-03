@@ -9,10 +9,10 @@ function App() {
     if (text) {
       const todo = {
         id: Date.now().toString(),
-        text,
+        text: text,
         isDone: false,
       };
-      setSavedList((savedList) => [...savedList, todo]);
+      setSavedList([...savedList, todo]);
     }
   };
   return (
