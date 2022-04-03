@@ -6,7 +6,7 @@ interface ITodo {
   isDone: boolean;
 }
 
-interface ILists {
+interface ITodoListProps {
   isDoneList: boolean;
   savedList: ITodo[];
   setSavedList: Dispatch<SetStateAction<ITodo[]>>;
@@ -34,7 +34,7 @@ interface handleTextClick {
 
 export type {
   ITodo,
-  ILists,
+  ITodoListProps,
   IHandleTodoInsert,
   IItemProps,
   handleTextClick,

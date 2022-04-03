@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import Item from './Item';
-import { ILists } from './Interface';
+import { ITodoListProps } from './Interface';
 
-const TodoList = ({ isDoneList, savedList, setSavedList }: ILists) => {
+const TodoList = ({ isDoneList, savedList, setSavedList }: ITodoListProps) => {
   const filteredList = savedList?.filter((item) => item.isDone === isDoneList);
 
   const handleTextClick = (id: string) => {

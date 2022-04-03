@@ -13,7 +13,7 @@ const Form = ({ handleTodoInsert }: ITodoInsertProps) => {
     setInput(e.target.value);
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (input.replace(/\s+/g, '')) {
