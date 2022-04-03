@@ -7,7 +7,7 @@ export const colors : string[] = [
   
     ];
 
-    let firstColor = colors[Math.floor(Math.random() * colors.length)];
-    let secondColor = colors[Math.floor(Math.random() * colors.length)];
+    const firstColor = colors[Math.floor(Math.random() * colors.length)];
+    const secondColor = colors[Math.floor(Math.random() * colors.length)];
     
     document.body.style.background = `linear-gradient(${firstColor}, ${secondColor})`;
