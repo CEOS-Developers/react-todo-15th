@@ -6,7 +6,7 @@ export type Item = {
 
 export enum ItemType {Todo, Done}
 
-export type Action = {type: ActionType, payload: any}
+export type Action = {type: ActionType, payload: Item}
 
 export enum ActionType {DELETE, ADD, MODIFY }
 
