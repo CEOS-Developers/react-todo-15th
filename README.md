@@ -2,16 +2,13 @@
 
 https://github.com/CEOS-Developers/react-todo-15th
 
-- 필수요건
+### TODO
 
-  - Custom hooks를 통해 중복되는 로직을 줄이기
-  - TypeScript 적용하기
-  - Styled-components에서 props 사용해보기
-
-- 선택사항
-
-  - Redux, Context API등 Flux 패턴 적용해보기 (Context API 적용해보는 것 추천)
-  - Base UI Component system을 통해 UI 컴포넌트의 코드 재사용성 높이기
+- [x] Custom hooks를 통해 중복되는 로직을 줄이기
+- [x] TypeScript 적용하기
+- [x] Styled-components에서 props 사용해보기
+- [ ] Redux, Context API등 Flux 패턴 적용해보기 (Context API 적용해보는 것 추천)
+- [ ] Base UI Component system을 통해 UI 컴포넌트의 코드 재사용성 높이기
 
 ### **[3주차 공부자료]**
 
